@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="PyGrading",
+    name="pygrading",
     version="0.0.1",
     author="Charles Zhang",
     author_email="694556046@qq.com",
