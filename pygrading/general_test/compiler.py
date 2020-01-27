@@ -20,7 +20,7 @@ def compile_c(source: str, target: str, compiler_type: str = "gcc", option: str 
     cmd = " ".join([str(compiler_type), str(option), str(source), "-o", str(target)])
 
     try:
-        ret = gg.bash(cmd)
+        ret = gg.utils.bash(cmd)
     except Exception as e:
         status = 1
         output = str(e)
@@ -49,7 +49,7 @@ def compile_cpp(source: str, target: str, compiler_type: str = "g++", option: st
     cmd = " ".join([str(compiler_type), str(option), str(source), "-o", str(target)])
 
     try:
-        ret = gg.bash(cmd)
+        ret = gg.utils.bash(cmd)
     except Exception as e:
         status = 1
         output = str(e)

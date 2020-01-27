@@ -34,6 +34,15 @@ class TestCases(object):
             self.output_src = output_src
             self.extension = extension
 
+        def __str__(self):
+            """Overview single cases."""
+            ret = ["{}:\n".format(self.name),
+                   "\tscore: {}\n".format(self.score),
+                   "\tinput_src: {}\n".format(str(self.input_src)),
+                   "\toutput_src: {}\n".format(str(self.output_src)),
+                   "\textension: {}\n".format(str(self.extension))]
+            return ''.join(ret)
+
     def __init__(self, count: int = 0, total_score: int = 100):
         """Init TestCases with empty values"""
         self.__count = count
@@ -56,6 +65,9 @@ class TestCases(object):
 
     def get_total_score(self):
         return self.__total_score
+
+    def get_testcases(self):
+        return self.__cases
 
     def append(self, name: str, score: float, input_src: object, output_src: object, extension: object = None):
         """Add test case to list of test cases."""
