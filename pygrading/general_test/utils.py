@@ -1,5 +1,7 @@
-import pygrading as pg
+import time
+import subprocess
+from typing import Tuple
 
 
-def helloworld():
-    print("Hello World!")
+def bash(cmd: str) -> Tuple:
+
