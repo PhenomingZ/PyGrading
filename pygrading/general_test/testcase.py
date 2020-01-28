@@ -69,6 +69,9 @@ class TestCases(object):
     def get_testcases(self):
         return self.__cases
 
+    def isempty(self):
+        return self.__count == 0
+
     def append(self, name: str, score: float, input_src: object, output_src: object, extension: object = None):
         """Add test case to list of test cases."""
         single_case = self.__SingleTestCase(name, score, input_src, output_src, extension)
@@ -76,7 +79,7 @@ class TestCases(object):
         self.__count += 1
 
 
-def get_testcase():
+def create_testcase():
     """
     Create a empty TestCases instance
 
@@ -86,7 +89,7 @@ def get_testcase():
     return TestCases()
 
 
-def get_std_testcase(testcase_dir: str, testcase_num: int):
+def create_std_testcase(testcase_dir: str, testcase_num: int):
     """
     Create test cases in a recommended way.
     For example:

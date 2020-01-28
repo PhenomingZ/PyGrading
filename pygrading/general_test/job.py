@@ -11,8 +11,11 @@ class Job(object):
 
     Attributes:
         __run: A function can handle each testcase.
-        __testcases: An list of test cases.
-        __config: A dict of config information.
+        __prework: A function using to handel pre work. Default None.
+        __postwork: A function using to handel post work. Default None.
+        __testcases: An list of test cases. Default None.
+        __config: A dict of config information. Default None.
+        __terminate: A boolean when __terminate is True, job will exit immediately.
         __result: A dict of grading result.For Example:
                 {
                     "verdict":"可选，基本判定，一般为简要的评测结果描述或者简写，例如OJ系统的AC、PE、CE等",
@@ -33,11 +36,14 @@ class Job(object):
                  }
     """
 
-    def __init__(self, run, testcases: TestCases, config: Dict):
+    def __init__(self, run, prework=None, testcases: TestCases = TestCases(), config: Dict = None, postwork=None):
         """Init Job instance"""
         self.__run = run
+        self.__prework = prework
+        self.__postwork = postwork
         self.__testcases = testcases
         self.__config = config
+        self.__terminate = False
         self.__result = {
             "verdict": "Unknown Error",
             "score": "0",
@@ -70,6 +76,9 @@ class Job(object):
     def get_summary(self):
         return self.__summary
 
+    def get_config(self):
+        return self.__config
+
     def get_total_score(self):
         ret = 0
         for i in self.__summary:
@@ -84,12 +93,27 @@ class Job(object):
                 ret += int(i["time"])
         return int(ret)
 
+    def set_testcases(self, testcases: TestCases):
+        self.__testcases = testcases
+
+    def set_config(self, config: Dict):
+        self.__config = config
+
+    def terminate(self):
+        self.__terminate = True
+
     def start(self) -> List:
         """Start a job and return summary"""
+        if self.__postwork:
+            self.__prework(self)
+
+        if self.__terminate:
+            return self.get_summary()
+
         testcases = self.__testcases.get_testcases()
         for case in testcases:
             try:
-                ret = self.__run(case, self.__config)
+                ret = self.__run(self, case)
                 self.__summary.append(ret)
             except Exception as e:
                 self.__summary.append({
@@ -98,6 +122,12 @@ class Job(object):
                     "verdict": "Runtime Error",
                     "output": str(e)
                 })
+            finally:
+                if self.__terminate:
+                    return self.get_summary()
+        if self.__postwork:
+            self.__postwork(self)
+
         return self.get_summary()
 
     def print(self):
@@ -105,5 +135,5 @@ class Job(object):
         print(str_json)
 
 
-def job(run, testcases: TestCases, config: Dict):
-    return Job(run, testcases, config)
+def job(run, prework=None, postwork=None):
+    return Job(run, prework=prework, postwork=postwork)

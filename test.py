@@ -1,11 +1,25 @@
 import pygrading.general_test as gg
 
-config = gg.load_config("./example/config.json")
 
-testcases = gg.get_std_testcase(config["testcase_dir"], config["testcase_num"])
+def prework(job):
+    config = gg.load_config("./example/config.json")
+    testcases = gg.create_std_testcase(config["testcase_dir"], config["testcase_num"])
+
+    job.set_config(config)
+    job.set_testcases(testcases)
+
+    compile_result = gg.compiler.compile_c(config["submit_path"], config["exec_path"])
+
+    if compile_result[0]:
+        job.verdict("Compile Error")
+        job.score(0)
+        job.detail(compile_result[1].replace("\n", "<br>"))
+        job.terminate()
 
 
-def run(testcase, configuration):
+def run(job, testcase):
+    configuration = job.get_config()
+
     cmd = ["cat", testcase.input_src, "|", configuration["exec_path"]]
     status, output, time = gg.utils.bash(" ".join(cmd))
 
@@ -31,31 +45,25 @@ def run(testcase, configuration):
     return result
 
 
-job = gg.job(run, testcases, config)
+def postwork(job):
+    job.verdict("Accept")
+    job.score(job.get_total_score())
+    job.rank({"rank": str(job.get_total_time())})
+    detail = {}
+    for i in job.get_summary():
+        if i["verdict"] == "Runtime Error":
+            job.verdict("Runtime Error")
+        elif i["verdict"] == "Wrong Answer":
+            job.verdict("wrong Answer")
+            detail[i["name"]] = {
+                "output": i["output"],
+                "answer": i["answer"]
+            }
+    job.detail(detail)
 
-compile_result = gg.compiler.compile_c(config["submit_path"], config["exec_path"])
 
-if compile_result[0]:
-    job.verdict("Compile Error")
-    job.score(0)
-    job.detail(compile_result[1].replace("\n", "<br>"))
-else:
-    job.start()
+new_job = gg.job(prework=prework, run=run, postwork=postwork)
 
-# TODO 添加后处理函数和表格绘制工具
-job.verdict("Accept")
-job.score(job.get_total_score())
-job.rank({"rank": str(job.get_total_time())})
-detail = {}
-for i in job.get_summary():
-    if i["verdict"] == "Runtime Error":
-        job.verdict("Runtime Error")
-    elif i["verdict"] == "Wrong Answer":
-        job.verdict("wrong Answer")
-        detail[i["name"]] = {
-            "output": i["output"],
-            "answer": i["answer"]
-        }
-job.detail(detail)
+new_job.start()
 
-job.print()
+new_job.print()
