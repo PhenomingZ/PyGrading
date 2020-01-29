@@ -17,7 +17,6 @@
 
 import pygrading.general_test.compiler
 import pygrading.general_test.utils
-import pygrading.general_test.html
 
 from pygrading.general_test.configuration import load_config
 from pygrading.general_test.testcase import TestCases, create_std_testcase, create_testcase

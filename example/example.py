@@ -1,4 +1,5 @@
 import pygrading.general_test as gg
+from pygrading.html import *
 
 
 def prework(job):
@@ -46,19 +47,32 @@ def run(job, testcase):
 
 
 def postwork(job):
-    job.verdict("Accept")
+    ver = font(color="green").set_text("Accept")
+    job.verdict(str(ver))
     job.score(job.get_total_score())
     job.rank({"rank": str(job.get_total_time())})
-    detail = {}
+    detail = table(
+        tr(
+            th(),
+            th().set_text("Output"),
+            th().set_text("Answer")
+        ), border="1"
+    )
     for i in job.get_summary():
         if i["verdict"] == "Runtime Error":
-            job.verdict("Runtime Error")
+            ver = font(color="red").set_text("Runtime Error")
+            job.verdict(str(ver))
         elif i["verdict"] == "Wrong Answer":
-            job.verdict("wrong Answer")
-            detail[i["name"]] = {
-                "output": i["output"],
-                "answer": i["answer"]
-            }
+            ver = font(color="red").set_text("Wrong Answer")
+            job.verdict(str(ver))
+
+            row = tr(
+                td().set_text(str2html(i["name"])),
+                td(align="center").set_text(str2html(i["output"])),
+                td(align="center").set_text(str2html(i["answer"]))
+            )
+            detail << row
+    detail = str(detail)
     job.detail(detail)
 
 
