@@ -1,3 +1,14 @@
+"""
+    Name: testcase.py
+    Author: Charles Zhang <694556046@qq.com>
+    Propose: A module to generate testcase instance.
+    Coding: UTF-8
+
+    Change Log:
+        **2020.01.26**
+        Create this file!
+"""
+
 import os
 
 

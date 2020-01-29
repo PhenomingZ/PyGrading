@@ -1,3 +1,14 @@
+"""
+    Name: utils.py
+    Author: Charles Zhang <694556046@qq.com>
+    Propose: A tool box contains many frequently used functions.
+    Coding: UTF-8
+
+    Change Log:
+        **2020.01.27**
+        Create this file!
+"""
+
 import os
 import time
 import shutil
@@ -100,4 +111,37 @@ def writefile_list(src: str, lines: List):
 
 
 def compare_str(str1: str, str2: str) -> bool:
+    """Compare two string and ignore \n at the end of two strings."""
     return str1.rstrip() == str2.rstrip()
+
+
+def compare_list(list1: List, list2: List) -> bool:
+    """Compare two list and ignore \n at the end of two list."""
+    while list1[-1] == "\n" or list1[-1] == "":
+        list1.pop()
+    while list2[-1] == "\n" or list2[-1] == "":
+        list2.pop()
+    return list1 == list2
+
+
+def str2list(src: str) -> List:
+    """Separate a string to a list by \n and ignore blank line at the end automatically."""
+    ret = src.split("\n")
+    while ret[-1] == "\n" or ret[-1] == "":
+        ret.pop()
+    return ret
+
+
+def edit_distance(obj1, obj2) -> int:
+    """Calculates the edit distance between obj1 and obj2"""
+    edit = [[i + j for j in range(len(obj2) + 1)] for i in range(len(obj1) + 1)]
+
+    for i in range(1, len(obj1) + 1):
+        for j in range(1, len(obj2) + 1):
+            if obj1[i - 1] == obj2[j - 1]:
+                d = 0
+            else:
+                d = 1
+            edit[i][j] = min(edit[i - 1][j] + 1, edit[i][j - 1] + 1, edit[i - 1][j - 1] + d)
+
+    return edit[len(obj1)][len(obj2)]
