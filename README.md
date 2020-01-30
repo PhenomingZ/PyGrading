@@ -26,12 +26,14 @@
 </p>
 
 <p align="center">
-		<img src="./img/logo.png" width="200">
-</p>
-
-<p align="center">
 	<a href="#highlights">Highlights</a> •
 	<a href="http://www.educg.net/" target="_blank">Site</a>
 </p>
+
+<p align="center">
+		<img src="./img/logo.png" width="200">
+</p>
+
+<h6 align="center">Made by Charles Zhang • :globe_with_meridians: <a href="https://github.com/PhenomingZ">https://github.com/PhenomingZ</a></h6>
 
 
