@@ -5,6 +5,9 @@
     Coding: UTF-8
 
     Change Log:
+        **2020.01.30**
+        Update compile_c option from c90 to c99
+
         **2020.01.26**
         Create this file!
 """
@@ -13,7 +16,7 @@ import pygrading.general_test as gg
 from typing import Tuple
 
 
-def compile_c(source: str, target: str, compiler_type: str = "gcc", option: str = "-O2 -Wall -std=c90") -> Tuple:
+def compile_c(source: str, target: str, compiler_type: str = "gcc", option: str = "-O2 -Wall -std=c99") -> Tuple:
     """Compile c source file
 
     Compile c source file using gcc.

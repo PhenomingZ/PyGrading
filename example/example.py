@@ -9,7 +9,7 @@ def prework(job):
     job.set_config(config)
     job.set_testcases(testcases)
 
-    compile_result = gg.compiler.compile_c(config["submit_path"], config["exec_path"])
+    compile_result = gg.compiler.compile_c(config["submit_path"], config["exec_path"], option="-O2 -Wall -std=c99")
 
     if compile_result[0]:
         job.verdict("Compile Error")
@@ -26,16 +26,16 @@ def run(job, testcase):
 
     result = {"name": testcase.name, "time": time}
 
-    if status:
-        result["verdict"] = "Runtime Error"
-        result["score"] = 0
-        result["log"] = output
-        return result
-
     answer = gg.utils.readfile(testcase.output_src)
 
     result["output"] = output
     result["answer"] = answer
+
+    if status:
+        result["verdict"] = "Runtime Error"
+        result["score"] = 0
+        return result
+
     if gg.utils.compare_str(output, answer):
         result["verdict"] = "Accept"
         result["score"] = testcase.score
@@ -66,12 +66,12 @@ def postwork(job):
             ver = font(color="red").set_text("Wrong Answer")
             job.verdict(str(ver))
 
-            row = tr(
-                td().set_text(str2html(i["name"])),
-                td(align="center").set_text(str2html(i["output"])),
-                td(align="center").set_text(str2html(i["answer"]))
-            )
-            detail << row
+        row = tr(
+            td().set_text(str2html(i["name"])),
+            td(align="center").set_text(str2html(i["output"])),
+            td(align="center").set_text(str2html(i["answer"]))
+        )
+        detail << row
     detail = str(detail)
     job.detail(detail)
 
