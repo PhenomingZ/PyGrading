@@ -22,7 +22,16 @@
 	<a href="https://github.com/PhenomingZ/PyGrading/blob/master/LICENSE">
 				<img src="https://img.shields.io/github/license/PhenomingZ/PyGrading"
 						 alt="GitHub license">
-	</a>     
+	</a>
+</p>
+
+<p align="center">
+		<img src="./img/logo.png" width="200">
+</p>
+
+<p align="center">
+	<a href="#highlights">Highlights</a> •
+	<a href="http://www.educg.net/" target="_blank">Site</a>
 </p>
 
 
