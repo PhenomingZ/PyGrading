@@ -26,7 +26,7 @@
 </p>
 
 <p align="center">
-	<a href="#what-is-it">简介</a> •
+	<a href="#what-is-it">What is it</a> •
 	<a href="http://www.educg.net/" target="_blank">Site</a>
 </p>
 
@@ -36,7 +36,7 @@
 
 <h6 align="center">Made by Charles Zhang • :globe_with_meridians: <a href="https://github.com/PhenomingZ">https://github.com/PhenomingZ</a></h6>
 
-<h2 id="what-is-it" align="center">简介</h2>
+<h2 id="what-is-it" align="center">What is it</h2>
 
 **希冀平台** 是一个国内最具专业深度、安全可扩展的计算机类课程一体化支撑平台，是一个定位于全面支撑计算机、人工智能和大数据专业建设的大型综合教学实验平台，而非一个只能支撑若干门课程的实验系统。
 
