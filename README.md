@@ -1,8 +1,12 @@
 <h1 align="center">PyGrading</h1>
 
-<p align="center">希冀平台Python工具包。 A Python ToolBox for CourseGrading platform.</p>
+<p align="center">希冀(CourseGrading)计算机专业一体化在线平台</p>
 
 <p align="center">
+	<a href="http://www.educg.net/">
+		<img src="https://img.shields.io/badge/site-CG-red"
+				 alt="Official Site">
+	</a>
 	<a href="https://github.com/PhenomingZ/PyGrading">
 		<img src="https://img.shields.io/github/stars/PhenomingZ/PyGrading"
 				 alt="GitHub stars">
@@ -12,7 +16,7 @@
 					 alt="Pypi package">
 		</a>
 	<a href="https://github.com/PhenomingZ/PyGrading/issues">
-				<img src="	https://img.shields.io/github/issues/PhenomingZ/PyGrading"
+				<img src="https://img.shields.io/github/issues/PhenomingZ/PyGrading"
 						 alt="GitHub issues">
 	</a>
 	<a href="https://github.com/PhenomingZ/PyGrading/blob/master/LICENSE">
