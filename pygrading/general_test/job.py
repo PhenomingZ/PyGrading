@@ -5,6 +5,9 @@
     Coding: UTF-8
 
     Change Log:
+        **2020.01.30**
+        run()'s default value is None now.
+
         **2020.01.27**
         Create this file!
 """
@@ -47,7 +50,7 @@ class Job(object):
                  }
     """
 
-    def __init__(self, run, prework=None, testcases: TestCases = TestCases(), config: Dict = None, postwork=None):
+    def __init__(self, run=None, prework=None, testcases: TestCases = TestCases(), config: Dict = None, postwork=None):
         """Init Job instance"""
         self.__run = run
         self.__prework = prework
@@ -124,8 +127,9 @@ class Job(object):
         testcases = self.__testcases.get_testcases()
         for case in testcases:
             try:
-                ret = self.__run(self, case)
-                self.__summary.append(ret)
+                if self.__run:
+                    ret = self.__run(self, case)
+                    self.__summary.append(ret)
             except Exception as e:
                 self.__summary.append({
                     "name": case.name,
