@@ -1,6 +1,6 @@
 <h1 align="center">PyGrading</h1>
 
-<p align="center">希冀(CourseGrading)计算机专业课一体化在线平台开发用Python工具包。包含通用评测内核创建以及HTML标签生成工具。</p>
+<p align="center">CourseGrading(希冀)计算机专业课一体化在线平台开发用Python工具包。包含通用评测内核创建以及HTML标签生成工具。</p>
 
 <p align="center">
 	<a href="http://www.educg.net/">
@@ -37,3 +37,5 @@
 <h6 align="center">Made by Charles Zhang • :globe_with_meridians: <a href="https://github.com/PhenomingZ">https://github.com/PhenomingZ</a></h6>
 
 <h2 id="what-is-it" align="center">简介</h2>
+
+**希冀平台** 是一个国内最具专业深度、安全可扩展的计算机类课程一体化支撑平台，是一个定位于全面支撑计算机、人工智能和大数据专业建设的大型综合教学实验平台，而非一个只能支撑若干门课程的实验系统。
