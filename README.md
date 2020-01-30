@@ -27,6 +27,8 @@
 
 <p align="center">
 	<a href="#what-is-it">What is it</a> •
+	<a href="#install">Install</a> •
+	<a href="#getting-start">Getting Start</a> •
 	<a href="http://www.educg.net/" target="_blank">Site</a>
 </p>
 
@@ -36,7 +38,7 @@
 
 <h6 align="center">Made by Charles Zhang • :globe_with_meridians: <a href="https://github.com/PhenomingZ">https://github.com/PhenomingZ</a></h6>
 
-<h2 id="what-is-it" align="center">What is it</h2>
+<h2 id="what-is-it" align="center">What Is It</h2>
 
 **希冀平台** 是一个国内最具专业深度、安全可扩展的计算机类课程一体化支撑平台，是一个定位于全面支撑计算机、人工智能和大数据专业建设的大型综合教学实验平台，而非一个只能支撑若干门课程的实验系统。
 
@@ -48,3 +50,15 @@
 2. 支持HTML标签文本内容的快速生成，绝对好用的HTML生成工具；
 
 希望使用本工具能够提高大家的工作效率，预祝各位开发顺利，成就感爆棚！
+
+<h2 id="install" align="center">Install</h2>
+
+使用pip可以轻松安装PyGrading：
+
+```bash
+pip install pygrading
+```
+
+推荐在Python版本大于3.6的环境中使用PyGrading。请注意：PyGrading不支持Python2。
+
+<h2 id="getting-start" align="center">Getting Start</h2>
