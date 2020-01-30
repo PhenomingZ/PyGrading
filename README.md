@@ -26,7 +26,7 @@
 </p>
 
 <p align="center">
-	<a href="#highlights">Highlights</a> •
+	<a href="#what-is-it">简介</a> •
 	<a href="http://www.educg.net/" target="_blank">Site</a>
 </p>
 
@@ -36,4 +36,4 @@
 
 <h6 align="center">Made by Charles Zhang • :globe_with_meridians: <a href="https://github.com/PhenomingZ">https://github.com/PhenomingZ</a></h6>
 
-
+<h2 id="what-is-it" align="center">简介</h2>
