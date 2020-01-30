@@ -1,6 +1,6 @@
 <h1 align="center">PyGrading</h1>
 
-<p align="center">希冀(CourseGrading)计算机专业一体化在线平台</p>
+<p align="center">希冀(CourseGrading)计算机专业课一体化在线平台开发用Python工具包</p>
 
 <p align="center">
 	<a href="http://www.educg.net/">
