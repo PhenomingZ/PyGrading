@@ -1,6 +1,6 @@
 <h1 align="center">PyGrading</h1>
 
-<p align="center">希冀(CourseGrading)计算机专业课一体化在线平台开发用Python工具包。包含通用评测内核创建工具，支持快速生成评测脚本JSON串和HTML标签。</p>
+<p align="center">希冀(CourseGrading)计算机专业课一体化在线平台开发用Python工具包。包含通用评测内核创建以及HTML标签生成工具。</p>
 
 <p align="center">
 	<a href="http://www.educg.net/">
