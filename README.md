@@ -285,4 +285,25 @@ def postwork(job):
     job.detail(str(detail))
 ```
 
+#### 6. 启动任务
+
+完成三个阶段的函数编写后，将三个函数作为参数传入`gg.job()`函数，生成一个任务实例：
+
+```python
+# 创建任务实例
+new_job = gg.job(prework=prework, run=run, postwork=postwork)
+
+# 任务启动
+new_job.start()
+
+# 打印结果
+new_job.print()
+```
+
+程序执行后输出结果如下：
+
+```json
+{"verdict": "<font color='red'>Wrong Answer</font>", "score": "80", "rank": {"rank": "238"}, "HTML": "enable", "detail": "<table border='1'><tr><th></th><th>Verdict</th><th>Output</th><th>Answer</th></tr><tr><td>TestCase1<br></td><td align='center'>Accept<br></td><td align='center'>True<br></td><td align='center'>True<br></td></tr><tr><td>TestCase2<br></td><td align='center'>Accept<br></td><td align='center'>False<br></td><td align='center'>False<br></td></tr><tr><td>TestCase3<br></td><td align='center'>Accept<br></td><td align='center'>False<br></td><td align='center'>False<br></td></tr><tr><td>TestCase4<br></td><td align='center'>Accept<br></td><td align='center'>True<br></td><td align='center'>True<br></td></tr><tr><td>TestCase5<br></td><td align='center'>Wrong Answer<br></td><td align='center'>True<br></td><td align='center'>False<br></td></tr></table>"}
+```
+
 
