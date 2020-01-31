@@ -100,15 +100,14 @@ PyGrading采用三段式的设计逻辑，将每一次评测任务分为三个�
 
 <details>
 <summary>使用的样例学生答案和测试用例如下(点击以展开...)</summary>
-```python
+<p><code>python
 def isPalindrome(num: int) -> bool:
     num = abs(num)
     num_str = str(num)
     return num_str == num_str[::-1]
-
 x = eval(input())
 print(isPalindrome(x))
-```
+</code></p>
 </details>
 
 
