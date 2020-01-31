@@ -165,7 +165,7 @@ from pygrading.html import *
 }
 ```
 
-PyGrading推荐按照如下目录结构构建评测数据，学生提交的代码将会被挂载到`submit`目录中，测试数据的输入输出存放于`testdata`目录中。PyGrading提供了函数可用于直接读取以这种目录结构创建的测试用例：
+PyGrading推荐按照如下目录结构构建评测数据，学生提交的代码将会被挂载到`submit`目录中，测试数据的输入输出存放于`testdata`目录中。PyGrading提供了函数可用于直接读取以这种目录结构创建的评测用例：
 
 ```
 .
@@ -185,5 +185,16 @@ PyGrading推荐按照如下目录结构构建评测数据，学生提交的代�
         ├── output3.txt
         ├── output4.txt
         └── output5.txt
+```
+
+创建`prework()`函数的代码如下：
+
+```python
+def prework(job):
+    config = gg.load_config("./example/config.json")
+    testcases = gg.create_std_testcase(config["testcase_dir"], config["testcase_num"])
+
+    job.set_config(config)
+    job.set_testcases(testcases)
 ```
 
