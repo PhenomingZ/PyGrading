@@ -137,7 +137,7 @@ print(isPalindrome(x))
     </tr>
 </table>
 
-> 样例学生学生代码在执行最后一组测试用例时会输出错误答案
+> 样例学生代码在执行最后一组测试用例时会输出错误答案
 
 #### 2. 导入程序包
 
@@ -153,4 +153,37 @@ import pygrading.general_test as gg
 from pygrading.html import *
 ```
 
-#### 3. 
+#### 3. 创建预处理函数
+
+首先创建用于评测任务预处理的`prework()`函数，完成配置文件和评测用例的读取，配置文件使用JSON格式，内容如下：
+
+```json
+{
+    "testcase_num": "5",
+    "testcase_dir": "./example/testdata",
+    "submit_path": "./example/submit/main.py"
+}
+```
+
+PyGrading推荐按照如下目录结构构建评测数据，学生提交的代码将会被挂载到`submit`目录中，测试数据的输入输出存放于`testdata`目录中
+
+```
+.
+├── example
+│   ├── config.json
+│   ├── submit
+│   │   └── main.py
+│   └── testdata
+│       ├── input
+│       │   ├── input1.txt
+│       │   ├── input2.txt
+│       │   ├── input3.txt
+│       │   ├── input4.txt
+│       │   └── input5.txt
+│       └── output
+│           ├── output1.txt
+│           ├── output2.txt
+│           ├── output3.txt
+│           ├── output4.txt
+│           └── output5.txt
+```
