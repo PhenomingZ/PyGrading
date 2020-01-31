@@ -45,7 +45,7 @@
 **通用评测** 是一个通用的自动评测框架，基于该框架可以定制开发任何自己需要的自动评测内核。
 
 **PyGrading工具包** 目前该工具包包含以下功能：
-1. 支持CourseGrading平台通用评测内核快速创建；
+1. 支持CourseGrading平台通用评测内核快速构建；
 2. 支持适用于通用评测题和虚拟桌面环境的评测结果JSON串的快速生成；
 2. 支持HTML标签文本内容的快速生成，绝对好用的HTML生成工具；
 
@@ -59,6 +59,14 @@
 pip install pygrading
 ```
 
-推荐在Python版本大于3.6的环境中使用PyGrading。请注意：PyGrading不支持Python2。
+PyGrading的运行环境要求 **Python >= 3.6**，不支持Python2。
 
 <h2 id="getting-start" align="center">Getting Start</h2>
+
+### 通用评测内核构建
+
+#### 1. 设计逻辑
+
+PyGrading采用三段式的设计逻辑，将每一次评测任务分为三个阶段，分别完成“评测任务预处理”、“评测用例执行”、“评测结果处理”，如下图所示：
+
+<img src="./img/flow.png" width="500">
