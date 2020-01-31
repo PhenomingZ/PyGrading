@@ -205,6 +205,8 @@ def prework(job):
 
 接下来创建创建用于执行测试用例的`run()`函数，该函数接收单组测试用例，并返回一个可包含任意内容的字典，所有评测用例返回的内容最终会汇总到一个列表中传递给评测结果处理函数。
 
+使用`gg.utils.bash()`执行Shell命令时，会返回当前命令的执行时间，可用做代码性能评判依据。
+
 创建`run()`函数的代码如下，`job`为PyGrading创建的任务实例，`testcase`为字典类型，包含单个测试用例信息：
 
 ```python
@@ -235,6 +237,52 @@ def run(job, testcase):
         result["score"] = 0
 
     return result
+```
+
+#### 5. 创建评测结果处理函数
+
+之后创建评测结果处理函数`postwork()`，并使用`pygrading.html`中的相关工具创建带有HTML标签的字符串。
+
+创建`postwork()`函数的代码如下，`job`为PyGrading创建的任务实例：
+
+```python
+def postwork(job):
+    # 设定结果verdict
+    job.verdict(str(font(color="green").set_text("Accept")))
+
+    # 设定结果score
+    job.score(job.get_total_score())
+
+    # 设定结果rank
+    job.rank({"rank": str(job.get_total_time())})
+
+    # 创建HTML标签
+    detail = table(
+        tr(
+            th(),
+            th().set_text("Verdict"),
+            th().set_text("Output"),
+            th().set_text("Answer")
+        ), border="1"
+    )
+    for i in job.get_summary():
+        if i["verdict"] == "Runtime Error":
+            ver = font(color="red").set_text("Runtime Error")
+            job.verdict(str(ver))
+        elif i["verdict"] == "Wrong Answer":
+            ver = font(color="red").set_text("Wrong Answer")
+            job.verdict(str(ver))
+
+        row = tr(
+            td().set_text(str2html(i["name"])),
+            td(align="center").set_text(str2html(i["verdict"])),
+            td(align="center").set_text(str2html(i["output"])),
+            td(align="center").set_text(str2html(i["answer"]))
+        )
+        detail << row
+
+    # 将HTML标签转换为字符串，设定为结果detail
+    job.detail(str(detail))
 ```
 
 

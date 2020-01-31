@@ -61,8 +61,8 @@ def postwork(job):
             td(align="center").set_text(str2html(i["answer"]))
         )
         detail << row
-    detail = str(detail)
-    job.detail(detail)
+
+    job.detail(str(detail))
 
 
 new_job = gg.job(prework=prework, run=run, postwork=postwork)
