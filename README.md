@@ -263,7 +263,7 @@ def postwork(job):
             th().set_text("Verdict"),
             th().set_text("Output"),
             th().set_text("Answer")
-        ), border="1"
+        ), border="0"
     )
     for i in job.get_summary():
         if i["verdict"] == "Runtime Error":
@@ -310,7 +310,44 @@ new_job.print()
 
 <font color='red'>Wrong Answer</font>
 
-<table border='1'><tr><th></th><th>Verdict</th><th>Output</th><th>Answer</th></tr><tr><td>TestCase1<br></td><td align='center'>Accept<br></td><td align='center'>True<br></td><td align='center'>True<br></td></tr><tr><td>TestCase2<br></td><td align='center'>Accept<br></td><td align='center'>False<br></td><td align='center'>False<br></td></tr><tr><td>TestCase3<br></td><td align='center'>Accept<br></td><td align='center'>False<br></td><td align='center'>False<br></td></tr><tr><td>TestCase4<br></td><td align='center'>Accept<br></td><td align='center'>True<br></td><td align='center'>True<br></td></tr><tr><td>TestCase5<br></td><td align='center'>Wrong Answer<br></td><td align='center'>True<br></td><td align='center'>False<br></td></tr></table>
+<table border='0'>
+    <tr>
+        <th></th>
+        <th>Verdict</th>
+        <th>Output</th>
+        <th>Answer</th>
+    </tr>
+    <tr>
+        <td>TestCase1<br></td>
+        <td align='center'>Accept<br></td>
+        <td align='center'>True<br></td>
+        <td align='center'>True<br></td>
+    </tr>
+    <tr>
+        <td>TestCase2<br></td>
+        <td align='center'>Accept<br></td>
+        <td align='center'>False<br></td>
+        <td align='center'>False<br></td>
+    </tr>
+    <tr>
+        <td>TestCase3<br></td>
+        <td align='center'>Accept<br></td>
+        <td align='center'>False<br></td>
+        <td align='center'>False<br></td>
+    </tr>
+    <tr>
+        <td>TestCase4<br></td>
+        <td align='center'>Accept<br></td>
+        <td align='center'>True<br></td>
+        <td align='center'>True<br></td>
+    </tr>
+    <tr>
+        <td>TestCase5<br></td>
+        <td align='center'>Wrong Answer<br></td>
+        <td align='center'>True<br></td>
+        <td align='center'>False<br></td>
+    </tr>
+</table>
 
 
 
