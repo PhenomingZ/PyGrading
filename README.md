@@ -85,4 +85,17 @@ PyGrading采用三段式的设计逻辑，将每一次评测任务分为三个�
 
 **评测结果处理** 通常包括评测结果汇总、生成评测报告、输出评测结果JSON串等任务。
 
-#### 2. 
+#### 2. 导入程序包
+
+PyGrading安装完成之后，推荐在您的代码中使用如下方式导入通用评测相关模块：
+
+```python
+import pygrading.general_test as gg
+```
+
+如果您需要在评测结果中显示html内容，推荐如下方式导入html相关模块：
+
+```python
+from pygrading.html import *
+```
+
