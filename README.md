@@ -153,7 +153,7 @@ import pygrading.general_test as gg
 from pygrading.html import *
 ```
 
-#### 3. 创建预处理函数
+#### 3. 创建评测任务预处理函数
 
 首先创建用于评测任务预处理的`prework()`函数，完成配置文件和评测用例的读取，配置文件使用JSON格式，内容如下：
 
@@ -187,7 +187,7 @@ PyGrading推荐按照如下目录结构构建评测数据，学生提交的代�
         └── output5.txt
 ```
 
-创建`prework()`函数的代码如下：
+创建`prework()`函数的代码如下，`job`为PyGrading创建的任务实例：
 
 ```python
 def prework(job):
@@ -198,3 +198,32 @@ def prework(job):
     job.set_testcases(testcases)
 ```
 
+#### 4. 创建评测用例执行函数
+
+接下来创建创建用于执行测试用例的`run()`函数，该函数接收单组测试用例，并返回一个可包含任意内容的字典，所有评测用例返回的内容最终会汇总到一个列表中传递给评测结果处理函数。
+
+创建`run()`函数的代码如下，`job`为PyGrading创建的任务实例，`testcase`为字典类型，包含单个测试用例信息：
+
+```python
+def run(job, testcase):
+    configuration = job.get_config()
+
+    cmd = ["cat", testcase.input_src, "|", "python3 " + configuration["submit_path"]]
+    status, output, time = gg.utils.bash(" ".join(cmd))
+
+    result = {"name": testcase.name, "time": time}
+
+    answer = gg.utils.readfile(testcase.output_src)
+
+    result["output"] = output
+    result["answer"] = answer
+
+    if gg.utils.compare_str(output, answer):
+        result["verdict"] = "Accept"
+        result["score"] = testcase.score
+    else:
+        result["verdict"] = "Wrong Answer"
+        result["score"] = 0
+
+    return result
+```
