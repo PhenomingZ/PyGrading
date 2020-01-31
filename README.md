@@ -98,18 +98,44 @@ PyGrading采用三段式的设计逻辑，将每一次评测任务分为三个�
 > 　　输出：False  
 > 　　说明：从左向右为“-121”，从右向左为“121-”，故不是回文数。
 
-<details>
-<summary>使用的样例学生答案和测试用例如下(点击以展开...)</summary>
-<p><code>python
+本例使用的学生提交代码如下：
+```python
 def isPalindrome(num: int) -> bool:
     num = abs(num)
     num_str = str(num)
     return num_str == num_str[::-1]
+
 x = eval(input())
 print(isPalindrome(x))
-</code></p>
-</details>
+```
 
+本例使用的测试用例如下：
+<table>
+    <tr>
+        <th>input</th>
+        <th>output</th>
+    </tr>
+    <tr>
+        <td>121</td>
+        <td>True</td>
+    </tr>
+    <tr>
+        <td>10</td>
+        <td>False</td>
+    </tr>
+    <tr>
+        <td>-12</td>
+        <td>False</td>
+    </tr>
+    <tr>
+        <td>331133</td>
+        <td>True</td>
+    </tr>
+    <tr>
+        <td>-121</td>
+        <td>False</td>
+    </tr>
+</table>
 
 #### 2. 导入程序包
 
