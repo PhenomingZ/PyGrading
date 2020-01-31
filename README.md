@@ -191,7 +191,10 @@ PyGrading推荐按照如下目录结构构建评测数据，学生提交的代�
 
 ```python
 def prework(job):
+    # 读取配置文件
     config = gg.load_config("./example/config.json")
+
+    # 创建测试用例实例
     testcases = gg.create_std_testcase(config["testcase_dir"], config["testcase_num"])
 
     job.set_config(config)
@@ -206,18 +209,24 @@ def prework(job):
 
 ```python
 def run(job, testcase):
+    # 读取当前任务的配置信息
     configuration = job.get_config()
-
+    
+    # 创建和执行评测用Shell命令
     cmd = ["cat", testcase.input_src, "|", "python3 " + configuration["submit_path"]]
     status, output, time = gg.utils.bash(" ".join(cmd))
 
+    # 初始化返回的字典对象
     result = {"name": testcase.name, "time": time}
-
+    
+    # 读取评测用例答案
     answer = gg.utils.readfile(testcase.output_src)
 
+    # 将执行结果写回返回对象
     result["output"] = output
     result["answer"] = answer
 
+    # 比较评测答案和实际输出将评测结果写回返回对象
     if gg.utils.compare_str(output, answer):
         result["verdict"] = "Accept"
         result["score"] = testcase.score
@@ -227,3 +236,5 @@ def run(job, testcase):
 
     return result
 ```
+
+
