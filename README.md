@@ -1,4 +1,4 @@
-<h1 align="center">PyGrading</h1>
+<h1 id="pygrading" align="center">PyGrading</h1>
 
 <p align="center">CourseGrading(希冀)计算机专业课一体化在线平台开发用Python工具包。包含通用评测内核创建以及HTML标签生成工具。</p>
 
@@ -29,6 +29,7 @@
 	<a href="#what-is-it">What is it</a> •
 	<a href="#install">Install</a> •
 	<a href="#getting-start">Getting Start</a> •
+	<a href="#api">API</a> •
 	<a href="http://www.educg.net/" target="_blank">CG Site</a>
 </p>
 
@@ -350,6 +351,9 @@ new_job.print()
 </table>
 
 一个简单的通用评测内核开发完成！
+
+<h2 id="api" align="center">API</h2>
+<p align="right"><a href="#pygrading"><sup>▴ Back to top</sup></a></p>
 
 
 
