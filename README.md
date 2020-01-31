@@ -69,4 +69,6 @@ PyGrading的运行环境要求 **Python >= 3.6**，不支持Python2。
 
 PyGrading采用三段式的设计逻辑，将每一次评测任务分为三个阶段，分别完成“评测任务预处理”、“评测用例执行”、“评测结果处理”，如下图所示：
 
-<img src="./img/flow.png" width="500">
+<p align="center">
+		<img src="./img/flow.png" width="700">
+</p>
