@@ -29,7 +29,7 @@
 	<a href="#what-is-it">What is it</a> •
 	<a href="#install">Install</a> •
 	<a href="#getting-start">Getting Start</a> •
-	<a href="http://www.educg.net/" target="_blank">Site</a>
+	<a href="http://www.educg.net/" target="_blank">CG Site</a>
 </p>
 
 <p align="center">
@@ -274,7 +274,7 @@ def postwork(job):
             job.verdict(str(ver))
 
         row = tr(
-            td().set_text(str2html(i["name"])),
+            td(align="center").set_text(str2html(i["name"])),
             td(align="center").set_text(str2html(i["verdict"])),
             td(align="center").set_text(str2html(i["output"])),
             td(align="center").set_text(str2html(i["answer"]))
@@ -303,7 +303,7 @@ new_job.print()
 程序执行后输出结果如下：
 
 ```json
-{"verdict": "<font color='red'>Wrong Answer</font>", "score": "80", "rank": {"rank": "238"}, "HTML": "enable", "detail": "<table border='1'><tr><th></th><th>Verdict</th><th>Output</th><th>Answer</th></tr><tr><td>TestCase1<br></td><td align='center'>Accept<br></td><td align='center'>True<br></td><td align='center'>True<br></td></tr><tr><td>TestCase2<br></td><td align='center'>Accept<br></td><td align='center'>False<br></td><td align='center'>False<br></td></tr><tr><td>TestCase3<br></td><td align='center'>Accept<br></td><td align='center'>False<br></td><td align='center'>False<br></td></tr><tr><td>TestCase4<br></td><td align='center'>Accept<br></td><td align='center'>True<br></td><td align='center'>True<br></td></tr><tr><td>TestCase5<br></td><td align='center'>Wrong Answer<br></td><td align='center'>True<br></td><td align='center'>False<br></td></tr></table>"}
+{"verdict": "<font color='red'>Wrong Answer</font>", "score": "80", "rank": {"rank": "238"}, "HTML": "enable", "detail": "<table border='1'><tr><th></th><th>Verdict</th><th>Output</th><th>Answer</th></tr><tr><td align='center'>TestCase1<br></td><td align='center'>Accept<br></td><td align='center'>True<br></td><td align='center'>True<br></td></tr><tr><td align='center'>TestCase2<br></td><td align='center'>Accept<br></td><td align='center'>False<br></td><td align='center'>False<br></td></tr><tr><td align='center'>TestCase3<br></td><td align='center'>Accept<br></td><td align='center'>False<br></td><td align='center'>False<br></td></tr><tr><td align='center'>TestCase4<br></td><td align='center'>Accept<br></td><td align='center'>True<br></td><td align='center'>True<br></td></tr><tr><td align='center'>TestCase5<br></td><td align='center'>Wrong Answer<br></td><td align='center'>True<br></td><td align='center'>False<br></td></tr></table>"}
 ```
 
 在CG平台中显示效果如下：
@@ -318,36 +318,38 @@ new_job.print()
         <th>Answer</th>
     </tr>
     <tr>
-        <td>TestCase1<br></td>
+        <td align='center'>TestCase1<br></td>
         <td align='center'>Accept<br></td>
         <td align='center'>True<br></td>
         <td align='center'>True<br></td>
     </tr>
     <tr>
-        <td>TestCase2<br></td>
+        <td align='center'>TestCase2<br></td>
         <td align='center'>Accept<br></td>
         <td align='center'>False<br></td>
         <td align='center'>False<br></td>
     </tr>
     <tr>
-        <td>TestCase3<br></td>
+        <td align='center'>TestCase3<br></td>
         <td align='center'>Accept<br></td>
         <td align='center'>False<br></td>
         <td align='center'>False<br></td>
     </tr>
     <tr>
-        <td>TestCase4<br></td>
+        <td align='center'>TestCase4<br></td>
         <td align='center'>Accept<br></td>
         <td align='center'>True<br></td>
         <td align='center'>True<br></td>
     </tr>
     <tr>
-        <td>TestCase5<br></td>
+        <td align='center'>TestCase5<br></td>
         <td align='center'>Wrong Answer<br></td>
         <td align='center'>True<br></td>
         <td align='center'>False<br></td>
     </tr>
 </table>
+
+一个简单的通用评测内核开发完成！
 
 
 
