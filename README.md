@@ -38,7 +38,7 @@
 
 <h6 align="center">Made by Charles Zhang • :globe_with_meridians: <a href="https://github.com/PhenomingZ">https://github.com/PhenomingZ</a></h6>
 
-<h2 id="what-is-it" align="center">What Is It</h2>
+<h2 id="what-is-it" align="center">What is it</h2>
 
 **希冀平台** 是一个国内最具专业深度、安全可扩展的计算机类课程一体化支撑平台，是一个定位于全面支撑计算机、人工智能和大数据专业建设的大型综合教学实验平台，而非一个只能支撑若干门课程的实验系统。
 
@@ -57,6 +57,12 @@
 
 ```bash
 pip install pygrading
+```
+
+也可以下载项目文件后，切换到`setup.py`所在的目录，执行以下命令来安装：
+
+```bash
+python setup.py install
 ```
 
 PyGrading的运行环境要求 **Python >= 3.6**，不支持Python2。
@@ -78,3 +84,5 @@ PyGrading采用三段式的设计逻辑，将每一次评测任务分为三个�
 **评测用例执行** PyGrading会自动迭代执行评测用例列表中的每个评测用例，而具体的评测规则可以用一个函数快速指定。
 
 **评测结果处理** 通常包括评测结果汇总、生成评测报告、输出评测结果JSON串等任务。
+
+#### 2. 
