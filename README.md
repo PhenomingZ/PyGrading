@@ -165,25 +165,25 @@ from pygrading.html import *
 }
 ```
 
-PyGrading推荐按照如下目录结构构建评测数据，学生提交的代码将会被挂载到`submit`目录中，测试数据的输入输出存放于`testdata`目录中
+PyGrading推荐按照如下目录结构构建评测数据，学生提交的代码将会被挂载到`submit`目录中，测试数据的输入输出存放于`testdata`目录中。PyGrading提供了函数可用于直接读取以这种目录结构创建的测试用例：
 
 ```
 .
-├── example
-│   ├── config.json
-│   ├── submit
-│   │   └── main.py
-│   └── testdata
-│       ├── input
-│       │   ├── input1.txt
-│       │   ├── input2.txt
-│       │   ├── input3.txt
-│       │   ├── input4.txt
-│       │   └── input5.txt
-│       └── output
-│           ├── output1.txt
-│           ├── output2.txt
-│           ├── output3.txt
-│           ├── output4.txt
-│           └── output5.txt
+├── config.json
+├── submit
+│   └── main.py
+└── testdata
+    ├── input
+    │   ├── input1.txt
+    │   ├── input2.txt
+    │   ├── input3.txt
+    │   ├── input4.txt
+    │   └── input5.txt
+    └── output
+        ├── output1.txt
+        ├── output2.txt
+        ├── output3.txt
+        ├── output4.txt
+        └── output5.txt
 ```
+
