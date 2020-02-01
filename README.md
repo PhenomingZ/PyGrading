@@ -28,8 +28,10 @@
 <p align="center">
 	<a href="#what-is-it">What is it</a> •
 	<a href="#install">Install</a> •
+	<a href="#change-log">Change Log</a> •
 	<a href="#getting-start">Getting Start</a> •
 	<a href="#api">API</a> •
+	<a href="#tutorials">Tutorials</a> •
 	<a href="http://www.educg.net/" target="_blank">CG Site</a>
 </p>
 
@@ -68,6 +70,20 @@ python setup.py install
 ```
 
 PyGrading的运行环境要求 **Python >= 3.6**，不支持Python2。
+
+<h2 id="change-log" align="center">Change Log</h2>
+<p align="right"><a href="#pygrading"><sup>▴ Back to top</sup></a></p>
+
+**v0.1.2 Change Log (2020.02.01)**
+在`pygrading.heml`模块中添加了自定义标签方法`custom()`并支持形如`<input>`标签的不成组标签。
+
+<details>
+
+    <summary>以往版本更新日志(点击以展开...)</summary>
+    **v0.1.0 Change Log (2020.01.29)**
+    通用评测内核功能完成，HTML构建功能初步搭建完成。
+
+</details>
 
 <h2 id="getting-start" align="center">Getting Start</h2>
 <p align="right"><a href="#pygrading"><sup>▴ Back to top</sup></a></p>
@@ -357,5 +373,10 @@ new_job.print()
 <h2 id="api" align="center">API</h2>
 <p align="right"><a href="#pygrading"><sup>▴ Back to top</sup></a></p>
 
+在本节中，将会列出当前版本全部
+
+
+<h2 id="tutorials" align="center">Tutorials</h2>
+<p align="right"><a href="#pygrading"><sup>▴ Back to top</sup></a></p>
 
 
