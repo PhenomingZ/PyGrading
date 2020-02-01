@@ -81,6 +81,7 @@ PyGrading的运行环境要求 **Python >= 3.6**，不支持Python2。
 <details>
 <summary>以往版本更新日志(点击以展开...)</summary>
 <br>
+
 **v0.1.0 Change Log (2020.01.29)**  
 通用评测内核功能完成，HTML构建功能初步搭建完成。
 
@@ -400,7 +401,7 @@ import pygrading.general_test as gg
         <th>Description</th>
     </tr>
     <tr>
-        <td><code>source</code></td>
+        <td>source</td>
         <td>String</td>
         <td>Required</td>
         <td>配置文件的文件路径</td>
@@ -415,14 +416,14 @@ import pygrading.general_test as gg
     </tr>
     <tr>
         <td>Dict</td>
-        <td>以字典形式返回的配置信息</td>
+        <td>以字典形式返回配置信息</td>
         <td>{'testcase_num': '3','testcase_dir': 'example/testdata','submit_path': 'example/submit/*'}</td>
     </tr>
 </table>
 </details>
 
-#### 2. gg.load_config(source: str) -> Dict  
-读取含有配置信息的JSON文件，返回字典类型。
+#### 2. gg.create_std_testcase(testcase_dir: str, testcase_num: int)  
+
 <details>
 <summary>详细信息(点击以展开...)</summary>
 <br>
