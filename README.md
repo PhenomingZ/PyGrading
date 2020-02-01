@@ -423,10 +423,31 @@ import pygrading.general_test as gg
 </details>
 
 #### 2. gg.create_std_testcase(testcase_dir: str, testcase_num: int)  
+以推荐的方式创建TestCases对象实例。
 
 <details>
 <summary>详细信息(点击以展开...)</summary>
-<br>
+
+以推荐的方式构建评测用例目录，即可使用本方法直接创建一个TestCases对象实例。
+
+推荐的目录构建方式如下：
+
+```
+testdata
+├── input
+│   ├── input1.txt
+│   ├── input2.txt
+│   └── input3.txt
+└── output
+    ├── output1.txt
+    ├── output2.txt
+    └── output3.txt
+```
+
+testdata目录为评测用例所在的根目录，评测用例的输入和输出分别放在input和output两个子目录中。
+
+所有的评测用例输入按照input1.txt、input2.txt、input3.txt依次命名，所有的评测用例输出按照output1.txt、output2.txt、output3.txt依次命名。
+
 <b>Arguments:</b>
 <table>
     <tr>
@@ -436,10 +457,16 @@ import pygrading.general_test as gg
         <th>Description</th>
     </tr>
     <tr>
-        <td>source</td>
+        <td>testcase_dir</td>
         <td>String</td>
         <td>Required</td>
-        <td>配置文件的文件路径</td>
+        <td>评测用例目录路径</td>
+    </tr>
+    <tr>
+        <td>testcase_num</td>
+        <td>Integer</td>
+        <td>Required</td>
+        <td>评测用例的数目</td>
     </tr>
 </table>
 <b>Returns:</b>
@@ -450,9 +477,9 @@ import pygrading.general_test as gg
         <th>Example</th>
     </tr>
     <tr>
-        <td>Dict</td>
-        <td>以字典形式返回的配置信息</td>
-        <td>{'testcase_num': '3','testcase_dir': 'example/testdata','submit_path': 'example/submit/*'}</td>
+        <td>TestCases</td>
+        <td>PyGrading创建的评测用例实例类型</td>
+        <td>-</td>
     </tr>
 </table>
 </details>
