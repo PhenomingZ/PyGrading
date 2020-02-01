@@ -1,19 +1,12 @@
-from pygrading.html import *
+import pygrading.general_test as gg
 
-a = html(
-    input_tag(type="text", name="email", size="40", maxlength="50"),
-    input_tag(type="password"),
-    input_tag(type="checkbox", checked="checked"),
-    table(
-        tr(
-            td().set_text("123"),
-            td().set_text("456")
-        ),
-        tr(
-            td().set_text("789"),
-            td().set_text("!@#")
-        )
-    )
+a = gg.create_testcase(50)
+
+a.append(
+    name="TestCase",
+    score=10,
+    input_src="input_scr",
+    output_src="output_src"
 )
 
-a.print()
+print(a)

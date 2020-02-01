@@ -388,10 +388,13 @@ import pygrading.general_test as gg
 包含有以下方法和类：
 
 #### 1. gg.load_config(source: str)  
-读取含有配置信息的JSON文件，返回字典类型。
+
+> 读取含有配置信息的JSON文件，返回字典类型。
+
 <details>
 <summary>详细信息(点击以展开...)</summary>
 <br>
+
 <b>Arguments:</b>
 <table>
     <tr>
@@ -407,6 +410,7 @@ import pygrading.general_test as gg
         <td>配置文件的文件路径</td>
     </tr>
 </table>
+
 <b>Returns:</b>
 <table>
     <tr>
@@ -422,8 +426,9 @@ import pygrading.general_test as gg
 </table>
 </details>
 
-#### 2. gg.create_std_testcase(testcase_dir: str, testcase_num: int)  
-以推荐的方式创建TestCases对象实例。
+#### 2. gg.create_std_testcase(testcase_dir: str, testcase_num: int) 
+ 
+> 以推荐的方式创建TestCases对象实例。
 
 <details>
 <summary>详细信息(点击以展开...)</summary>
@@ -470,6 +475,7 @@ testdata目录为评测用例所在的根目录，评测用例的输入和输出
         <td>评测用例的数目</td>
     </tr>
 </table>
+
 <b>Returns:</b>
 <table>
     <tr>
@@ -485,13 +491,31 @@ testdata目录为评测用例所在的根目录，评测用例的输入和输出
 </table>
 </details>
 
-#### 3. gg.create_testcase()  
-创建一个空的TestCases实例。
+#### 3. gg.create_testcase(total_score: int = 100)  
+
+> 创建一个空的TestCases实例。
+
 <details>
 <summary>详细信息(点击以展开...)</summary>
 <br>
 
 在无法使用推荐的方式构建评测用例的情况下，可以创建一个空的TestCases实例并手动添加评测用例。添加方法请参考`gg.TestCases`类的介绍。
+
+<b>Arguments:</b>
+<table>
+    <tr>
+        <th>Arguments</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>total_score</td>
+        <td>Integer</td>
+        <td>100</td>
+        <td>评测用例总分</td>
+    </tr>
+</table>
 
 <b>Returns:</b>
 <table>
@@ -508,8 +532,128 @@ testdata目录为评测用例所在的根目录，评测用例的输入和输出
 </table>
 </details>
 
-#### 4. gg.TestCases
+#### 4. gg.TestCases 类
 
+> 该类用于存储和传递关于评测用例的全部信息，通过迭代的方式将每个测试用例传入到评测用例执行函数中。
+> 请使用`gg.create_std_testcase()`或`gg.create_testcase()`获取TestCases实例。
+
+<details>
+<summary>详细信息(点击以展开...)</summary>
+<br>
+
+`gg.TestCases`类包含有1个子类`__SingleTestCase`，该子类的实例用于存储单个评测用例的信息，且会作为一个必要参数传入评测用例执行函数中。
+
+子类`__SingleTestCase`包含的属性如下：
+
+<table>
+    <tr>
+        <th>Attributes</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>name</td>
+        <td>String</td>
+        <td>Required</td>
+        <td>评测用例的名称</td>
+    </tr>
+    <tr>
+        <td>score</td>
+        <td>Integer</td>
+        <td>Required</td>
+        <td>评测用例的满分分值</td>
+    </tr>
+    <tr>
+        <td>input_src</td>
+        <td>Object</td>
+        <td>Required</td>
+        <td>评测用例的输入，可以为任何类型</td>
+    </tr>
+    <tr>
+        <td>output_src</td>
+        <td>Object</td>
+        <td>Required</td>
+        <td>评测用例的输出，可以为任何类型</td>
+    </tr>
+    <tr>
+        <td>extension</td>
+        <td>Object</td>
+        <td>None</td>
+        <td>评测用例的额外信息，可以为任何类型</td>
+    </tr>
+</table>
+
+`gg.TestCases`类包含有如下属性：
+
+<table>
+    <tr>
+        <th>Attributes</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>__count</td>
+        <td>Integer</td>
+        <td>0</td>
+        <td>保存该实例中评测用例的数量</td>
+    </tr>
+    <tr>
+        <td>__cases</td>
+        <td>List</td>
+        <td>[]</td>
+        <td>以列表的形式保存实例中所有的评测用例</td>
+    </tr>
+    <tr>
+        <td>__total_score</td>
+        <td>Integer</td>
+        <td>100</td>
+        <td>保存评测用例总分，默认为百分制</td>
+    </tr>
+</table>
+
+
+`gg.TestCases`类包含有如下方法：
+
+<table>
+    <tr>
+        <th>Function</th>
+        <th>Return</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>TestCases.append(self, name: str, score: float, input_src: object, output_src: object, extension: object = None)</td>
+        <td>None</td>
+        <td>向一个TestCases实例添加评测用例，传入参数的属性和<code>__SingleTestCase</code>中对应</td>
+    </tr>
+    <tr>
+        <td>TestCases.get_count(self)</td>
+        <td>Integer</td>
+        <td>获取评测用例数目值</td>
+    </tr>
+    <tr>
+        <td>TestCases.get_total_score(self)</td>
+        <td>Integer</td>
+        <td>获取评测用例总分</td>
+    </tr>
+    <tr>
+        <td>TestCases.get_testcases(self)</td>
+        <td>List[__SingleTestCase]</td>
+        <td>获取评测用例列表</td>
+    </tr>
+    <tr>
+        <td>TestCases.set_total_score(self, total_score: int)</td>
+        <td>None</td>
+        <td>设定评测用例总分</td>
+    </tr>
+    <tr>
+        <td>TestCases.isempty(self)</td>
+        <td>Boolean</td>
+        <td>判断评测用例是否为空</td>
+    </tr>
+</table>
+</details>
 
 
 

@@ -5,6 +5,9 @@
     Coding: UTF-8
 
     Change Log:
+        **2020.02.01**
+        Add set_total_score() to TestCases.
+
         **2020.01.26**
         Create this file!
 """
@@ -80,6 +83,9 @@ class TestCases(object):
     def get_testcases(self):
         return self.__cases
 
+    def set_total_score(self, total_score: int):
+        self.__total_score = total_score
+
     def isempty(self):
         return self.__count == 0
 
@@ -90,14 +96,17 @@ class TestCases(object):
         self.__count += 1
 
 
-def create_testcase():
+def create_testcase(total_score: int = 100):
     """
     Create a empty TestCases instance
+
+    Args:
+        total_score: The total score of all test cases.
 
     Returns:
         test_cases: A instance of TestCases.
     """
-    return TestCases()
+    return TestCases(total_score=total_score)
 
 
 def create_std_testcase(testcase_dir: str, testcase_num: int):
