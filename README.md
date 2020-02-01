@@ -74,14 +74,15 @@ PyGrading的运行环境要求 **Python >= 3.6**，不支持Python2。
 <h2 id="change-log" align="center">Change Log</h2>
 <p align="right"><a href="#pygrading"><sup>▴ Back to top</sup></a></p>
 
-**v0.1.2 Change Log (2020.02.01)**
+**v0.1.2 Change Log (2020.02.01)**  
 在`pygrading.heml`模块中添加了自定义标签方法`custom()`并支持形如`<input>`标签的不成组标签。
 
 <details>
 
-    <summary>以往版本更新日志(点击以展开...)</summary>
-    **v0.1.0 Change Log (2020.01.29)**
-    通用评测内核功能完成，HTML构建功能初步搭建完成。
+<summary>以往版本更新日志(点击以展开...)</summary>
+
+**v0.1.0 Change Log (2020.01.29)**  
+通用评测内核功能完成，HTML构建功能初步搭建完成。
 
 </details>
 
