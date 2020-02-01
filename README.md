@@ -655,9 +655,61 @@ testdata目录为评测用例所在的根目录，评测用例的输入和输出
 </table>
 </details>
 
-#### 5. gg.Job 类
+#### 5. gg.job(prework=None, run=None, postwork=None)
 
-> 该类用于创建评测任务实例，提供任务初始化、任务执行、输出结果的功能呢。   
+> 该方法用于创建评测任务实例，传入评测任务预处理、评测用例执行、评测结果处理的相关函数，返回一个Job实例。   
+
+<details>
+<summary>详细信息(点击以展开...)</summary>
+<br>
+
+<b>Arguments:</b>
+<table>
+    <tr>
+        <th>Arguments</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>prework</td>
+        <td>Function</td>
+        <td>None</td>
+        <td>评测任务预处理函数</td>
+    </tr>
+    <tr>
+        <td>run</td>
+        <td>Function</td>
+        <td>None</td>
+        <td>评测用例执行函数</td>
+    </tr>
+    <tr>
+        <td>postwork</td>
+        <td>Function</td>
+        <td>None</td>
+        <td>评测结果处理函数</td>
+    </tr>
+</table>
+
+<b>Returns:</b>
+<table>
+    <tr>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Example</th>
+    </tr>
+    <tr>
+        <td>Job</td>
+        <td>PyGrading创建的评测任务实例类型</td>
+        <td></td>
+    </tr>
+</table>
+</details>
+
+
+#### 6. gg.Job 类
+
+> 该类用于创建评测任务实例，提供任务初始化、任务执行、输出结果的功能。   
 
 <details>
 <summary>详细信息(点击以展开...)</summary>
@@ -724,6 +776,106 @@ testdata目录为评测用例所在的根目录，评测用例的输入和输出
         <td>List</td>
         <td>[ ]</td>
         <td>每个测试用例的执行结果汇总列表</td>
+    </tr>
+</table>
+
+`gg.Job`类包含有如下方法：
+
+<table>
+    <tr>
+        <th>Function</th>
+        <th>Return</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>Job.verdict(self, src: str)</td>
+        <td>None</td>
+        <td>修改返回结果中的verdict字段</td>
+    </tr>
+    <tr>
+        <td>Job.score(self, src: int)</td>
+        <td>None</td>
+        <td>修改返回结果中的score字段</td>
+    </tr>
+    <tr>
+        <td>Job.rank(self, src: Dict)</td>
+        <td>None</td>
+        <td>修改返回结果中的rank字段</td>
+    </tr>
+    <tr>
+        <td>Job.images(self, src: str)</td>
+        <td>None</td>
+        <td>修改返回结果中的images字段</td>
+    </tr>
+    <tr>
+        <td>Job.comment(self, src: str)</td>
+        <td>None</td>
+        <td>修改返回结果中的comment字段</td>
+    </tr>
+    <tr>
+        <td>Job.detail(self, src: str)</td>
+        <td>None</td>
+        <td>修改返回结果中的detail字段</td>
+    </tr>
+    <tr>
+        <td>Job.detail(self, src: str)</td>
+        <td>None</td>
+        <td>修改返回结果中的detail字段</td>
+    </tr>
+    <tr>
+        <td>Job.HTML(self, src: str)</td>
+        <td>None</td>
+        <td>修改返回结果中的HTML字段</td>
+    </tr>
+    <tr>
+        <td>Job.custom(self, key: str, value: str)</td>
+        <td>None</td>
+        <td>在返回结果中创建自定义字段并赋值</td>
+    </tr>
+    <tr>
+        <td>Job.get_summary(self)</td>
+        <td>List</td>
+        <td>获取评测用例汇总结果列表</td>
+    </tr>
+    <tr>
+        <td>Job.get_config(self)</td>
+        <td>Dict</td>
+        <td>获取评测任务配置信息</td>
+    </tr>
+    <tr>
+        <td>Job.get_total_score(self)</td>
+        <td>Integer</td>
+        <td>获取评测任务总分</td>
+    </tr>
+    <tr>
+        <td>Job.get_total_time(self)</td>
+        <td>Integer</td>
+        <td>获取评测任务执行总时间</td>
+    </tr>
+    <tr>
+        <td>Job.set_testcases(self, testcases: TestCases)</td>
+        <td>None</td>
+        <td>设定评测任务的评测用例</td>
+    </tr>
+    <tr>
+        <td>Job.set_config(self, config: Dict)</td>
+        <td>None</td>
+        <td>设定评测用例的配置信息</td>
+    </tr>
+    <tr>
+        <td>Job.terminate(self)</td>
+        <td>None</td>
+        <td>将终止标记置于True，执行完当前函数后评测终止</td>
+    </tr>
+    <tr>
+        <td>Job.start(self)</td>
+        <td>List</td>
+        <td>开始任务，返回评测用例汇总结果列表</td>
+    </tr>
+    <tr>
+        <td>Job.print(self)</td>
+        <td>None</td>
+        <td>将评测结果转化为JSON格式并打印到标准输出</td>
     </tr>
 </table>
 

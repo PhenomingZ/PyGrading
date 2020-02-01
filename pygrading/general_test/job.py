@@ -7,6 +7,7 @@
     Change Log:
         **2020.02.01**
         Add custom result key.
+        Change the order of prework run and postwork in gg.job().
 
         **2020.01.30**
         run()'s default value is None now.
@@ -156,5 +157,5 @@ class Job(object):
         print(str_json)
 
 
-def job(run, prework=None, postwork=None):
-    return Job(run, prework=prework, postwork=postwork)
+def job(prework=None, run=None, postwork=None):
+    return Job(prework=prework, run=run, postwork=postwork)
