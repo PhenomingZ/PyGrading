@@ -389,12 +389,12 @@ import pygrading.general_test as gg
 <details>
 <summary>详细信息(点击以展开...)</summary>
 <br>
-**Arguments:**
+<b>Arguments:</b>>
 <table>
     <tr>
         <th>Arguments</th>
         <th>Type</th>
-        <td>Default</td>
+        <th>Default</th>
         <th>Description</th>
     </tr>
     <tr>
@@ -403,8 +403,8 @@ import pygrading.general_test as gg
         <td>Required</td>
         <td>配置文件的文件路径</td>
     </tr>
-</table>>
-**Returns:**
+</table>
+<b>Returns:</b>>
 <table>
     <tr>
         <th>Type</th>
@@ -416,7 +416,7 @@ import pygrading.general_test as gg
         <td>以字典形式返回的配置信息</td>
         <td>{'testcase_num': '3','testcase_dir': 'example/testdata','submit_path': 'example/submit/*'}</td>
     </tr>
-</table>>
+</table>
 </details>
 
 #### 2. gg.load_config(source: str) -> Dict  
@@ -424,12 +424,12 @@ import pygrading.general_test as gg
 <details>
 <summary>详细信息(点击以展开...)</summary>
 <br>
-**Arguments:**
+<b>Arguments:</b>
 <table>
     <tr>
         <th>Arguments</th>
         <th>Type</th>
-        <td>Default</td>
+        <th>Default</th>
         <th>Description</th>
     </tr>
     <tr>
@@ -438,8 +438,8 @@ import pygrading.general_test as gg
         <td>Required</td>
         <td>配置文件的文件路径</td>
     </tr>
-</table>>
-**Returns:**
+</table>
+<b>Returns:</b>
 <table>
     <tr>
         <th>Type</th>
@@ -451,7 +451,7 @@ import pygrading.general_test as gg
         <td>以字典形式返回的配置信息</td>
         <td>{'testcase_num': '3','testcase_dir': 'example/testdata','submit_path': 'example/submit/*'}</td>
     </tr>
-</table>>
+</table>
 </details>
 
 
