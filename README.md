@@ -79,7 +79,6 @@ PyGrading的运行环境要求 **Python >= 3.6**，不支持Python2。
 在`pygrading.heml`模块中添加了自定义标签方法`custom()`并支持形如`<input>`标签的不成组标签。
 
 <details>
-
 <summary>以往版本更新日志(点击以展开...)</summary>
 <br>
 **v0.1.0 Change Log (2020.01.29)**  
@@ -372,10 +371,89 @@ new_job.print()
 
 一个简单的通用评测内核开发完成！
 
-<h2 id="api" align="center">API</h2>
+<h2 id="api" align="center">PyGrading API</h2>
 <p align="right"><a href="#pygrading"><sup>▴ Back to top</sup></a></p>
 
 在本节中，将会列出当前版本(v0.1.2)全部的接口与方法，详细使用方法请参考<a href="#tutorials">Tutorials</a>部分。
+
+### pygrading.general_test
+
+该包推荐导入方式：
+
+```python
+import pygrading.general_test as gg
+```
+
+#### 1. gg.load_config(source: str) -> Dict  
+读取含有配置信息的JSON文件，返回字典类型。
+<details>
+<summary>详细信息(点击以展开...)</summary>
+<br>
+**Arguments:**
+<table>
+    <tr>
+        <th>Arguments</th>
+        <th>Type</th>
+        <td>Default</td>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td><code>source</code></td>
+        <td>String</td>
+        <td>Required</td>
+        <td>配置文件的文件路径</td>
+    </tr>
+</table>>
+**Returns:**
+<table>
+    <tr>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Example</th>
+    </tr>
+    <tr>
+        <td>Dict</td>
+        <td>以字典形式返回的配置信息</td>
+        <td>{'testcase_num': '3','testcase_dir': 'example/testdata','submit_path': 'example/submit/*'}</td>
+    </tr>
+</table>>
+</details>
+
+#### 2. gg.load_config(source: str) -> Dict  
+读取含有配置信息的JSON文件，返回字典类型。
+<details>
+<summary>详细信息(点击以展开...)</summary>
+<br>
+**Arguments:**
+<table>
+    <tr>
+        <th>Arguments</th>
+        <th>Type</th>
+        <td>Default</td>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td><code>source</code></td>
+        <td>String</td>
+        <td>Required</td>
+        <td>配置文件的文件路径</td>
+    </tr>
+</table>>
+**Returns:**
+<table>
+    <tr>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Example</th>
+    </tr>
+    <tr>
+        <td>Dict</td>
+        <td>以字典形式返回的配置信息</td>
+        <td>{'testcase_num': '3','testcase_dir': 'example/testdata','submit_path': 'example/submit/*'}</td>
+    </tr>
+</table>>
+</details>
+
 
 
 
