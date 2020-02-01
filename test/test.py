@@ -1,11 +1,19 @@
 from pygrading.html import *
 
-a = table(border="1")
-
-for i in range(4):
-    b = tr()
-    for j in range(4):
-        b << td(font(color="red").set_text("(" + str(i) + "," + str(j) + ")"))
-    a << b
+a = html(
+    input_tag(type="text", name="email", size="40", maxlength="50"),
+    input_tag(type="password"),
+    input_tag(type="checkbox", checked="checked"),
+    table(
+        tr(
+            td().set_text("123"),
+            td().set_text("456")
+        ),
+        tr(
+            td().set_text("789"),
+            td().set_text("!@#")
+        )
+    )
+)
 
 a.print()

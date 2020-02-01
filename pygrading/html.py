@@ -5,6 +5,9 @@
     Coding: UTF-8
 
     Change Log:
+        **2020.02.01**
+        Add SingleTag class.
+
         **2020.01.29**
         Create this file!
 """
@@ -22,10 +25,36 @@ def str2html(src: str) -> str:
     return "".join(str_list)
 
 
+class SingleTag(object):
+    """Tag
+
+    A super class of all single html tag class.
+
+    Attributes:
+        name: Tag name.
+        attributes: Attributes of this tag.
+    """
+
+    def __init__(self, **attributes):
+        self.name = "tag"
+        self.attributes = attributes
+
+    def __str__(self):
+        ret = ["".join(["<", self.name])]
+        for key, value in self.attributes.items():
+            ret.append("".join([" ", key, "=", "'", value, "'"]))
+        ret.append(">")
+
+        return "".join(ret)
+
+    def print(self):
+        print(str(self))
+
+
 class Tag(object):
     """Tag
 
-    A super class of all html tag class.
+    A super class of all pair html tag class.
 
     Attributes:
         text: Text content.
@@ -39,7 +68,7 @@ class Tag(object):
         self.name = "tag"
 
         for tag in subtag:
-            if not isinstance(tag, Tag):
+            if (not isinstance(tag, Tag)) and (not isinstance(tag, SingleTag)):
                 raise ValueError(str(tag) + "is not a subtag.")
 
         self.subtag = []
@@ -81,6 +110,36 @@ class Tag(object):
         return self
 
 
+class custom_single_tag(SingleTag):
+    def __init__(self, tag_name, **attributes):
+        super().__init__(**attributes)
+        self.name = tag_name
+
+
+class img(SingleTag):
+    def __init__(self, **attributes):
+        super().__init__(**attributes)
+        self.name = "img"
+
+
+class input_tag(SingleTag):
+    def __init__(self, **attributes):
+        super().__init__(**attributes)
+        self.name = "input"
+
+
+class custom(Tag):
+    def __init__(self, tag_name, *subtag, **attributes):
+        super().__init__(*subtag, **attributes)
+        self.name = tag_name
+
+
+class a(Tag):
+    def __init__(self, *subtag, **attributes):
+        super().__init__(*subtag, **attributes)
+        self.name = "a"
+
+
 class body(Tag):
     def __init__(self, *subtag, **attributes):
         super().__init__(*subtag, **attributes)
@@ -97,6 +156,12 @@ class font(Tag):
     def __init__(self, *subtag, **attributes):
         super().__init__(*subtag, **attributes)
         self.name = "font"
+
+
+class form(Tag):
+    def __init__(self, *subtag, **attributes):
+        super().__init__(*subtag, **attributes)
+        self.name = "form"
 
 
 class h1(Tag):

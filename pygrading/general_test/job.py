@@ -5,6 +5,9 @@
     Coding: UTF-8
 
     Change Log:
+        **2020.02.01**
+        Add custom result key.
+
         **2020.01.30**
         run()'s default value is None now.
 
@@ -86,6 +89,9 @@ class Job(object):
 
     def HTML(self, src: str):
         self.__result["HTML"] = src
+
+    def custom(self, key: str, value: str):
+        self.__result[key] = value
 
     def get_summary(self):
         return self.__summary

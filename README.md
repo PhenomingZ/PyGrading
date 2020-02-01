@@ -53,6 +53,7 @@
 希望使用本工具能够提高大家的工作效率，祝各位开发顺利！
 
 <h2 id="install" align="center">Install</h2>
+<p align="right"><a href="#pygrading"><sup>▴ Back to top</sup></a></p>
 
 使用pip可以轻松安装PyGrading：
 
@@ -69,6 +70,7 @@ python setup.py install
 PyGrading的运行环境要求 **Python >= 3.6**，不支持Python2。
 
 <h2 id="getting-start" align="center">Getting Start</h2>
+<p align="right"><a href="#pygrading"><sup>▴ Back to top</sup></a></p>
 
 ### 通用评测内核构建
 
