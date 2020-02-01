@@ -534,7 +534,7 @@ testdata目录为评测用例所在的根目录，评测用例的输入和输出
 
 #### 4. gg.TestCases 类
 
-> 该类用于存储和传递关于评测用例的全部信息，通过迭代的方式将每个测试用例传入到评测用例执行函数中。
+> 该类用于存储和传递关于评测用例的全部信息，通过迭代的方式将每个测试用例传入到评测用例执行函数中。  
 > 请使用`gg.create_std_testcase()`或`gg.create_testcase()`获取TestCases实例。
 
 <details>
@@ -602,7 +602,7 @@ testdata目录为评测用例所在的根目录，评测用例的输入和输出
     <tr>
         <td>__cases</td>
         <td>List</td>
-        <td>[]</td>
+        <td>[ ]</td>
         <td>以列表的形式保存实例中所有的评测用例</td>
     </tr>
     <tr>
@@ -655,7 +655,79 @@ testdata目录为评测用例所在的根目录，评测用例的输入和输出
 </table>
 </details>
 
+#### 5. gg.Job 类
 
+> 该类用于创建评测任务实例，提供任务初始化、任务执行、输出结果的功能呢。   
+
+<details>
+<summary>详细信息(点击以展开...)</summary>
+<br>
+
+`gg.Job`类包含有如下属性：
+
+<table>
+    <tr>
+        <th>Attributes</th>
+        <th>Type</th>
+        <th>Default</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>__prework</td>
+        <td>Function</td>
+        <td>None</td>
+        <td>评测任务预处理函数</td>
+    </tr>
+    <tr>
+        <td>__run</td>
+        <td>Function</td>
+        <td>None</td>
+        <td>评测用例执行函数</td>
+    </tr>
+    <tr>
+        <td>__postwork</td>
+        <td>Function</td>
+        <td>None</td>
+        <td>评测结果处理函数</td>
+    </tr>
+    <tr>
+        <td>__testcases</td>
+        <td>TestCases</td>
+        <td>TestCases()</td>
+        <td>评测用例</td>
+    </tr>
+    <tr>
+        <td>__config</td>
+        <td>Dict</td>
+        <td>None</td>
+        <td>配置信息</td>
+    </tr>
+    <tr>
+        <td>__terminate</td>
+        <td>Boolean</td>
+        <td>False</td>
+        <td>程序结束标记</td>
+    </tr>
+    <tr>
+        <td>__result</td>
+        <td>Dict</td>
+        <td>{<br>
+            "verdict": "Unknown Error",<br>
+            "score": "0",<br>
+            "rank": {"rank": "-1"},<br>
+            "HTML": "enable"<br>
+        }</td>
+        <td>评测任务执行结果的内部存储字典</td>
+    </tr>
+    <tr>
+        <td>__summary</td>
+        <td>List</td>
+        <td>[ ]</td>
+        <td>每个测试用例的执行结果汇总列表</td>
+    </tr>
+</table>
+
+</details>
 
 
 <h2 id="tutorials" align="center">Tutorials</h2>
