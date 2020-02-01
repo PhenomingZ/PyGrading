@@ -384,12 +384,14 @@ new_job.print()
 import pygrading.general_test as gg
 ```
 
+包含有以下方法：
+
 #### 1. gg.load_config(source: str) -> Dict  
 读取含有配置信息的JSON文件，返回字典类型。
 <details>
 <summary>详细信息(点击以展开...)</summary>
 <br>
-<b>Arguments:</b>>
+<b>Arguments:</b>
 <table>
     <tr>
         <th>Arguments</th>
@@ -404,7 +406,7 @@ import pygrading.general_test as gg
         <td>配置文件的文件路径</td>
     </tr>
 </table>
-<b>Returns:</b>>
+<b>Returns:</b>
 <table>
     <tr>
         <th>Type</th>
@@ -433,7 +435,7 @@ import pygrading.general_test as gg
         <th>Description</th>
     </tr>
     <tr>
-        <td><code>source</code></td>
+        <td>source</td>
         <td>String</td>
         <td>Required</td>
         <td>配置文件的文件路径</td>
