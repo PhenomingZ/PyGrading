@@ -385,9 +385,9 @@ new_job.print()
 import pygrading.general_test as gg
 ```
 
-包含有以下方法：
+包含有以下方法和类：
 
-#### 1. gg.load_config(source: str) -> Dict  
+#### 1. gg.load_config(source: str)  
 读取含有配置信息的JSON文件，返回字典类型。
 <details>
 <summary>详细信息(点击以展开...)</summary>
@@ -427,6 +427,7 @@ import pygrading.general_test as gg
 
 <details>
 <summary>详细信息(点击以展开...)</summary>
+<br>
 
 以推荐的方式构建评测用例目录，即可使用本方法直接创建一个TestCases对象实例。
 
@@ -483,6 +484,31 @@ testdata目录为评测用例所在的根目录，评测用例的输入和输出
     </tr>
 </table>
 </details>
+
+#### 3. gg.create_testcase()  
+创建一个空的TestCases实例。
+<details>
+<summary>详细信息(点击以展开...)</summary>
+<br>
+
+在无法使用推荐的方式构建评测用例的情况下，可以创建一个空的TestCases实例并手动添加评测用例。添加方法请参考`gg.TestCases`类的介绍。
+
+<b>Returns:</b>
+<table>
+    <tr>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Example</th>
+    </tr>
+    <tr>
+        <td>TestCases</td>
+        <td>PyGrading创建的评测用例实例类型</td>
+        <td></td>
+    </tr>
+</table>
+</details>
+
+#### 4. gg.TestCases
 
 
 
