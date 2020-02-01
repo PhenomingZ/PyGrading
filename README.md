@@ -42,6 +42,7 @@
 <h6 align="center">Made by Charles Zhang • :globe_with_meridians: <a href="https://github.com/PhenomingZ">https://github.com/PhenomingZ</a></h6>
 
 <h2 id="what-is-it" align="center">What is it</h2>
+<p align="right"><a href="#pygrading"><sup>▴ Back to top</sup></a></p>
 
 **希冀平台** 是一个国内最具专业深度、安全可扩展的计算机类课程一体化支撑平台，是一个定位于全面支撑计算机、人工智能和大数据专业建设的大型综合教学实验平台，而非一个只能支撑若干门课程的实验系统。
 
@@ -80,7 +81,7 @@ PyGrading的运行环境要求 **Python >= 3.6**，不支持Python2。
 <details>
 
 <summary>以往版本更新日志(点击以展开...)</summary>
-
+<br>
 **v0.1.0 Change Log (2020.01.29)**  
 通用评测内核功能完成，HTML构建功能初步搭建完成。
 
@@ -374,7 +375,9 @@ new_job.print()
 <h2 id="api" align="center">API</h2>
 <p align="right"><a href="#pygrading"><sup>▴ Back to top</sup></a></p>
 
-在本节中，将会列出当前版本全部
+在本节中，将会列出当前版本(v0.1.2)全部的接口与方法，详细使用方法请参考<a href="#tutorials">Tutorials</a>部分。
+
+
 
 
 <h2 id="tutorials" align="center">Tutorials</h2>
