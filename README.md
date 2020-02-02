@@ -1068,14 +1068,16 @@ print(a)
 <table><tr><td><font color='red'>Hello World</font></td></tr></table>
 ```
 
+<details>
+<summary>详细信息(点击以展开...)</summary>
+<br>
+
 目前已经支持的内置标签有如下几种：
 
 1. 成组标签：
 ```html
-<a> <body> <div> <font> <form>
-<h1> <h2> <h3> <h4> <h5> <h6>
-<head> <html> <p> <table> <th>
-<title> <tr> <td>
+<a> <body> <div> <font> <form> <h1> <h2> <h3> <h4> <h5> <h6>
+<head> <html> <p> <table> <th> <title> <tr> <td>
 ```
 
 2. 不成组标签
@@ -1183,6 +1185,7 @@ print(a)
         <td>将src字符串中的"\n"替换为"<br>"并返回新的字符串</td>
     </tr>
 </table>
+</details>
 
 
 <h2 id="tutorials" align="center">Tutorials</h2>
