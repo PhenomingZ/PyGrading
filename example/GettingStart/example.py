@@ -3,7 +3,7 @@ from pygrading.html import *
 
 
 def prework(job):
-    config = gg.load_config("./example/config.json")
+    config = gg.load_config("./example/GettingStart/config.json")
     testcases = gg.create_std_testcase(config["testcase_dir"], config["testcase_num"])
 
     job.set_config(config)

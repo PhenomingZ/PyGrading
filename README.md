@@ -158,7 +158,7 @@ print(isPalindrome(x))
     </tr>
 </table>
 
-> 样例学生代码在执行最后一组测试用例时会输出错误答案
+> 样例学生代码在执行最后一组测试用例时会输出错误答案，本示例所有代码均可在`./example/GettingStart`目录下找到。
 
 #### 2. 导入程序包
 
@@ -181,8 +181,8 @@ from pygrading.html import *
 ```json
 {
     "testcase_num": "5",
-    "testcase_dir": "./example/testdata",
-    "submit_path": "./example/submit/main.py"
+    "testcase_dir": "./example/GettingStart/testdata",
+    "submit_path": "./example/GettingStart/submit/main.py"
 }
 ```
 
@@ -213,7 +213,7 @@ PyGrading推荐按照如下目录结构构建评测数据，学生提交的代�
 ```python
 def prework(job):
     # 读取配置文件
-    config = gg.load_config("./example/config.json")
+    config = gg.load_config("./example/GettingStart/config.json")
 
     # 创建测试用例实例
     testcases = gg.create_std_testcase(config["testcase_dir"], config["testcase_num"])
@@ -1040,7 +1040,42 @@ testdata目录为评测用例所在的根目录，评测用例的输入和输出
 </table>
 </details>
 
+### pygrading.html
+
+该包提供了创建HTML标签文本的相关功能，支持成对标签和不成对标签的创建，支持标签之间的嵌套创建，推荐导入方式如下：
+
+```python
+from pygrading.html import *
+```
+
+导入包之后目前可以通过如下方式创建并打印HTML标签实例：
+
+```python
+from pygrading.html import *
+
+a = table(
+    tr(
+        td(font(color="red").set_text("Hello World"))
+    )
+)
+
+print(a)
+```
+
+生成的HTML文本及效果如下：
+
+```html
+<table><tr><td><font color='red'>Hello World</font></td></tr></table>
+```
+
+<table><tr><td><font color='red'>Hello World</font></td></tr></table>
+
+
+
+
 <h2 id="tutorials" align="center">Tutorials</h2>
 <p align="right"><a href="#pygrading"><sup>▴ Back to top</sup></a></p>
+
+在本章中，将会通过例子，详细解析不同模块的用法
 
 

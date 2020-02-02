@@ -1,12 +1,10 @@
 import pygrading.general_test as gg
+from pygrading.html import *
 
-a = gg.create_testcase(50)
-
-a.append(
-    name="TestCase",
-    score=10,
-    input_src="input_scr",
-    output_src="output_src"
+a = table(
+    tr(
+        td(font(color="red").set_text("Hello World"))
+    )
 )
 
 print(a)
