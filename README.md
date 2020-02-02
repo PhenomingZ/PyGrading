@@ -1127,12 +1127,12 @@ print(a)
         <td>设定当前标签中的文本</td>
     </tr>
     <tr>
-        <td>print(self)</td>
+        <td>Tag.print(self)</td>
         <td>None</td>
         <td>将标签实例转化为HTML文本并打印到标准输出</td>
     </tr>
     <tr>
-        <td>__str__(self)</td>
+        <td>Tag.__str__(self)</td>
         <td>String</td>
         <td>重载方法，将标签实例转化为HTML文本字符串</td>
     </tr>
@@ -1152,12 +1152,12 @@ print(a)
         <th>Description</th>
     </tr>
     <tr>
-        <td>print(self)</td>
+        <td>SingleTag.print(self)</td>
         <td>None</td>
         <td>将标签实例转化为HTML文本并打印到标准输出</td>
     </tr>
     <tr>
-        <td>__str__(self)</td>
+        <td>SingleTag.__str__(self)</td>
         <td>String</td>
         <td>重载方法，将标签实例转化为HTML文本字符串</td>
     </tr>
