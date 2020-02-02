@@ -1071,12 +1071,15 @@ print(a)
 目前已经支持的内置标签有如下几种：
 
 1. 成组标签：
-
->  <a> <body> <div> <font> <form> <h1> <h2> <h3> <h4> <h5> <h6> <head> <html> <p> <table> <th> <title> <tr> <td>
+```html
+<a> <body> <div> <font> <form> <h1> <h2> <h3> <h4> <h5> <h6> <head> <html> <p> <table> <th> <title> <tr> <td>
+```
 
 2. 不成组标签
 
-> <img> <input> 
+```html
+<img> <input> 
+```
 
 这些标签均可通过`tag()`的方式创建，并可以通过`print(tag())`的方式打印，或通过`str(tag())`的方式转化为字符串。
 
