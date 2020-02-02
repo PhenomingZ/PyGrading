@@ -1192,7 +1192,16 @@ print(a)
 <h2 id="tutorials" align="center">Tutorials</h2>
 <p align="right"><a href="#pygrading"><sup>▴ Back to top</sup></a></p>
 
-在本章中，将会通过例子，详细解析不同模块的用法
+在本章中，将会通过例子，详细解析不同模块的用法。本章的所有例子均可在`example`目录下找到。
+
+<details>
+ <summary>目录 (点击以展开...)</summary>
+
+> - [如何构建你的配置文件？](#如何构建你的配置文件？)
+
+</details>
+
+### 如何构建你的配置文件？
 
 
 <h2 id="faq" align="center">FAQ</h2>
