@@ -7,4 +7,8 @@ a = table(
     )
 )
 
+b = [tr(), tr()]
+
+a.extend(b)
+
 print(a)

@@ -1062,15 +1062,121 @@ a = table(
 print(a)
 ```
 
-生成的HTML文本及效果如下：
+生成的HTML文本如下：
 
 ```html
 <table><tr><td><font color='red'>Hello World</font></td></tr></table>
 ```
 
-<table><tr><td><font color='red'>Hello World</font></td></tr></table>
+目前已经支持的内置标签有如下几种：
 
+1. 成组标签：
 
+>  a body div font form h1 h2 h3 h4 h5 h6 head html p table th title tr td
+
+2. 不成组标签
+
+> img input 
+
+这些标签均可通过`tag()`的方式创建，并可以通过`print(tag())`的方式打印，或通过`str(tag())`的方式转化为字符串。
+
+除了内置标签外，PyGrading还支持创建自定义标签：
+
+<table>
+    <tr>
+        <td>custom_single_tag(tag_name)</td>
+        <td>传入自定义的标签名称，创建一个不成组的标签</td>
+    </tr>
+    <tr>
+        <td>custom(tag_name)</td>
+        <td>传入自定义的标签名称，创建一个成组的标签</td>
+    </tr>
+</table>
+
+成组标签继承于`pygrading.html.Tag`类，包含有如下方法：
+
+<table>
+    <tr>
+        <th>Function</th>
+        <th>Return</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>Tag.append(self, obj)</td>
+        <td>None</td>
+        <td>向当前标签实例中添加一个子标签</td>
+    </tr>
+    <tr>
+        <td>Tag.pop(self, index=-1)</td>
+        <td>None</td>
+        <td>从当前标签实例中移除一个子标签，默认移除最后的一个</td>
+    </tr>
+    <tr>
+        <td>Tag.insert(self, index, obj)</td>
+        <td>None</td>
+        <td>向当前标签实例中插入一个子标签</td>
+    </tr>
+    <tr>
+        <td>Tag.extend(self, seq)</td>
+        <td>None</td>
+        <td>向当前标签实例中追加一个子标签列表</td>
+    </tr>
+    <tr>
+        <td>Tag.set_text(self, src: str)</td>
+        <td>None</td>
+        <td>设定当前标签中的文本</td>
+    </tr>
+    <tr>
+        <td>print(self)</td>
+        <td>None</td>
+        <td>将标签实例转化为HTML文本并打印到标准输出</td>
+    </tr>
+    <tr>
+        <td>__str__(self)</td>
+        <td>String</td>
+        <td>重载方法，将标签实例转化为HTML文本字符串</td>
+    </tr>
+    <tr>
+        <td>Tag.__lshift__(self, other)</td>
+        <td>Tag</td>
+        <td>重载操作符<code><<</code>，用法同<code>append</code>，向当前标签实例中添加一个子标签</td>
+    </tr>
+</table>
+
+不成组标签继承于`pygrading.html.SingleTag`类，包含有如下方法：
+
+<table>
+    <tr>
+        <th>Function</th>
+        <th>Return</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>print(self)</td>
+        <td>None</td>
+        <td>将标签实例转化为HTML文本并打印到标准输出</td>
+    </tr>
+    <tr>
+        <td>__str__(self)</td>
+        <td>String</td>
+        <td>重载方法，将标签实例转化为HTML文本字符串</td>
+    </tr>
+</table>
+
+此外，该包还提供了一个方法用于将普通字符串中的换行符转换为HTML的换行符：
+
+<table>
+    <tr>
+        <th>Function</th>
+        <th>Return</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>str2html(src: str)</td>
+        <td>String</td>
+        <td>将src字符串中的"\n"替换为"<br>"并返回新的字符串</td>
+    </tr>
+</table>
 
 
 <h2 id="tutorials" align="center">Tutorials</h2>

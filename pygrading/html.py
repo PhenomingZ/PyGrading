@@ -5,6 +5,9 @@
     Coding: UTF-8
 
     Change Log:
+        **2020.02.02**
+        Add list functions to Tag.
+
         **2020.02.01**
         Add SingleTag class.
 
@@ -101,6 +104,25 @@ class Tag(object):
             raise ValueError(str(other) + "is not a subtag.")
         self.subtag.append(other)
         return self
+
+    def append(self, obj):
+        if not isinstance(obj, Tag):
+            raise ValueError(str(obj) + "is not a subtag.")
+        self.subtag.append(obj)
+
+    def pop(self, index=-1):
+        self.subtag.pop(index)
+
+    def insert(self, index, obj):
+        if not isinstance(obj, Tag):
+            raise ValueError(str(obj) + "is not a subtag.")
+        self.subtag.insert(index, obj)
+
+    def extend(self, seq):
+        for obj in seq:
+            if not isinstance(obj, Tag):
+                raise ValueError(str(obj) + "is not a subtag.")
+        self.subtag.extend(seq)
 
     def print(self):
         print(str(self))
