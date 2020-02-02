@@ -1197,11 +1197,67 @@ print(a)
 <details>
  <summary>目录 (点击以展开...)</summary>
 
-> - [如何构建你的配置文件？](#如何构建你的配置文件)
+> - [构建并读取配置文件](#构建并读取配置文件)
 
 </details>
 
-### 如何构建你的配置文件？
+### 构建并读取配置文件
+
+在第一个例子中，我们将要演示如何构建并读取你的配置文件。由于在通用评测内核的实际使用中，教师账号没有权限操作实验环境的管理，因此对于不同的题目需要使用测试数据编辑器功能进行配置，配置文件就成为了用一个评测内核支持多个题目的关键。
+
+配置文件是一个JSON格式的文本文件，用于向评测内核传递当前题目所需的配置项。一般来说，配置文件中的配置项至少应当包含：评测用例的数目(testcase_num)、评测用例的挂载路径(testcase_dir)和学生提交文件的挂载路径(submit_path)。如下面例子所示：
+
+```json
+{
+    "testcase_num": "5",
+    "testcase_dir": "./example/GettingStart/testdata",
+    "submit_path": "./example/GettingStart/submit/main.py"
+}
+```
+
+当然，配置文件中的配置项可以根据实际情况自行添加，因为如何处理这些配置项也是由开发者决定的。
+
+PyGrading提供了`load_config(source)`方法来读取配置文件，该方法传入配置文件的路径，返回一个由配置文件中的JSON串转换成的字典。我们推荐在评测任务预处理函数(prework)中完成配置文件的读取，并将配置信息传递给当前任务(job)的config属性，以便在其他函数中可以使用这些配置信息。
+
+下面一段代码展示了如何读取并使用我们配置文件，由于还没配置评测用例，所以我们创建一个只包含prework和postwork的评测任务：
+
+```python
+import pygrading.general_test as gg
+
+def prework(job):
+    config = gg.load_config("./example/构建并读取配置文件/config.json")
+    job.set_config(config)
+
+def postwork(job):
+    config = job.get_config()
+    testcase_num = config["testcase_num"]
+    testcase_dir = config["testcase_dir"]
+    submit_path = config["submit_path"]
+
+    print("testcase_num:", testcase_num)
+    print("testcase_dir:", testcase_dir)
+    print("submit_path:", submit_path)
+
+myjob = gg.job(prework=prework, run=None, postwork=postwork)
+
+myjob.start()
+```
+
+输出如下：
+
+```
+testcase_num: 5
+testcase_dir: ./example/GettingStart/testdata
+submit_path: ./example/GettingStart/submit/main.py
+```
+
+以上就是构建并读取配置文件的方法。
+
+
+
+
+
+
 
 
 <h2 id="faq" align="center">FAQ</h2>

@@ -5,6 +5,9 @@
     Coding: UTF-8
 
     Change Log:
+        **2020.02.03**
+        Fix prework bug.
+
         **2020.02.01**
         Add custom result key.
         Change the order of prework run and postwork in gg.job().
@@ -125,7 +128,7 @@ class Job(object):
 
     def start(self) -> List:
         """Start a job and return summary"""
-        if self.__postwork:
+        if self.__prework:
             self.__prework(self)
 
         if self.__terminate:
