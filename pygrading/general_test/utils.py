@@ -5,6 +5,9 @@
     Coding: UTF-8
 
     Change Log:
+        **2020.02.02**
+        Add option to writefile function.
+
         **2020.01.27**
         Create this file!
 """
@@ -77,11 +80,11 @@ def readfile(src: str) -> str:
     return ret[1]
 
 
-def writefile(src: str, lines: str):
+def writefile(src: str, lines: str, option: str = "w"):
     """
     Write string to file
     """
-    with open(src, 'w', encoding='utf-8') as f:
+    with open(src, option, encoding='utf-8') as f:
         f.write(lines)
 
 
@@ -102,12 +105,20 @@ def readfile_list(src: str) -> List:
         return lines
 
 
-def writefile_list(src: str, lines: List):
+def writefile_list(src: str, lines: List, option: str = "w"):
     """
     Write string list to file
     """
-    with open(src, 'w', encoding='utf-8') as f:
+    with open(src, option, encoding='utf-8') as f:
         f.writelines(lines)
+
+
+def str2list(src: str) -> List:
+    """Separate a string to a list by \n and ignore blank line at the end automatically."""
+    ret = src.split("\n")
+    while ret[-1] == "\n" or ret[-1] == "":
+        ret.pop()
+    return ret
 
 
 def compare_str(str1: str, str2: str) -> bool:
@@ -122,14 +133,6 @@ def compare_list(list1: List, list2: List) -> bool:
     while list2[-1] == "\n" or list2[-1] == "":
         list2.pop()
     return list1 == list2
-
-
-def str2list(src: str) -> List:
-    """Separate a string to a list by \n and ignore blank line at the end automatically."""
-    ret = src.split("\n")
-    while ret[-1] == "\n" or ret[-1] == "":
-        ret.pop()
-    return ret
 
 
 def edit_distance(obj1, obj2) -> int:

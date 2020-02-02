@@ -706,7 +706,6 @@ testdata目录为评测用例所在的根目录，评测用例的输入和输出
 </table>
 </details>
 
-
 #### 6. gg.Job 类
 
 > 该类用于创建评测任务实例，提供任务初始化、任务执行、输出结果的功能。   
@@ -878,9 +877,168 @@ testdata目录为评测用例所在的根目录，评测用例的输入和输出
         <td>将评测结果转化为JSON格式并打印到标准输出</td>
     </tr>
 </table>
-
 </details>
 
+### pygrading.general_test.utils
+
+该包封装了在编写评测内核的过程中可能会使用到的基本操作，可分为如下几类：
+
+#### 1. 执行操作  
+
+> 执行Shell命令的方法，返回值包括执行状态、执行后输出的内容、执行时间。
+
+<details>
+<summary>详细信息(点击以展开...)</summary>
+<br>
+
+<table>
+    <tr>
+        <th>Function</th>
+        <th>Return</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>gg.utils.bash(cmd: str)</td>
+        <td>Tuple</td>
+        <td>执行Shell命令，返回值包括执行状态(status)、执行后输出的内容(output)、执行时间(time)</td>
+    </tr>
+</table>
+</details>
+
+#### 2. 文件操作  
+
+> 有关文件读写增删的相关操作。
+
+<details>
+<summary>详细信息(点击以展开...)</summary>
+<br>
+
+<table>
+    <tr>
+        <th>Function</th>
+        <th>Return</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>gg.utils.copyfile(src: str, dst: str)</td>
+        <td>None</td>
+        <td>将src路径所指示的文件复制到dst所指示的位置</td>
+    </tr>
+    <tr>
+        <td>gg.utils.copytree(src: str, dst: str)</td>
+        <td>None</td>
+        <td>将src路径所指示的目录递归地复制到dst所指示的位置</td>
+    </tr>
+    <tr>
+        <td>gg.utils.move(src: str, dst: str)</td>
+        <td>None</td>
+        <td>将src路径所指示的文件移动到dst所指示的位置</td>
+    </tr>
+    <tr>
+        <td>gg.utils.rmtree(src: str)</td>
+        <td>None</td>
+        <td>递归地删除src路径所指示的目录</td>
+    </tr>
+    <tr>
+        <td>gg.utils.rmfile(src: str)</td>
+        <td>None</td>
+        <td>删除src路径所指示的文件</td>
+    </tr>
+    <tr>
+        <td>gg.utils.rename(old: str, new: str)</td>
+        <td>None</td>
+        <td>将old路径所指示的文件重命名为new</td>
+    </tr>
+    <tr>
+        <td>gg.utils.readfile(src: str)</td>
+        <td>String</td>
+        <td>读取路径为src的文件，并以字符串的形式返回文件内容，文件中的换行以'\n'表示</td>
+    </tr>
+    <tr>
+        <td>gg.utils.writefile(src: str, lines: str, option: str = "w")</td>
+        <td>None</td>
+        <td>将lines中的内容写入src，通过option选项选择写入模式，默认为“w”</td>
+    </tr>
+    <tr>
+        <td>gg.utils.readfile_list(src: str)</td>
+        <td>List[str]</td>
+        <td>读取路径为src的文件，并以列表的形式返回文件内容，文件中每行为列表中的一个元素</td>
+    </tr>
+    <tr>
+        <td>gg.utils.writefile_list(src: str, lines: List, option: str = "w")</td>
+        <td>None</td>
+        <td>将lines中的内容写入src，通过option选项选择写入模式，默认为"w"</td>
+    </tr>
+    <tr>
+        <td>gg.utils.str2list(src: str)</td>
+        <td>List[str]</td>
+        <td>将普通字符串转化为列表，根据"\n"进行分隔，并会自动去掉字符串末尾的空行</td>
+    </tr>
+</table>
+</details>
+
+#### 3. 比较操作  
+
+> 关于评测用例执行结果比较打分的相关操作。
+
+<details>
+<summary>详细信息(点击以展开...)</summary>
+<br>
+
+<table>
+    <tr>
+        <th>Function</th>
+        <th>Return</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>gg.utils.compare_str(str1: str, str2: str)</td>
+        <td>Boolean</td>
+        <td>返回输入的两个字符串是否相同，并自动忽略字符串尾的换行符</td>
+    </tr>
+    <tr>
+        <td>gg.utils.compare_list(list1: List, list2: List)</td>
+        <td>Boolean</td>
+        <td>返回输入的两个列表是否相同，并自动忽略列表最后的换行符和空白字符串</td>
+    </tr>
+    <tr>
+        <td>gg.utils.edit_distance(obj1, obj2)</td>
+        <td>Integer</td>
+        <td>返回两个可迭代类型的参数是否相同，在比较字符串和列表时不会自动处理空行，建议在进行字符串比较时，使用<code>str2list()函数</code>预处理传入的数据</td>
+    </tr>
+</table>
+</details>
+
+### pygrading.general_test.compiler
+
+该包封装了部分编程语言的编译方法，目前支持如下编程语言：
+
+> c, cpp
+
+包含的方法如下：
+
+<details>
+<summary>详细信息(点击以展开...)</summary>
+<br>
+
+<table>
+    <tr>
+        <th>Function</th>
+        <th>Return</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>gg.compiler.compile_c(source: str, target: str, compiler_type: str = "gcc", option: str = "-O2 -Wall -std=c99")</td>
+        <td>Tuple</td>
+        <td>针对c语言编译的方法，通过source传入源文件路径，target指定编译后文件路径，compiler_type选择编译器类型，通过option添加编译选项。返回执行状态和执行过程中的输出</td>
+    </tr>
+    <tr>
+        <td>gg.compiler.compile_cpp(source: str, target: str, compiler_type: str = "g++", option: str = "-O2 -Wall -std=c++11")</td>
+        <td>Tuple</td>
+        <td>针对c++语言编译的方法，通过source传入源文件路径，target指定编译后文件路径，compiler_type选择编译器类型，通过option添加编译选项。返回执行状态和执行过程中的输出</td>
+    </tr>
+</table>
+</details>
 
 <h2 id="tutorials" align="center">Tutorials</h2>
 <p align="right"><a href="#pygrading"><sup>▴ Back to top</sup></a></p>
