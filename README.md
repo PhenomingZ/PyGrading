@@ -32,6 +32,7 @@
 	<a href="#getting-start">Getting Start</a> •
 	<a href="#api">API</a> •
 	<a href="#tutorials">Tutorials</a> •
+	<a href="#faq">FAQ</a> •
 	<a href="http://www.educg.net/" target="_blank">CG Site</a>
 </p>
 
@@ -1192,5 +1193,9 @@ print(a)
 <p align="right"><a href="#pygrading"><sup>▴ Back to top</sup></a></p>
 
 在本章中，将会通过例子，详细解析不同模块的用法
+
+
+<h2 id="faq" align="center">FAQ</h2>
+<p align="right"><a href="#pygrading"><sup>▴ Back to top</sup></a></p>
 
 
