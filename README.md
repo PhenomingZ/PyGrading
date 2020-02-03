@@ -1200,6 +1200,7 @@ print(a)
 
 > - [构建并读取配置文件](#构建并读取配置文件)
 > - [构建并读取评测用例](#构建并读取评测用例)
+> - [评测结果的收集反馈](#评测结果的收集反馈)
 
 </details>
 
@@ -1392,8 +1393,74 @@ extension: None
 
 以上就是构建并读取评测用例的方法。
 
+### 评测结果的收集反馈
+
+我们在评测任务预处理阶段完成了读取配置文件和评测用例的任务，接下来评测用例将会传递给评测用例执行函数执行并收集结果。
+
+如果在评测过程中需要执行Shell命令，可以使用`gg.utils.bash()`方法，该方法接收一个Shell命令字符串，返回值依次为：执行状态、执行过程输出、执行时间。
+
+对于获取到的执行结果，我们提供了字符串比较和编辑距离比较两种方式：
+
+1. 字符串比较支持单个字符串和字符串列表两种形式，返回结果为两个字符串是否相同的布尔值；
+2. 编辑距离比较在接收到两个字符串列表时会返回两个列表之间的编辑距离，常用与按行比较的情况，会返回两个列表之间的编辑距离数值。
+
+推荐以字典的形式收集并返回每个评测用例的执行结果，这些结果会保存在评测任务实例`job`的`summary`变量中，可以使用`job.get_summary()`来获取。
+
+下面以一个简单的例子演示如何获取并收集评测结果：
+
+```python
+import pygrading.general_test as gg
 
 
+def prework(job):
+    testcases = gg.create_testcase(100)
+
+    for i in range(1, 5):
+        input_src = i
+        output_src = pow(2, i)
+        testcases.append("TestCase{}".format(i), 25, input_src, output_src)
+
+    job.set_testcases(testcases)
+
+
+def run(job, testcase):
+    # 使用Shell命令计算2^n
+    cmd = ["echo", "$((", "2", "**", str(testcase.input_src), "))"]
+
+    # 获取执行情况
+    status, output, time = gg.utils.bash(" ".join(cmd))
+
+    # 初始化返回结果的字典
+    result = {"name": testcase.name, "time": time}
+
+    # 获取评测用例给出的答案
+    answer = testcase.output_src
+
+    result["output"] = output
+    result["answer"] = answer
+
+    # 根据字符串比较结果返回单个测试用例的评判情况
+    if gg.utils.compare_str(str(output), str(answer)):
+        result["verdict"] = "Accept"
+        result["score"] = testcase.score
+    else:
+        result["verdict"] = "Wrong Answer"
+        result["score"] = 0
+
+    return result
+
+
+def postwork(job):
+    # 打印收集到的每个评测用例的结果
+    print(job.get_summary())
+
+
+myjob = gg.job(prework=prework, run=run, postwork=postwork)
+
+myjob.start()
+```
+
+根据上面的例子，结合特定的评测用例情况，应当可以编写出满足需求的评测用例执行函数。
 
 
 

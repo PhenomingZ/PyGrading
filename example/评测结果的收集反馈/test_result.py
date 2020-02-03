@@ -22,11 +22,13 @@ def run(job, testcase):
     # 初始化返回结果的字典
     result = {"name": testcase.name, "time": time}
 
+    # 获取评测用例给出的答案
     answer = testcase.output_src
 
     result["output"] = output
     result["answer"] = answer
 
+    # 根据字符串比较结果返回单个测试用例的评判情况
     if gg.utils.compare_str(str(output), str(answer)):
         result["verdict"] = "Accept"
         result["score"] = testcase.score
@@ -38,6 +40,7 @@ def run(job, testcase):
 
 
 def postwork(job):
+    # 打印收集到的每个评测用例的结果
     print(job.get_summary())
 
 
