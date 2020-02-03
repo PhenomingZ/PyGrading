@@ -1055,7 +1055,7 @@ testdata目录为评测用例所在的根目录，评测用例的输入和输出
 from pygrading.html import *
 ```
 
-导入包之后目前可以通过如下方式创建并打印HTML标签实例：
+导入包之后目前可以通过如下方式创建并打印HTML标签实例，详细的使用方法请参考[评测结果的展示优化](#评测结果的展示优化)：
 
 ```python
 from pygrading.html import *
@@ -1090,8 +1090,10 @@ print(a)
 2. 不成组标签
 
 ```html
-<img> <input> 
+<br> <img> <input> 
 ```
+
+> 由于`input()`为Python内置方法，故创建`<input>`标签的方法为`input_tag()`。
 
 这些标签均可通过`tag()`的方式创建，并可以通过`print(tag())`的方式打印，或通过`str(tag())`的方式转化为字符串。
 
@@ -1207,7 +1209,8 @@ print(a)
 > - [构建并读取配置文件](#构建并读取配置文件)
 > - [构建并读取评测用例](#构建并读取评测用例)
 > - [评测结果的收集反馈](#评测结果的收集反馈)
-> - [评测结果的整理输出](#评测结果的整理输出)
+> - [评测结果的打印输出](#评测结果的打印输出)
+> - [评测结果的展示优化](#评测结果的展示优化)
 
 </details>
 
@@ -1471,7 +1474,7 @@ myjob.start()
 
 > 在实际应用中，应当在各个阶段的函数中对可能发生的异常进行捕获，以保证评测程序顺利执行，让学生能查看到正确的反馈信息并预防可能的作弊行为。
 
-### 评测结果的整理输出
+### 评测结果的打印输出
 
 在评测任务执行完毕后，我们在评测结果处理函数中对收集到的评测结果进行最后处理并生成CG平台支持的JSON串格式，关于所支持的格式详情请查看[通用评测题开发指南](http://com.educg.net:8888/admin/help/projJudge.jsp#dockerImage)。
 
@@ -1550,11 +1553,117 @@ myjob.print()
 
 实际应用中，请使用`job.get_summary()`获取评测结果列表，再根据评测结果决定要输出的内容。
 
+### 评测结果的展示优化
 
+为了更好地展示评测结果，CG平台支持在返回JSON结果中的`verdict`、`comment`、`detail`、`secret`字段中添加HTML标签，经过渲染后显示为最终展示结果。
 
+PyGrading中提供了强大的HTML文档构建工具`pygrading.html`，详细的API请参考[pygrading.html API](#pygradinghtml)，接下来通过几个实例讲解各种场景的使用方法。
+
+#### 1. 修改文本颜色
+
+在`verdict`字段中我们通常希望展示如`Accept`、`Wrong Answer`这样的内容，为了让这些信息显示的更加直观，则需要给他们添加颜色。
+
+下面创建一段HTML文本，对`Accept`显示为绿色，对`Wrong Answer`显示为红色：
+
+```python
+from pygrading.html import *
+
+# 在括号中可以输入任意组键值对，他们将作为标签的属性显示在最终的HTML文本中
+accept = font(color="green").set_text("Accept")
+wrong_answer = font(color="red").set_text("Wrong Answer")
+
+accept.print()
+wrong_answer.print()
+```
+
+输出结果如下：
+
+```html
+<font color='green'>Accept</font>
+<font color='red'>Wrong Answer</font>
+```
+
+显示效果如下：
+
+![html01](./img/html01.png)
+
+#### 2. 创建表格
+
+在`comment`、`detail`、`secret`字段中，通常需要表格进行内容的展示，接下来通过一个实例说明如何创建表格。
+
+假设我们需要创建一个表格来比较每个评测用例中，学生输出的内容和标准答案的区别，解决方案如下：
+
+```python
+from pygrading.html import *
+
+# 可以看到字符串中含有换行符，推荐使用str2html()函数进行处理，将换行符转化为<br>
+outputs = ["1", "1\n2", "1\n2\n3", "1\n2\n3\n4", "5\n4\n3\n2\n1"]
+answers = ["1", "1\n2", "1\n2\n3", "1\n2\n3\n4", "1\n2\n3\n4\n5"]
+
+# 标签之间可以相互嵌套，任意数量的子标签可以作为参数传递给父标签
+result = table(
+    tr(
+        th().set_text("Output"),
+        th().set_text("Answer")
+    )
+)
+
+for out, ans in zip(outputs, answers):
+    tmp = tr(
+        td().set_text(str2html(out)),
+        td().set_text(str2html(ans)),
+    )
+    # 可以使用“<<”操作符将一个标签作为子标签传递给另一个标签
+    result << tmp
+
+result.print()
+```
+
+生成HTML文本如下：
+
+```html
+<table><tr><th>Output</th><th>Answer</th></tr><tr><td>1<br></td><td>1<br></td></tr><tr><td>1<br>2<br></td><td>1<br>2<br></td></tr><tr><td>1<br>2<br>3<br></td><td>1<br>2<br>3<br></td></tr><tr><td>1<br>2<br>3<br>4<br></td><td>1<br>2<br>3<br>4<br></td></tr><tr><td>5<br>4<br>3<br>2<br>1<br></td><td>1<br>2<br>3<br>4<br>5<br></td></tr></table>
+```
+
+显示效果如下：
+
+<table><tr><th>Output</th><th>Answer</th></tr><tr><td>1<br></td><td>1<br></td></tr><tr><td>1<br>2<br></td><td>1<br>2<br></td></tr><tr><td>1<br>2<br>3<br></td><td>1<br>2<br>3<br></td></tr><tr><td>1<br>2<br>3<br>4<br></td><td>1<br>2<br>3<br>4<br></td></tr><tr><td>5<br>4<br>3<br>2<br>1<br></td><td>1<br>2<br>3<br>4<br>5<br></td></tr></table>
+
+#### 3. 创建表单
+
+下面以创建一个用户名输入表单为例，展示如何创建不成对的HTML标签文本：
+
+```python
+from pygrading.html import *
+
+# 由于input()为Python内置方法，故创建<input>标签的方法为`input_tag()`
+result = form(
+    font().set_text("First name"),
+    br(),
+    input_tag(type="text", name="firstname"),
+    br(),
+    font().set_text("Last name"),
+    br(),
+    input_tag(type="text", name="lastname"),
+    br(),
+    input_tag(type="submit", value="Submit")
+)
+
+result.print()
+```
+
+生成HTML文本如下：
+
+```html
+<form><font>First name</font><br><input type='text' name='firstname'><br><font>Last name</font><br><input type='text' name='lastname'><br><input type='submit' value='Submit'></form>
+```
+
+显示效果如下：
+
+![html02](./img/html02.png)
 
 
 <h2 id="faq" align="center">FAQ</h2>
 <p align="right"><a href="#pygrading"><sup>▴ Back to top</sup></a></p>
 
-
+暂无提问

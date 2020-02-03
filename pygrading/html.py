@@ -5,6 +5,9 @@
     Coding: UTF-8
 
     Change Log:
+        **2020.02.04**
+        Support <br>.
+
         **2020.02.02**
         Add list functions to Tag.
 
@@ -136,6 +139,12 @@ class custom_single_tag(SingleTag):
     def __init__(self, tag_name, **attributes):
         super().__init__(**attributes)
         self.name = tag_name
+
+
+class br(SingleTag):
+    def __init__(self, **attributes):
+        super().__init__(**attributes)
+        self.name = "br"
 
 
 class img(SingleTag):
