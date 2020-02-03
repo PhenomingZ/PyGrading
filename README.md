@@ -71,6 +71,12 @@ pip install pygrading
 python setup.py install
 ```
 
+也可使用下面的Dockerfile来构建一个装有PyGrading的通用评测环境（待补充）：
+
+```dockerfile
+
+```
+
 PyGrading的运行环境要求 **Python >= 3.6**，不支持Python2。
 
 <h2 id="change-log" align="center">Change Log</h2>
@@ -1201,6 +1207,7 @@ print(a)
 > - [构建并读取配置文件](#构建并读取配置文件)
 > - [构建并读取评测用例](#构建并读取评测用例)
 > - [评测结果的收集反馈](#评测结果的收集反馈)
+> - [评测结果的整理输出](#评测结果的整理输出)
 
 </details>
 
@@ -1464,7 +1471,88 @@ myjob.start()
 
 > 在实际应用中，应当在各个阶段的函数中对可能发生的异常进行捕获，以保证评测程序顺利执行，让学生能查看到正确的反馈信息并预防可能的作弊行为。
 
-### 王企鹅
+### 评测结果的整理输出
+
+在评测任务执行完毕后，我们在评测结果处理函数中对收集到的评测结果进行最后处理并生成CG平台支持的JSON串格式，关于所支持的格式详情请查看[通用评测题开发指南](http://com.educg.net:8888/admin/help/projJudge.jsp#dockerImage)。
+
+在评测任务实例`Job`中，有如下几个内置的方法，用于设定待输出的JSON串字段：
+
+<table>
+    <tr>
+        <th>Function</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>job.verdict()</td>
+        <td>基本判定，一般为简要的评测结果描述或者简写，例如OJ系统的AC、PE、CE等</td>
+    </tr>
+    <tr>
+        <td>job.rank()</td>
+        <td>选择排行榜模式时，必须有该项，浮点数(正常值 ≥0)，该值决定了本次提交在排行榜上的位置，排行榜从小到大排序。如果提交的材料有误或者其它异常，将rank值置为负数，不参与排行!</td>
+    </tr>
+    <tr>
+        <td>job.score()</td>
+        <td>选择直接评测得分时，必须有该项，按照百分制给分，必须为大于等于0的整数，例如90</td>
+    </tr>
+    <tr>
+        <td>job.images()</td>
+        <td>可选，如果评测结果有图表，需要转换为base64或者SVG(启用HTML)格式</td>
+    </tr>
+    <tr>
+        <td>job.comment()</td>
+        <td>可选，评测结果的简要描述。</td>
+    </tr>
+    <tr>
+        <td>job.detail()</td>
+        <td>可选，评测结果的详细描述，可以包含协助查错的信息。布置作业的时候，可以选择是否显示这项信息。</td>
+    </tr>
+    <tr>
+        <td>job.secret()</td>
+        <td>可选，该信息只有教师评阅时才能看到。</td>
+    </tr>
+    <tr>
+        <td>job.HTML()</td>
+        <td>可选，如果置为enable，开发者可以使用HTML标签对verdict、comment、detail的输出内容进行渲染。</td>
+    </tr>
+    <tr>
+        <td>job.custom()</td>
+        <td>可选，自定义字段。</td>
+    </tr>
+</table>
+
+设定好JSON字段之后可以使用`job.print()`打印JSON字段到标准输出。
+
+下面通过一个简单的示例展示如何配置评测任务的输出结果：
+
+```python
+import pygrading.general_test as gg
+
+
+def postwork(job):
+    job.verdict("Accept")
+    job.score(100)
+    job.detail("Detail Message!")
+    job.custom("custom_key", "custom_value")
+
+
+myjob = gg.job(prework=None, run=None, postwork=postwork)
+
+myjob.start()
+
+myjob.print()
+```
+
+输出结果如下：
+
+```
+{"verdict": "Accept", "score": "100", "rank": {"rank": "-1"}, "HTML": "enable", "detail": "Detail Message!", "custom_key": "custom_value"}
+```
+
+实际应用中，请使用`job.get_summary()`获取评测结果列表，再根据评测结果决定要输出的内容。
+
+
+
+
 
 <h2 id="faq" align="center">FAQ</h2>
 <p align="right"><a href="#pygrading"><sup>▴ Back to top</sup></a></p>
