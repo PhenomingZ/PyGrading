@@ -1195,9 +1195,11 @@ print(a)
 在本章中，将会通过例子，详细解析不同模块的用法。本章的所有例子均可在`example`目录下找到。
 
 <details>
- <summary>目录 (点击以展开...)</summary>
+<summary>目录 (点击以展开...)</summary>
+<br> 
 
 > - [构建并读取配置文件](#构建并读取配置文件)
+> - [构建并读取评测用例](#构建并读取评测用例)
 
 </details>
 
@@ -1217,7 +1219,7 @@ print(a)
 
 当然，配置文件中的配置项可以根据实际情况自行添加，因为如何处理这些配置项也是由开发者决定的。
 
-PyGrading提供了`load_config(source)`方法来读取配置文件，该方法传入配置文件的路径，返回一个由配置文件中的JSON串转换成的字典。我们推荐在评测任务预处理函数(prework)中完成配置文件的读取，并将配置信息传递给当前任务(job)的config属性，以便在其他函数中可以使用这些配置信息。
+PyGrading提供了`load_config(source)`方法来读取配置文件，该方法传入配置文件的路径，返回一个由配置文件中的JSON串转换成的字典。我们推荐在评测任务预处理函数（prework）中完成配置文件的读取，并将配置信息传递给当前任务（job）的config属性，以便在其他函数中可以使用这些配置信息。
 
 下面一段代码展示了如何读取并使用我们配置文件，由于还没配置评测用例，所以我们创建一个只包含prework和postwork的评测任务：
 
@@ -1243,7 +1245,7 @@ myjob = gg.job(prework=prework, run=None, postwork=postwork)
 myjob.start()
 ```
 
-输出如下：
+执行结果如下：
 
 ```
 testcase_num: 5
@@ -1253,7 +1255,142 @@ submit_path: ./example/GettingStart/submit/main.py
 
 以上就是构建并读取配置文件的方法。
 
+### 构建并读取评测用例
 
+接下来，我们尝试构建几组评测用例。评测用例一般来说是一组包含输入和输出的文件，每一组评测用例都会作为参数传递给评测用例执行函数（run()）迭代执行并返回结果。
+
+PyGrading推荐使用`gg.create_std_testcase()`方法进行评测用例实例的创建，该方法要求遵照标准形式配置评测用例目录，具体要求如下：
+
+```
+testdata
+├── input
+│   ├── input1.txt
+│   ├── input2.txt
+│   ├── input3.txt
+│   ├── input4.txt
+│   └── input5.txt
+└── output
+    ├── output1.txt
+    ├── output2.txt
+    ├── output3.txt
+    ├── output4.txt
+    └── output5.txt
+```
+
+`testdata`为评测用例目录的根目录，建议将这个路径写入配置文件。根目录下分别设有`input`和`output`目录，分别用于存放输入和输出文件。
+
+输入和输出文件的命名从`input1.txt`和`output1.txt`开始并一一对应。
+
+在以此方式创建的评测用例实例中，总分默认为100分，传递给评测用例执行函数（run()）的输入输出参数为每组`input`和`output`文件的路径，下面通过一段代码展示具体的使用方法：
+
+```python
+import pygrading.general_test as gg
+
+
+def prework(job):
+    config = gg.load_config("./example/构建并读取评测用例/config.json")
+    testcases = gg.create_std_testcase(config["testcase_dir"], config["testcase_num"])
+
+    job.set_testcases(testcases)
+
+
+def run(job, testcase):
+    print("######################")
+    print("Name:", testcase.name)
+    print("score:", testcase.score)
+    print("input_src:", testcase.input_src)
+    print("output_src:", testcase.output_src)
+    print("extension:", testcase.extension)
+
+
+myjob = gg.job(prework=prework, run=run, postwork=None)
+
+myjob.start()
+```
+
+执行结果如下：
+
+```
+######################
+Name: TestCase1
+score: 50.0
+input_src: ./example/构建并读取评测用例/testdata_std/input/input1.txt
+output_src: ./example/构建并读取评测用例/testdata_std/output/output1.txt
+extension: None
+######################
+Name: TestCase2
+score: 50.0
+input_src: ./example/构建并读取评测用例/testdata_std/input/input2.txt
+output_src: ./example/构建并读取评测用例/testdata_std/output/output2.txt
+extension: None
+```
+
+上面的例子展示了如何使用推荐的方式构建、读取并使用评测用例，接下来我们将展示如何使用`gg.testcase()`方法来自定义评测用例。
+
+假设根据要求，不必从文件中读取评测用例，而是直接由程序创建。参见下面代码实例：
+
+```python
+import pygrading.general_test as gg
+
+
+def prework(job):
+    # 自定义评测用例总分
+    testcases = gg.create_testcase(100)
+
+    for i in range(1, 5):
+        input_src = i
+        output_src = pow(2, i)
+
+        # 使用append()方法向testcases追加评测用例
+        testcases.append("TestCase{}".format(i), 25, input_src, output_src)
+
+    job.set_testcases(testcases)
+
+
+def run(job, testcase):
+    print("######################")
+    print("Name:", testcase.name)
+    print("score:", testcase.score)
+    print("input_src:", testcase.input_src)
+    print("output_src:", testcase.output_src)
+    print("extension:", testcase.extension)
+
+
+myjob = gg.job(prework=prework, run=run, postwork=None)
+
+myjob.start()
+```
+
+执行结果如下：
+
+```
+######################
+Name: TestCase1
+score: 25.0
+input_src: 1
+output_src: 2
+extension: None
+######################
+Name: TestCase2
+score: 25.0
+input_src: 2
+output_src: 4
+extension: None
+######################
+Name: TestCase3
+score: 25.0
+input_src: 3
+output_src: 8
+extension: None
+######################
+Name: TestCase4
+score: 25.0
+input_src: 4
+output_src: 16
+extension: None
+```
+
+以上就是构建并读取评测用例的方法。
 
 
 

@@ -2,21 +2,26 @@ import pygrading.general_test as gg
 
 
 def prework(job):
-    config = gg.load_config("./example/构建并读取配置文件/config.json")
-    job.set_config(config)
+    # 自定义评测用例总分
+    testcases = gg.create_testcase(100)
+
+    for i in range(1, 5):
+        input_src = i
+        output_src = pow(2, i)
+        testcases.append("TestCase{}".format(i), 25, input_src, output_src)
+
+    job.set_testcases(testcases)
 
 
-def postwork(job):
-    config = job.get_config()
-    testcase_num = config["testcase_num"]
-    testcase_dir = config["testcase_dir"]
-    submit_path = config["submit_path"]
-
-    print("testcase_num:", testcase_num)
-    print("testcase_dir:", testcase_dir)
-    print("submit_path:", submit_path)
+def run(job, testcase):
+    print("######################")
+    print("Name:", testcase.name)
+    print("score:", testcase.score)
+    print("input_src:", testcase.input_src)
+    print("output_src:", testcase.output_src)
+    print("extension:", testcase.extension)
 
 
-myjob = gg.job(prework=prework, run=None, postwork=postwork)
+myjob = gg.job(prework=prework, run=run, postwork=None)
 
 myjob.start()
