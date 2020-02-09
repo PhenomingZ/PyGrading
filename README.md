@@ -71,26 +71,59 @@ pip install pygrading
 python setup.py install
 ```
 
-也可使用下面的Dockerfile来构建一个装有PyGrading的通用评测环境（待补充）：
+也可使用下面的Dockerfile来构建一个装有PyGrading的通用评测环境：
 
 ```dockerfile
- 
+FROM jupyter/base-notebook
+
+LABEL maintainer="Charles Zhang <694556046@qq.com>"
+
+RUN pip install pygrading
 ```
+
+切换至Dockerfile所在的目录，构建镜像命令为：
+
+```bash
+docker build -t cg/pygrading_env .
+```
+
+> 该镜像包含基本的Jupyter环境，可直接用于创建Jupyter调试环境。
+
+启动镜像命令为：
+
+```bash
+docker run -itd --name pygrading -p 8888:8888 cg/pygrading_env
+```
+
+> `8888`端口为Jupyter服务所需，如果被占用可以映射为其他端口
 
 PyGrading的运行环境要求 **Python >= 3.6**，不支持Python2。
 
 <h2 id="change-log" align="center">Change Log</h2>
 <p align="right"><a href="#pygrading"><sup>▴ Back to top</sup></a></p>
 
+**v0.2.1 Change Log (2020.02.09)**  
+1. 添加了构建通用评测环境的Dockerfile
+2. 增加了`__version__`变量，方便查看程序包版本：
+```python
+import pygrading.general_test as gg
+
+# 获取版本信息字符串
+print(gg.__version__)
+
+# 直接打印版本信息
+gg.version()
+```
+
+<details>
+<summary>以往版本更新日志(点击以展开...)</summary>
+<br>
+
 **v0.2.0 Change Log (2020.02.04)**  
 1. 使用文档施工完成；
 2. 修复了postwork函数为None时prework函数不工作的问题；
 3. 读写文件功能增加了读写选项；
 4. HTML模块增加了`<br>`标签的支持。
-
-<details>
-<summary>以往版本更新日志(点击以展开...)</summary>
-<br>
 
 **v0.1.2 Change Log (2020.02.01)**  
 在`pygrading.heml`模块中添加了自定义标签方法`custom()`并支持形如`<input>`标签的不成组标签。
