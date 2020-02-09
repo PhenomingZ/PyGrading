@@ -92,7 +92,7 @@ docker build -t cg/pygrading_env .
 启动镜像命令为：
 
 ```bash
-docker run -itd --name pygrading -p 8888:8888 cg/pygrading_env
+docker run -it --name pygrading -p 8888:8888 cg/pygrading_env
 ```
 
 > `8888`端口为Jupyter服务所需，如果被占用可以映射为其他端口
