@@ -74,7 +74,7 @@ python setup.py install
 也可使用下面的Dockerfile来构建一个装有PyGrading的通用评测环境（待补充）：
 
 ```dockerfile
-
+ 
 ```
 
 PyGrading的运行环境要求 **Python >= 3.6**，不支持Python2。
