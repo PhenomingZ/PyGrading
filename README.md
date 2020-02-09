@@ -388,7 +388,7 @@ new_job.print()
 <h2 id="api" align="center">PyGrading API</h2>
 <p align="right"><a href="#pygrading"><sup>▴ Back to top</sup></a></p>
 
-在本节中，将会列出当前版本(v0.1.2)全部的接口与方法，详细使用方法请参考<a href="#tutorials">Tutorials</a>部分。
+在本节中，将会列出当前版本(v0.2.0)全部的接口与方法，详细使用方法请参考<a href="#tutorials">Tutorials</a>部分。
 
 ### pygrading.general_test
 
