@@ -421,7 +421,7 @@ new_job.print()
 <h2 id="api" align="center">PyGrading API</h2>
 <p align="right"><a href="#pygrading"><sup>▴ Back to top</sup></a></p>
 
-在本节中，将会列出当前版本(v0.2.0)全部的接口与方法，详细使用方法请参考<a href="#tutorials">Tutorials</a>部分。
+在本节中，将会列出当前版本(v0.2.1)全部的接口与方法，详细使用方法请参考<a href="#tutorials">Tutorials</a>部分。
 
 ### pygrading.general_test
 
@@ -923,6 +923,26 @@ testdata目录为评测用例所在的根目录，评测用例的输入和输出
         <td>将评测结果转化为JSON格式并打印到标准输出</td>
     </tr>
 </table>
+</details>
+
+#### 7. gg.__version__ 和 gg.version()
+
+> 用于查看PyGrading的版本信息
+
+<details>
+<summary>详细信息(点击以展开...)</summary>
+<br>
+
+```python
+import pygrading.general_test as gg
+
+# 获取版本信息字符串
+print(gg.__version__)
+
+# 直接打印版本信息
+gg.version()
+```
+
 </details>
 
 ### pygrading.general_test.utils
