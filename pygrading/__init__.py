@@ -12,7 +12,8 @@
         Create this file!
 """
 
-__version__ = "0.2.1"
+__version__ = "0.2.2"
+
 
 def version():
     print(__version__)

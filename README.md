@@ -12,7 +12,7 @@
 				 alt="GitHub stars">
 	</a>
 	<a href="https://pypi.org/project/pygrading/">
-			<img src="https://img.shields.io/badge/pypi-v0.2.1-orange"
+			<img src="https://img.shields.io/badge/pypi-v0.2.2-orange"
 					 alt="Pypi package">
 		</a>
 	<a href="https://github.com/PhenomingZ/PyGrading/issues">
@@ -97,10 +97,17 @@ docker run -it --name pygrading -p 8888:8888 cg/pygrading_env
 
 > `8888`端口为Jupyter服务所需，如果被占用可以映射为其他端口
 
-PyGrading的运行环境要求 **Python >= 3.6**，不支持Python2。
+PyGrading的运行环境要求 **Python >= 3.7**，不支持Python2。
 
 <h2 id="change-log" align="center">Change Log</h2>
 <p align="right"><a href="#pygrading"><sup>▴ Back to top</sup></a></p>
+
+**v0.2.2 Change Log (2020.03.03)**  
+1. 发现Python3.6以下版本可能会出现包导入错误，暂时仅支持Python3.7以上版本。
+
+<details>
+<summary>以往版本更新日志(点击以展开...)</summary>
+<br>
 
 **v0.2.1 Change Log (2020.02.09)**  
 1. 添加了构建通用评测环境的Dockerfile
@@ -114,10 +121,6 @@ print(gg.__version__)
 # 直接打印版本信息
 gg.version()
 ```
-
-<details>
-<summary>以往版本更新日志(点击以展开...)</summary>
-<br>
 
 **v0.2.0 Change Log (2020.02.04)**  
 1. 使用文档施工完成；
