@@ -12,7 +12,7 @@
 				 alt="GitHub stars">
 	</a>
 	<a href="https://pypi.org/project/pygrading/">
-			<img src="https://img.shields.io/badge/pypi-v0.2.2-orange"
+			<img src="https://img.shields.io/badge/pypi-v0.2.3-orange"
 					 alt="Pypi package">
 		</a>
 	<a href="https://github.com/PhenomingZ/PyGrading/issues">
@@ -102,12 +102,15 @@ PyGrading的运行环境要求 **Python >= 3.7**，不支持Python2。
 <h2 id="change-log" align="center">Change Log</h2>
 <p align="right"><a href="#pygrading"><sup>▴ Back to top</sup></a></p>
 
-**v0.2.2 Change Log (2020.03.03)**  
-1. 发现Python3.6以下版本可能会出现包导入错误，暂时仅支持Python3.7以上版本。
+**v0.2.3 Change Log (2020.03.03)**  
+1. 修复了`pygrading.general_test.compiler`模块中`c/c++`编译功能的问题，将编译选项`option`移动至生成编译命令的最后，添加了`flag`字段位于源文件字段之前，用与设定编译版本标志如`-std=c++11`
 
 <details>
 <summary>以往版本更新日志(点击以展开...)</summary>
 <br>
+
+**v0.2.2 Change Log (2020.03.03)**  
+1. 发现Python3.6以下版本可能会出现包导入错误，暂时仅支持Python3.7以上版本。
 
 **v0.2.1 Change Log (2020.02.09)**  
 1. 添加了构建通用评测环境的Dockerfile
@@ -1074,7 +1077,7 @@ gg.version()
         <td>gg.utils.edit_distance(obj1, obj2)</td>
         <td>Integer</td>
         <td>返回两个可迭代类型的参数是否相同，在比较字符串和列表时不会自动处理空行，建议在进行字符串比较时，使用<code>str2list()函数</code>预处理传入的数据</td>
-    </tr>
+    </tr>compiler
 </table>
 </details>
 
@@ -1097,14 +1100,14 @@ gg.version()
         <th>Description</th>
     </tr>
     <tr>
-        <td>gg.compiler.compile_c(source: str, target: str, compiler_type: str = "gcc", option: str = "-O2 -Wall -std=c99")</td>
+        <td>gg.compiler.compile_c(source: str, target: str, compiler_type: str = "gcc", flag: str = "-O2 -Wall -std=c99", option: str = "")</td>
         <td>Tuple</td>
-        <td>针对c语言编译的方法，通过source传入源文件路径，target指定编译后文件路径，compiler_type选择编译器类型，通过option添加编译选项。返回执行状态和执行过程中的输出</td>
+        <td>针对c语言编译的方法，通过source传入源文件路径，target指定编译后文件路径，compiler_type选择编译器类型，通过flag设定版本标签和一些前置选项，通过option添加编译选项。返回执行状态和执行过程中的输出</td>
     </tr>
     <tr>
-        <td>gg.compiler.compile_cpp(source: str, target: str, compiler_type: str = "g++", option: str = "-O2 -Wall -std=c++11")</td>
+        <td>gg.compiler.compile_cpp(source: str, target: str, compiler_type: str = "g++", flag: str = "-O2 -Wall -std=c++11", option: str = "")</td>
         <td>Tuple</td>
-        <td>针对c++语言编译的方法，通过source传入源文件路径，target指定编译后文件路径，compiler_type选择编译器类型，通过option添加编译选项。返回执行状态和执行过程中的输出</td>
+        <td>针对c++语言编译的方法，通过source传入源文件路径，target指定编译后文件路径，compiler_type选择编译器类型，通过flag设定版本标签和一些前置选项，通过option添加编译选项。返回执行状态和执行过程中的输出</td>
     </tr>
 </table>
 </details>

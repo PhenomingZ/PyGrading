@@ -6,7 +6,7 @@
 
     Change Log:
         **2020.03.03**
-        Update to 0.2.2!
+        Update to 0.2.3!
 
         **2020.02.09**
         Update to 0.2.1!
@@ -31,7 +31,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="pygrading",
-    version="0.2.2",
+    version="0.2.3",
     author="Charles Zhang",
     author_email="694556046@qq.com",
     description="A Python ToolBox for CourseGrading platform.",

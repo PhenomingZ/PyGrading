@@ -16,7 +16,8 @@ import pygrading.general_test as gg
 from typing import Tuple
 
 
-def compile_c(source: str, target: str, compiler_type: str = "gcc", option: str = "-O2 -Wall -std=c99") -> Tuple:
+def compile_c(source: str, target: str, compiler_type: str = "gcc", flag: str = "-O2 -Wall -std=c99",
+              option: str = "") -> Tuple:
     """Compile c source file
 
     Compile c source file using gcc.
@@ -31,7 +32,7 @@ def compile_c(source: str, target: str, compiler_type: str = "gcc", option: str 
         status: compile status, 0 for success, 1 for fail.
         log: compile log
     """
-    cmd = " ".join([str(compiler_type), str(option), str(source), "-o", str(target)])
+    cmd = " ".join([str(compiler_type), str(flag), str(source), "-o", str(target), str(option)])
 
     try:
         ret = gg.utils.bash(cmd)
@@ -45,7 +46,8 @@ def compile_c(source: str, target: str, compiler_type: str = "gcc", option: str 
     return status, output
 
 
-def compile_cpp(source: str, target: str, compiler_type: str = "g++", option: str = "-O2 -Wall -std=c++11") -> Tuple:
+def compile_cpp(source: str, target: str, compiler_type: str = "g++", flag: str = "-O2 -Wall -std=c++11",
+                option: str = "") -> Tuple:
     """Compile cpp source file
 
     Compile cpp source file using gcc.
@@ -60,7 +62,7 @@ def compile_cpp(source: str, target: str, compiler_type: str = "g++", option: st
         status: compile status, 0 for success, 1 for fail.
         log: compile log
     """
-    cmd = " ".join([str(compiler_type), str(option), str(source), "-o", str(target)])
+    cmd = " ".join([str(compiler_type), str(flag), str(source), "-o", str(target), str(option)])
 
     try:
         ret = gg.utils.bash(cmd)
