@@ -5,6 +5,9 @@
     Coding: UTF-8
 
     Change Log:
+        **2020.02.04**
+        Add get_result().
+
         **2020.02.03**
         Fix prework bug.
 
@@ -99,6 +102,9 @@ class Job(object):
 
     def get_summary(self):
         return self.__summary
+
+    def get_result(self):
+        return self.__result
 
     def get_config(self):
         return self.__config

@@ -12,7 +12,7 @@
 				 alt="GitHub stars">
 	</a>
 	<a href="https://pypi.org/project/pygrading/">
-			<img src="https://img.shields.io/badge/pypi-v0.2.3-orange"
+			<img src="https://img.shields.io/badge/pypi-v0.2.4-orange"
 					 alt="Pypi package">
 		</a>
 	<a href="https://github.com/PhenomingZ/PyGrading/issues">
@@ -102,12 +102,15 @@ PyGrading的运行环境要求 **Python >= 3.7**，不支持Python2。
 <h2 id="change-log" align="center">Change Log</h2>
 <p align="right"><a href="#pygrading"><sup>▴ Back to top</sup></a></p>
 
-**v0.2.3 Change Log (2020.03.03)**  
-1. 修复了`pygrading.general_test.compiler`模块中`c/c++`编译功能的问题，将编译选项`option`移动至生成编译命令的最后，添加了`flag`字段位于源文件字段之前，用与设定编译版本标志如`-std=c++11`
+**v0.2.4 Change Log (2020.03.03)**  
+1. 添加了`gg.job.get_result()`函数，解决了之前只能直接打印结果，无法获得执行结果对象的问题。
 
 <details>
 <summary>以往版本更新日志(点击以展开...)</summary>
 <br>
+
+**v0.2.3 Change Log (2020.03.03)**  
+1. 修复了`pygrading.general_test.compiler`模块中`c/c++`编译功能的问题，将编译选项`option`移动至生成编译命令的最后，添加了`flag`字段位于源文件字段之前，用与设定编译版本标志如`-std=c++11`
 
 **v0.2.2 Change Log (2020.03.03)**  
 1. 发现Python3.6以下版本可能会出现包导入错误，暂时仅支持Python3.7以上版本。
@@ -1731,4 +1734,8 @@ result.print()
 <h2 id="faq" align="center">FAQ</h2>
 <p align="right"><a href="#pygrading"><sup>▴ Back to top</sup></a></p>
 
-暂无提问
+**Q: 评测流程没有正确执行，但是为何程序执行结束没有任何报错信息？**  
+**A:** 在整个评测流程中，PyGrading会自动抓取执行过程中的异常，且保证这些异常不会影响评测程序的完整执行。
+因此有些问题不会显示地报错，而是保存在`job.__result`和`job.__summary`对象中。如果发现执行问题，
+可以在评测任务的最后，使用`print(your_job_name.get_result())`和`print(your_job_name.get_summary())`
+查看评测过程中的日志。
