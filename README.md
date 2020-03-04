@@ -110,7 +110,7 @@ import pygrading.general_test as gg
 def prework(job: gg.Job):
     pass
 
-def run(job: gg.Job, testcases: gg.TestCases):
+def run(job: gg.Job, testcases: gg.TestCases.SingleTestCase):
     pass
 
 def postwork(job: gg.Job):
@@ -301,7 +301,7 @@ def prework(job: gg.Job):
 创建`run()`函数的代码如下，`job`为PyGrading创建的任务实例，`testcase`为字典类型，包含单个测试用例信息：
 
 ```python
-def run(job: gg.Job, testcase: gg.TestCases):
+def run(job: gg.Job, testcase: gg.TestCases.SingleTestCase):
     # 读取当前任务的配置信息
     configuration = job.get_config()
     
@@ -445,7 +445,7 @@ new_job.print()
 <h2 id="api" align="center">PyGrading API</h2>
 <p align="right"><a href="#pygrading"><sup>▴ Back to top</sup></a></p>
 
-在本节中，将会列出当前版本(v0.2.5)全部的接口与方法，详细使用方法请参考<a href="#tutorials">Tutorials</a>部分。
+在本节中，将会列出当前版本(v0.2.6)全部的接口与方法，详细使用方法请参考<a href="#tutorials">Tutorials</a>部分。
 
 ### pygrading.general_test
 
@@ -611,9 +611,9 @@ testdata目录为评测用例所在的根目录，评测用例的输入和输出
 <summary>详细信息(点击以展开...)</summary>
 <br>
 
-`gg.TestCases`类包含有1个子类`__SingleTestCase`，该子类的实例用于存储单个评测用例的信息，且会作为一个必要参数传入评测用例执行函数中。
+`gg.TestCases`类包含有1个子类`SingleTestCase`，该子类的实例用于存储单个评测用例的信息，且会作为一个必要参数传入评测用例执行函数中。
 
-子类`__SingleTestCase`包含的属性如下：
+子类`SingleTestCase`包含的属性如下：
 
 <table>
     <tr>
@@ -1388,7 +1388,7 @@ def prework(job: gg.Job):
     job.set_testcases(testcases)
 
 
-def run(job: gg.Job, testcase: gg.TestCases):
+def run(job: gg.Job, testcase: gg.TestCases.SingleTestCase):
     print("######################")
     print("Name:", testcase.name)
     print("score:", testcase.score)
@@ -1441,7 +1441,7 @@ def prework(job: gg.Job):
     job.set_testcases(testcases)
 
 
-def run(job: gg.Job, testcase: gg.TestCases):
+def run(job: gg.Job, testcase: gg.TestCases.SingleTestCase):
     print("######################")
     print("Name:", testcase.name)
     print("score:", testcase.score)
@@ -1516,7 +1516,7 @@ def prework(job: gg.Job):
     job.set_testcases(testcases)
 
 
-def run(job: gg.Job, testcase: gg.TestCases):
+def run(job: gg.Job, testcase: gg.TestCases.SingleTestCase):
     # 使用Shell命令计算2^n
     cmd = ["echo", "$((", "2", "**", str(testcase.input_src), "))"]
 

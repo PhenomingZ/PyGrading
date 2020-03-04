@@ -27,11 +27,10 @@ class TestCases(object):
         __total_score: The total score of all test cases.
     """
 
-    class __SingleTestCase(object):
-        """__SingleTestCase
+    class SingleTestCase(object):
+        """SingleTestCase
 
         A SingleTestCase instance contains whole information of a test case.
-        It is a private subclass of TestCases.
 
         Attributes:
             name: The name of the test case.
@@ -91,7 +90,7 @@ class TestCases(object):
 
     def append(self, name: str, score: float, input_src: object, output_src: object, extension: object = None):
         """Add test case to list of test cases."""
-        single_case = self.__SingleTestCase(name, score, input_src, output_src, extension)
+        single_case = self.SingleTestCase(name, score, input_src, output_src, extension)
         self.__cases.append(single_case)
         self.__count += 1
 
