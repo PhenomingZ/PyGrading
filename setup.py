@@ -5,6 +5,9 @@
     Coding: UTF-8
 
     Change Log:
+        **2020.03.04**
+        Update to 0.2.5!
+
         **2020.03.03**
         Update to 0.2.4!
 
@@ -31,7 +34,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="pygrading",
-    version="0.2.4",
+    version="0.2.5",
     author="Charles Zhang",
     author_email="694556046@qq.com",
     description="A Python ToolBox for CourseGrading platform.",

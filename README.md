@@ -12,7 +12,7 @@
 				 alt="GitHub stars">
 	</a>
 	<a href="https://pypi.org/project/pygrading/">
-			<img src="https://img.shields.io/badge/pypi-v0.2.4-orange"
+			<img src="https://img.shields.io/badge/pypi-v0.2.5-orange"
 					 alt="Pypi package">
 		</a>
 	<a href="https://github.com/PhenomingZ/PyGrading/issues">
@@ -102,12 +102,27 @@ PyGrading的运行环境要求 **Python >= 3.7**，不支持Python2。
 <h2 id="change-log" align="center">Change Log</h2>
 <p align="right"><a href="#pygrading"><sup>▴ Back to top</sup></a></p>
 
-**v0.2.4 Change Log (2020.03.03)**  
-1. 添加了`gg.job.get_result()`函数，解决了之前只能直接打印结果，无法获得执行结果对象的问题。
+**v0.2.5 Change Log (2020.03.04)**  
+1. 现在使用如下方式引用PyGrading即可在定义流程函数时对`job`对象和`testcases`指定类型。
+```python
+import pygrading.general_test as gg
+
+def prework(job: gg.Job):
+    pass
+
+def run(job: gg.Job, testcases: gg.TestCases):
+    pass
+
+def postwork(job: gg.Job):
+    pass
+```
 
 <details>
 <summary>以往版本更新日志(点击以展开...)</summary>
 <br>
+
+**v0.2.4 Change Log (2020.03.03)**  
+1. 添加了`gg.job.get_result()`函数，解决了之前只能直接打印结果，无法获得执行结果对象的问题。
 
 **v0.2.3 Change Log (2020.03.03)**  
 1. 修复了`pygrading.general_test.compiler`模块中`c/c++`编译功能的问题，将编译选项`option`移动至生成编译命令的最后，添加了`flag`字段位于源文件字段之前，用与设定编译版本标志如`-std=c++11`
@@ -266,7 +281,7 @@ PyGrading推荐按照如下目录结构构建评测数据，学生提交的代�
 创建`prework()`函数的代码如下，`job`为PyGrading创建的任务实例：
 
 ```python
-def prework(job):
+def prework(job: gg.Job):
     # 读取配置文件
     config = gg.load_config("./example/GettingStart/config.json")
 
@@ -286,7 +301,7 @@ def prework(job):
 创建`run()`函数的代码如下，`job`为PyGrading创建的任务实例，`testcase`为字典类型，包含单个测试用例信息：
 
 ```python
-def run(job, testcase):
+def run(job: gg.Job, testcase: gg.TestCases):
     # 读取当前任务的配置信息
     configuration = job.get_config()
     
@@ -322,7 +337,7 @@ def run(job, testcase):
 创建`postwork()`函数的代码如下，`job`为PyGrading创建的任务实例：
 
 ```python
-def postwork(job):
+def postwork(job: gg.Job):
     # 设定结果verdict
     job.verdict(str(font(color="green").set_text("Accept")))
 
@@ -430,7 +445,7 @@ new_job.print()
 <h2 id="api" align="center">PyGrading API</h2>
 <p align="right"><a href="#pygrading"><sup>▴ Back to top</sup></a></p>
 
-在本节中，将会列出当前版本(v0.2.1)全部的接口与方法，详细使用方法请参考<a href="#tutorials">Tutorials</a>部分。
+在本节中，将会列出当前版本(v0.2.5)全部的接口与方法，详细使用方法请参考<a href="#tutorials">Tutorials</a>部分。
 
 ### pygrading.general_test
 
@@ -1305,11 +1320,11 @@ PyGrading提供了`load_config(source)`方法来读取配置文件，该方法�
 ```python
 import pygrading.general_test as gg
 
-def prework(job):
+def prework(job: gg.Job):
     config = gg.load_config("./example/构建并读取配置文件/config.json")
     job.set_config(config)
 
-def postwork(job):
+def postwork(job: gg.Job):
     config = job.get_config()
     testcase_num = config["testcase_num"]
     testcase_dir = config["testcase_dir"]
@@ -1366,14 +1381,14 @@ testdata
 import pygrading.general_test as gg
 
 
-def prework(job):
+def prework(job: gg.Job):
     config = gg.load_config("./example/构建并读取评测用例/config.json")
     testcases = gg.create_std_testcase(config["testcase_dir"], config["testcase_num"])
 
     job.set_testcases(testcases)
 
 
-def run(job, testcase):
+def run(job: gg.Job, testcase: gg.TestCases):
     print("######################")
     print("Name:", testcase.name)
     print("score:", testcase.score)
@@ -1412,7 +1427,7 @@ extension: None
 import pygrading.general_test as gg
 
 
-def prework(job):
+def prework(job: gg.Job):
     # 自定义评测用例总分
     testcases = gg.create_testcase(100)
 
@@ -1426,7 +1441,7 @@ def prework(job):
     job.set_testcases(testcases)
 
 
-def run(job, testcase):
+def run(job: gg.Job, testcase: gg.TestCases):
     print("######################")
     print("Name:", testcase.name)
     print("score:", testcase.score)
@@ -1490,7 +1505,7 @@ extension: None
 import pygrading.general_test as gg
 
 
-def prework(job):
+def prework(job: gg.Job):
     testcases = gg.create_testcase(100)
 
     for i in range(1, 5):
@@ -1501,7 +1516,7 @@ def prework(job):
     job.set_testcases(testcases)
 
 
-def run(job, testcase):
+def run(job: gg.Job, testcase: gg.TestCases):
     # 使用Shell命令计算2^n
     cmd = ["echo", "$((", "2", "**", str(testcase.input_src), "))"]
 
@@ -1528,7 +1543,7 @@ def run(job, testcase):
     return result
 
 
-def postwork(job):
+def postwork(job: gg.Job):
     # 打印收集到的每个评测用例的结果
     print(job.get_summary())
 
@@ -1599,7 +1614,7 @@ myjob.start()
 import pygrading.general_test as gg
 
 
-def postwork(job):
+def postwork(job: gg.Job):
     job.verdict("Accept")
     job.score(100)
     job.detail("Detail Message!")
