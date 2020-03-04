@@ -1754,3 +1754,6 @@ result.print()
 因此有些问题不会显示地报错，而是保存在`job.__result`和`job.__summary`对象中。如果发现执行问题，
 可以在评测任务的最后，使用`print(your_job_name.get_result())`和`print(your_job_name.get_summary())`
 查看评测过程中的日志。
+
+**Q: 我在prework函数里面创建了一些变量希望能在run函数中使用，应该如何操作？**  
+**A:** 对于此类情况，可以通过向`gg.load_config()`返回的字典中添加一些您需要的信息组成键值对，再通过`gg.set_connfig()`函数将添加了新的键值对的函数赋值给当前job，即可再当前job中的所有函数中使用这些信息。
