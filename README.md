@@ -102,7 +102,7 @@ PyGrading的运行环境要求 **Python >= 3.7**，不支持Python2。
 <h2 id="change-log" align="center">Change Log</h2>
 <p align="right"><a href="#pygrading"><sup>▴ Back to top</sup></a></p>
 
-**v0.2.5 Change Log (2020.03.04)**  
+**v0.2.6 Change Log (2020.03.04)**  
 1. 现在使用如下方式引用PyGrading即可在定义流程函数时对`job`对象和`testcases`指定类型。
 ```python
 import pygrading.general_test as gg
@@ -120,6 +120,21 @@ def postwork(job: gg.Job):
 <details>
 <summary>以往版本更新日志(点击以展开...)</summary>
 <br>
+
+**v0.2.5 Change Log (2020.03.04)**  
+1. 现在使用如下方式引用PyGrading即可在定义流程函数时对`job`对象和`testcases`指定类型。
+```python
+import pygrading.general_test as gg
+
+def prework(job: gg.Job):
+    pass
+
+def run(job: gg.Job, testcases: gg.TestCases.SingleTestCase):
+    pass
+
+def postwork(job: gg.Job):
+    pass
+```
 
 **v0.2.4 Change Log (2020.03.03)**  
 1. 添加了`gg.job.get_result()`函数，解决了之前只能直接打印结果，无法获得执行结果对象的问题。
