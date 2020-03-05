@@ -85,7 +85,7 @@ class Job(object):
     def rank(self, src: Dict):
         self.__result["rank"] = src
 
-    def images(self, src: str):
+    def images(self, src: List[str]):
         self.__result["images"] = src
 
     def comment(self, src: str):

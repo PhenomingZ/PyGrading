@@ -3,16 +3,9 @@
     Author: Charles Zhang <694556046@qq.com>
     Propose: __init__ for pygrading.
     Coding: UTF-8
-
-    Change Log:
-        **2020.02.09**
-        Add version()!
-
-        **2020.01.26**
-        Create this file!
 """
 
-__version__ = "0.2.6"
+__version__ = "0.2.7"
 
 
 def version():

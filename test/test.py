@@ -1,9 +1,8 @@
 import pygrading.general_test as gg
 
-print(gg.__version__)
+job = gg.job()
 
-gg.utils.bash("sleep 10")
-gg.utils.bash("whoami")
+job.images(["12", "23"])
 
-gg.TestCases.SingleTestCase.name
+job.print()
 
