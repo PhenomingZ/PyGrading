@@ -102,8 +102,12 @@ PyGrading的运行环境要求 **Python >= 3.7**，不支持Python2。
 <h2 id="change-log" align="center">Change Log</h2>
 <p align="right"><a href="#pygrading"><sup>▴ Back to top</sup></a></p>
 
-**v0.2.7 Change Log (2020.03.04)**  
+**v0.2.7 Change Log (2020.03.05)**  
 1. 现在结果设定函数`job.images()`中默认接受的参数类型调整为`List[str]`。
+
+<details>
+<summary>以往版本更新日志(点击以展开...)</summary>
+<br>
 
 **v0.2.6 Change Log (2020.03.04)**  
 1. 现在使用如下方式引用PyGrading即可在定义流程函数时对`job`对象和`testcases`指定类型。
@@ -119,10 +123,6 @@ def run(job: gg.Job, testcases: gg.TestCases.SingleTestCase):
 def postwork(job: gg.Job):
     pass
 ```
-
-<details>
-<summary>以往版本更新日志(点击以展开...)</summary>
-<br>
 
 **v0.2.5 Change Log (2020.03.04)**  
 1. 现在使用如下方式引用PyGrading即可在定义流程函数时对`job`对象和`testcases`指定类型。
