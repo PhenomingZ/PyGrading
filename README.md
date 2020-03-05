@@ -103,7 +103,7 @@ PyGrading的运行环境要求 **Python >= 3.7**，不支持Python2。
 <p align="right"><a href="#pygrading"><sup>▴ Back to top</sup></a></p>
 
 **v0.2.7 Change Log (2020.03.05)**  
-1. 现在结果设定函数`job.images()`中默认接受的参数类型调整为`List[str]`。
+1. 现在结果设定函数`job.images()`中默认接受的参数类型从`str`调整为`List[str]`。
 
 <details>
 <summary>以往版本更新日志(点击以展开...)</summary>
