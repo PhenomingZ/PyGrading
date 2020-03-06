@@ -12,7 +12,7 @@
 				 alt="GitHub stars">
 	</a>
 	<a href="https://pypi.org/project/pygrading/">
-			<img src="https://img.shields.io/badge/pypi-v0.2.8-orange"
+			<img src="https://img.shields.io/badge/pypi-v0.2.9-orange"
 					 alt="Pypi package">
 		</a>
 	<a href="https://github.com/PhenomingZ/PyGrading/issues">
@@ -101,6 +101,9 @@ PyGrading的运行环境要求 **Python >= 3.7**，不支持Python2。
 
 <h2 id="change-log" align="center">Change Log</h2>
 <p align="right"><a href="#pygrading"><sup>▴ Back to top</sup></a></p>
+
+**v0.2.9 Change Log (2020.03.06)**  
+1. 修复了上个版本更新导致的新Bug。
 
 **v0.2.8 Change Log (2020.03.06)**  
 1. 修复了`html.str2html()`函数接受到空字符串时导致程序崩溃的问题。

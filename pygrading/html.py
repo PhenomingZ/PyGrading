@@ -21,7 +21,7 @@
 
 def str2html(src: str) -> str:
     """Switch normal string to a html type"""
-    if not str:
+    if not src:
         return ""
     str_list = src.split("\n")
     while str_list[-1] == "\n" or str_list[-1] == "":
