@@ -1,8 +1,6 @@
 import pygrading.general_test as gg
+from pygrading.html import *
 
-job = gg.job()
+str2html("")
 
-job.images(["12", "23"])
-
-job.print()
 

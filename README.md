@@ -12,7 +12,7 @@
 				 alt="GitHub stars">
 	</a>
 	<a href="https://pypi.org/project/pygrading/">
-			<img src="https://img.shields.io/badge/pypi-v0.2.7-orange"
+			<img src="https://img.shields.io/badge/pypi-v0.2.8-orange"
 					 alt="Pypi package">
 		</a>
 	<a href="https://github.com/PhenomingZ/PyGrading/issues">
@@ -101,6 +101,9 @@ PyGrading的运行环境要求 **Python >= 3.7**，不支持Python2。
 
 <h2 id="change-log" align="center">Change Log</h2>
 <p align="right"><a href="#pygrading"><sup>▴ Back to top</sup></a></p>
+
+**v0.2.8 Change Log (2020.03.06)**  
+1. 修复了`html.str2html()`函数接受到空字符串时导致程序崩溃的问题。
 
 **v0.2.7 Change Log (2020.03.05)**  
 1. 现在结果设定函数`job.images()`中默认接受的参数类型从`str`调整为`List[str]`。
@@ -463,7 +466,7 @@ new_job.print()
 <h2 id="api" align="center">PyGrading API</h2>
 <p align="right"><a href="#pygrading"><sup>▴ Back to top</sup></a></p>
 
-在本节中，将会列出当前版本(v0.2.7)全部的接口与方法，详细使用方法请参考<a href="#tutorials">Tutorials</a>部分。
+在本节中，将会列出当前版本(v0.2.8)全部的接口与方法，详细使用方法请参考<a href="#tutorials">Tutorials</a>部分。
 
 ### pygrading.general_test
 
