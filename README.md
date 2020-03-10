@@ -12,7 +12,7 @@
 				 alt="GitHub stars">
 	</a>
 	<a href="https://pypi.org/project/pygrading/">
-			<img src="https://img.shields.io/badge/pypi-v0.2.9-orange"
+			<img src="https://img.shields.io/badge/pypi-v0.3.0-orange"
 					 alt="Pypi package">
 		</a>
 	<a href="https://github.com/PhenomingZ/PyGrading/issues">
@@ -102,6 +102,40 @@ PyGrading的运行环境要求 **Python >= 3.7**，不支持Python2。
 <h2 id="change-log" align="center">Change Log</h2>
 <p align="right"><a href="#pygrading"><sup>▴ Back to top</sup></a></p>
 
+**v0.3.0 Change Log (2020.03.10)**  
+1. 添加了Docker控制模块，支持批量创建容器集群！
+
+```python
+import pygrading.docker as pk
+
+# 创建节点名列表，也可不指定节点名，而根据集群名自动创建节点名称
+name_list = ["node1", "node2", "node3", "node4"]
+
+# 通过节点数，镜像名称等信息，创建Docker集群
+cluster = pk.Cluster("mpi_cluster", 4, "cg/thread-kernel", network="mpi-network", name_list=name_list)
+
+# 清理宿主机上的同名容器
+cluster.clear()
+
+# 创建集群
+cluster.create()
+
+# 集群执行命令
+ret = cluster.exec("hostname")
+
+print(ret)
+
+"""
+输出如下
+
+[(0, 'b48a431f99e4', 248), (0, '152cfff79baf', 258), (0, '6ca9560f210f', 230), (0, 'e6800022a16e', 240)]
+"""
+```
+
+<details>
+<summary>以往版本更新日志(点击以展开...)</summary>
+<br>
+
 **v0.2.9 Change Log (2020.03.06)**  
 1. 修复了上个版本更新导致的新Bug。
 
@@ -110,10 +144,6 @@ PyGrading的运行环境要求 **Python >= 3.7**，不支持Python2。
 
 **v0.2.7 Change Log (2020.03.05)**  
 1. 现在结果设定函数`job.images()`中默认接受的参数类型从`str`调整为`List[str]`。
-
-<details>
-<summary>以往版本更新日志(点击以展开...)</summary>
-<br>
 
 **v0.2.6 Change Log (2020.03.04)**  
 1. 现在使用如下方式引用PyGrading即可在定义流程函数时对`job`对象和`testcases`指定类型。
