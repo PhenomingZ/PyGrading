@@ -12,7 +12,7 @@
 				 alt="GitHub stars">
 	</a>
 	<a href="https://pypi.org/project/pygrading/">
-			<img src="https://img.shields.io/badge/pypi-v0.3.0-orange"
+			<img src="https://img.shields.io/badge/pypi-v0.3.1-orange"
 					 alt="Pypi package">
 		</a>
 	<a href="https://github.com/PhenomingZ/PyGrading/issues">
@@ -101,6 +101,9 @@ PyGrading的运行环境要求 **Python >= 3.7**，不支持Python2。
 
 <h2 id="change-log" align="center">Change Log</h2>
 <p align="right"><a href="#pygrading"><sup>▴ Back to top</sup></a></p>
+
+**v0.3.1 Change Log (2020.03.11)**  
+1. 添加了批量复制文件到Docker容器的功能，支持在集群中分发文件。
 
 **v0.3.0 Change Log (2020.03.10)**  
 1. 添加了Docker控制模块，支持批量创建容器集群！

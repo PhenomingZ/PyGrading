@@ -10,7 +10,10 @@ cluster.clear()
 
 cluster.create()
 
-ret = cluster.exec("hostname")
+gg.utils.bash("echo 111 > 1.txt")
+
+cluster.copy("1.txt", "/")
+ret = cluster.exec("cat /1.txt")
 
 print(ret)
 

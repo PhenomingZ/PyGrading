@@ -140,6 +140,17 @@ class Container(object):
 
         return exec_result
 
+    def copy(self, src: str, dst: str):
+        # Copy file to container
+        copy_file_result = gg.utils.bash(
+            "docker cp {} {}:{}".format(src, self.name, dst)
+        )
+
+        # Update status
+        self.updateStatus()
+
+        return copy_file_result
+
 
 class Cluster(object):
     """Cluster
@@ -231,6 +242,14 @@ class Cluster(object):
             exec_result.append(ret)
             self.status[i] = self.nodes[i].status
         return exec_result
+
+    def copy(self, src: str, dst: str):
+        copy_result = []
+        for i in range(self.node_num):
+            ret = self.nodes[i].copy(src, dst)
+            copy_result.append(ret)
+            self.status[i] = self.nodes[i].status
+        return copy_result
 
 
 def clear_container(name_list: List[str]):
