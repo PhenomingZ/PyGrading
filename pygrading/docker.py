@@ -11,6 +11,7 @@
 
 import pygrading.general_test as gg
 from typing import Dict, List
+import os
 
 
 class Container(object):
@@ -250,6 +251,68 @@ class Cluster(object):
             copy_result.append(ret)
             self.status[i] = self.nodes[i].status
         return copy_result
+
+
+class Network(object):
+    """Container
+
+    Class of a docker network.
+
+    Attributes:
+        name: Network name.
+        options: Network create options.
+        create_cmd: Network create command.
+        remove_cmd: Network remove command.
+    """
+
+    def __init__(self, name: str, options: List[str] = None):
+        self.name = name
+
+        if options is None:
+            options = []
+
+        self.options = options
+
+        self.create_cmd = " ".join(["docker", "network", "create"] + options + [self.name])
+        self.remove_cmd = " ".join(["docker", "network", "rm", self.name])
+
+    def create(self):
+        return gg.utils.bash(self.create_cmd)
+
+    def remove(self):
+        return gg.utils.bash(self.remove_cmd)
+
+
+class Volume(object):
+    """Container
+
+    Class of a docker volume.
+
+    Attributes:
+        name: Volume name.
+        options: Volume create options.
+        create_cmd: Volume create command.
+        remove_cmd: Volume remove command.
+        mount_point: Volume mount point on host.
+    """
+
+    def __init__(self, name: str, options: List[str] = None):
+        self.name = name
+
+        if options is None:
+            options = []
+
+        self.options = options
+
+        self.create_cmd = " ".join(["docker", "volume", "create"] + options + [self.name])
+        self.remove_cmd = " ".join(["docker", "volume", "rm", self.name])
+        self.mount_point = os.path.join("/var", "lib", "docker", "volumes", self.name, "_data")
+
+    def create(self):
+        return gg.utils.bash(self.create_cmd)
+
+    def remove(self):
+        return gg.utils.bash(self.remove_cmd)
 
 
 def clear_container(name_list: List[str]):
