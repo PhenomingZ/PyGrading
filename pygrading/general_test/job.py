@@ -94,6 +94,9 @@ class Job(object):
     def detail(self, src: str):
         self.__result["detail"] = src
 
+    def secret(self, src: str):
+        self.__result["secret"] = src
+
     def HTML(self, src: str):
         self.__result["HTML"] = src
 

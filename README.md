@@ -12,7 +12,7 @@
 				 alt="GitHub stars">
 	</a>
 	<a href="https://pypi.org/project/pygrading/">
-			<img src="https://img.shields.io/badge/pypi-v0.3.2-orange"
+			<img src="https://img.shields.io/badge/pypi-v0.3.3-orange"
 					 alt="Pypi package">
 		</a>
 	<a href="https://github.com/PhenomingZ/PyGrading/issues">
@@ -101,6 +101,9 @@ PyGrading的运行环境要求 **Python >= 3.7**，不支持Python2。
 
 <h2 id="change-log" align="center">Change Log</h2>
 <p align="right"><a href="#pygrading"><sup>▴ Back to top</sup></a></p>
+
+**v0.3.3 Change Log (2020.03.11)**  
+1. 向`Job`类中补充了`secret`函数，用于设定输出JSON串的`secret`字段。
 
 **v0.3.2 Change Log (2020.03.11)**  
 1. 添加了Docker Network和Docker Volume功能，可快速创建容器网络和数据卷。

@@ -1,18 +1,12 @@
 import pygrading.general_test as gg
-from pygrading.html import *
-import pygrading.docker as pk
 
-web = pk.Network("net_create_test")
+testcases = gg.create_testcase(100)
 
-web.create()
+for i in range(1, 5):
+    input_src = i
+    output_src = pow(2, i)
 
-web.remove()
+    # 使用append()方法向testcases追加评测用例
+    testcases.append("TestCase{}".format(i), 25, input_src, output_src)
 
-vol = pk.Volume("test_volume")
-
-vol.create()
-
-print(vol.mount_point)
-
-vol.remove()
-
+print(str(testcases))

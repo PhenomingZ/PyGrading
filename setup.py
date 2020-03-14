@@ -12,7 +12,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="pygrading",
-    version="0.3.2",
+    version="0.3.3",
     author="Charles Zhang",
     author_email="694556046@qq.com",
     description="A Python ToolBox for CourseGrading platform.",
