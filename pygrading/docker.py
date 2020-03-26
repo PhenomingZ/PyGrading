@@ -163,7 +163,7 @@ class Cluster(object):
         status: Cluster node status.
         nodes: Containers in this cluster.
     """
-
+    # TODO 启动集群时，network应能接受network类型，而不是字符串
     def __init__(self, name: str, node_num: int, image_name: str, cmd: str = "bash", network: str = "",
                  volumes: Dict = None, options: List[str] = None, name_list: List[str] = None,
                  remove_when_stop: bool = False):

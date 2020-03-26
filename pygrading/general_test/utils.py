@@ -3,13 +3,6 @@
     Author: Charles Zhang <694556046@qq.com>
     Propose: A tool box contains many frequently used functions.
     Coding: UTF-8
-
-    Change Log:
-        **2020.02.02**
-        Add option to writefile function.
-
-        **2020.01.27**
-        Create this file!
 """
 
 import os
@@ -19,8 +12,52 @@ import subprocess
 from typing import Tuple, List
 
 
+class Exec(object):
+    """Exec
+
+    A Exec class instance contains all exec result.
+
+    Attributes:
+        cmd: Exec command.
+        stdout: Standard output.
+        stderr: Standard error.
+        exec_time: Execute time.
+        returncode: Return code.
+    """
+
+    def __init__(self, cmd: str, stdout: str, stderr: str, exec_time: int, returncode: int):
+        self.cmd = cmd
+        self.stdout = stdout
+        self.stderr = stderr
+        self.exec_time = exec_time
+        self.returncode = returncode
+
+
+def exec(cmd: str, input_str: str = "") -> Exec:
+    """Run a shell command
+
+    Run a shell command with bash.
+
+    Args:
+        cmd: A command string.
+        input_str: Input resources for stdin.
+
+    Returns:
+        exec_result: A Exec instance.
+    """
+    begin = time.time()
+    process = subprocess.Popen(cmd, shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                               encoding="utf8")
+    out, err = process.communicate(input_str)
+    end = time.time()
+    exec_time = int((end - begin) * 1000)
+    return Exec(cmd, out, err, exec_time, process.returncode)
+
+
 def bash(cmd: str) -> Tuple:
     """Run a shell command
+
+    ### This function is obsolete and will be removed in future release! ###
 
     Run a shell command with bash.
 

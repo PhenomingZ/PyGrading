@@ -1,12 +1,14 @@
 import pygrading.general_test as gg
 
-testcases = gg.create_testcase(100)
+ret = gg.utils.exec("python3 ./test/input_test.py", "Charles Zhang!")
 
-for i in range(1, 5):
-    input_src = i
-    output_src = pow(2, i)
-
-    # 使用append()方法向testcases追加评测用例
-    testcases.append("TestCase{}".format(i), 25, input_src, output_src)
-
-print(str(testcases))
+print("======= Stdout =======")
+print(ret.stdout)
+print("======= Stderr =======")
+print(ret.stderr)
+print("======== Cmd =========")
+print(ret.cmd)
+print("======== Time ========")
+print(ret.exec_time)
+print("===== ReturnCode =====")
+print(ret.returncode)

@@ -12,7 +12,7 @@
 				 alt="GitHub stars">
 	</a>
 	<a href="https://pypi.org/project/pygrading/">
-			<img src="https://img.shields.io/badge/pypi-v0.3.3-orange"
+			<img src="https://img.shields.io/badge/pypi-v0.4.0-orange"
 					 alt="Pypi package">
 		</a>
 	<a href="https://github.com/PhenomingZ/PyGrading/issues">
@@ -102,6 +102,69 @@ PyGrading的运行环境要求 **Python >= 3.7**，不支持Python2。
 <h2 id="change-log" align="center">Change Log</h2>
 <p align="right"><a href="#pygrading"><sup>▴ Back to top</sup></a></p>
 
+**v0.4.0 Change Log (2020.03.26)**  
+1. 添加了`gg.utils.exec(cmd: str, stdin: str = "")`函数
+
+该函数用于执行Shell命令，相较于`gg.utils.bash(cmd)`函数新增特性如下：
+    1. 支持区分`stdout`、`stderr`输出的内容；
+    2. 支持直接添加标准输入字符串内容；
+    3. 支持快速查看所执行的命令；
+    4. 返回值优化为一个专用类，方便查看返回值包含的内容。
+
+样例代码
+```python
+import pygrading.general_test as gg
+
+ret = gg.utils.exec("python3 ./test/input_test.py", "Charles Zhang!")
+
+print("======= Stdout =======")
+print(ret.stdout)
+print("======= Stderr =======")
+print(ret.stderr)
+print("======== Cmd =========")
+print(ret.cmd)
+print("======== Time ========")
+print(ret.exec_time)
+print("===== ReturnCode =====")
+print(ret.returncode)
+```
+
+`input_test.py`中的内容如下：
+
+```python
+# 标准输出
+name = input("what is your name?\n")
+print(name)
+
+# 错误输出
+div = 1 // 0
+```
+
+执行后输出如下：
+
+```
+======= Stdout =======
+what is your name?
+Charles Zhang!
+
+======= Stderr =======
+Traceback (most recent call last):
+  File "./test/input_test.py", line 6, in <module>
+    div = 1 // 0
+ZeroDivisionError: integer division or modulo by zero
+
+======== Cmd =========
+python3 ./test/input_test.py
+======== Time ========
+60
+===== ReturnCode =====
+1
+```
+
+<details>
+<summary>以往版本更新日志(点击以展开...)</summary>
+<br>
+
 **v0.3.3 Change Log (2020.03.11)**  
 1. 向`Job`类中补充了`secret`函数，用于设定输出JSON串的`secret`字段。
 
@@ -140,10 +203,6 @@ print(ret)
 [(0, 'b48a431f99e4', 248), (0, '152cfff79baf', 258), (0, '6ca9560f210f', 230), (0, 'e6800022a16e', 240)]
 """
 ```
-
-<details>
-<summary>以往版本更新日志(点击以展开...)</summary>
-<br>
 
 **v0.2.9 Change Log (2020.03.06)**  
 1. 修复了上个版本更新导致的新Bug。
