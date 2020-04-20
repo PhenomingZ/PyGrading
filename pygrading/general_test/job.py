@@ -27,6 +27,9 @@ from typing import Dict, List
 import json
 
 
+# TODO 更新最佳实践，集成Job类，在Job类中添加prework、run、postwork的方法用于被继承
+
+
 # noinspection PyBroadException
 class Job(object):
     """Job
@@ -34,13 +37,13 @@ class Job(object):
     A Job is a work flow, using run() function to handle each testcase.
 
     Attributes:
-        __run: A function can handle each testcase.
-        __prework: A function using to handel pre work. Default None.
-        __postwork: A function using to handel post work. Default None.
-        __testcases: An list of test cases. Default None.
-        __config: A dict of config information. Default None.
-        __terminate: A boolean when __terminate is True, job will exit immediately.
-        __result: A dict of grading result.For Example:
+        run: A function can handle each testcase.
+        prework: A function using to handel pre work. Default None.
+        postwork: A function using to handel post work. Default None.
+        testcases: An list of test cases. Default None.
+        config: A dict of config information. Default None.
+        terminate: A boolean when __terminate is True, job will exit immediately.
+        result: A dict of grading result.For Example:
                 {
                     "verdict":"可选，基本判定，一般为简要的评测结果描述或者简写，例如OJ系统的AC、PE、CE等",
                     "rank":{
@@ -62,110 +65,119 @@ class Job(object):
 
     def __init__(self, run=None, prework=None, testcases: TestCases = TestCases(), config: Dict = None, postwork=None):
         """Init Job instance"""
-        self.__run = run
-        self.__prework = prework
-        self.__postwork = postwork
-        self.__testcases = testcases
-        self.__config = config
-        self.__terminate = False
-        self.__result = {
+        self.run = run
+        self.prework = prework
+        self.postwork = postwork
+        self.testcases = testcases
+        self.config = config
+        self.terminate = False
+        self.result = {
             "verdict": "Unknown Error",
             "score": "0",
             "rank": {"rank": "-1"},
             "HTML": "enable"
         }
-        self.__summary = []
+        self.summary = []
 
     def verdict(self, src: str):
-        self.__result["verdict"] = src
+        self.result["verdict"] = src
 
     def score(self, src: int):
-        self.__result["score"] = str(src)
+        self.result["score"] = str(src)
 
     def rank(self, src: Dict):
-        self.__result["rank"] = src
+        self.result["rank"] = src
 
     def images(self, src: List[str]):
-        self.__result["images"] = src
+        self.result["images"] = src
 
     def comment(self, src: str):
-        self.__result["comment"] = src
+        self.result["comment"] = src
 
     def detail(self, src: str):
-        self.__result["detail"] = src
+        self.result["detail"] = src
 
     def secret(self, src: str):
-        self.__result["secret"] = src
+        self.result["secret"] = src
 
     def HTML(self, src: str):
-        self.__result["HTML"] = src
+        self.result["HTML"] = src
 
     def custom(self, key: str, value: str):
-        self.__result[key] = value
+        self.result[key] = value
 
     def get_summary(self):
-        return self.__summary
+        return self.summary
 
     def get_result(self):
-        return self.__result
+        return self.result
 
     def get_config(self):
-        return self.__config
+        return self.config
 
     def get_total_score(self):
         ret = 0
-        for i in self.__summary:
+        for i in self.summary:
             if type(i) == dict and "score" in i:
                 ret += float(i["score"])
         return int(ret)
 
     def get_total_time(self):
         ret = 0
-        for i in self.__summary:
+        for i in self.summary:
             if type(i) == dict and "time" in i:
                 ret += int(i["time"])
         return int(ret)
 
     def set_testcases(self, testcases: TestCases):
-        self.__testcases = testcases
+        self.testcases = testcases
 
     def set_config(self, config: Dict):
-        self.__config = config
+        self.config = config
+
+    def set_prework(self, prework):
+        self.prework = prework
+
+    def set_run(self, run):
+        self.run = run
+
+    def set_postwork(self, postwork):
+        self.postwork = postwork
 
     def terminate(self):
-        self.__terminate = True
+        self.terminate = True
 
     def start(self) -> List:
         """Start a job and return summary"""
-        if self.__prework:
-            self.__prework(self)
+        if self.prework:
+            self.prework(self)
 
-        if self.__terminate:
+        if self.terminate:
             return self.get_summary()
 
-        testcases = self.__testcases.get_testcases()
+        testcases = self.testcases.get_testcases()
         for case in testcases:
             try:
-                if self.__run:
-                    ret = self.__run(self, case)
-                    self.__summary.append(ret)
+                if self.run:
+                    ret = self.run(self, case)
+                    self.summary.append(ret)
             except Exception as e:
-                self.__summary.append({
+                self.summary.append({
                     "name": case.name,
                     "score": 0,
                     "verdict": "Runtime Error",
                     "output": str(e)
                 })
             finally:
-                if self.__terminate:
+                if self.terminate:
                     return self.get_summary()
-        if self.__postwork:
-            self.__postwork(self)
+        if self.postwork:
+            self.postwork(self)
 
         return self.get_summary()
 
     def print(self):
-        str_json = json.dumps(self.__result)
+        str_json = json.dumps(self.result)
         print(str_json)
 
 
