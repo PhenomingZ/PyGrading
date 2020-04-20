@@ -12,7 +12,7 @@
 				 alt="GitHub stars">
 	</a>
 	<a href="https://pypi.org/project/pygrading/">
-			<img src="https://img.shields.io/badge/pypi-v0.4.0-orange"
+			<img src="https://img.shields.io/badge/pypi-v0.4.1-orange"
 					 alt="Pypi package">
 		</a>
 	<a href="https://github.com/PhenomingZ/PyGrading/issues">
@@ -101,6 +101,10 @@ PyGrading的运行环境要求 **Python >= 3.7**，不支持Python2。
 
 <h2 id="change-log" align="center">Change Log</h2>
 <p align="right"><a href="#pygrading"><sup>▴ Back to top</sup></a></p>
+
+**v0.4.1 Change Log (2020.04.20)**  
+1. 将`gg.Job`类中的私有属性更新为公有属性，可以依据需求灵活配置。
+2. 为`gg.Job`类添加了`set_prework()`、`set_run()`和`set_postwork()`函数，同时更新了该模块使用的最佳实践，样例将在后续版本中更新至文档。
 
 **v0.4.0 Change Log (2020.03.26)**  
 1. 添加了`gg.utils.exec(cmd: str, stdin: str = "")`函数
