@@ -42,7 +42,7 @@ class Job(object):
         postwork: A function using to handel post work. Default None.
         testcases: An list of test cases. Default None.
         config: A dict of config information. Default None.
-        terminate: A boolean when __terminate is True, job will exit immediately.
+        is_terminate: A boolean when __terminate is True, job will exit immediately.
         result: A dict of grading result.For Example:
                 {
                     "verdict":"可选，基本判定，一般为简要的评测结果描述或者简写，例如OJ系统的AC、PE、CE等",
@@ -70,7 +70,7 @@ class Job(object):
         self.postwork = postwork
         self.testcases = testcases
         self.config = config
-        self.terminate = False
+        self.is_terminate = False
         self.result = {
             "verdict": "Unknown Error",
             "score": "0",
@@ -145,14 +145,14 @@ class Job(object):
         self.postwork = postwork
 
     def terminate(self):
-        self.terminate = True
+        self.is_terminate = True
 
     def start(self) -> List:
         """Start a job and return summary"""
         if self.prework:
             self.prework(self)
 
-        if self.terminate:
+        if self.is_terminate:
             return self.get_summary()
 
         testcases = self.testcases.get_testcases()
@@ -169,7 +169,7 @@ class Job(object):
                     "output": str(e)
                 })
             finally:
-                if self.terminate:
+                if self.is_terminate:
                     return self.get_summary()
         if self.postwork:
             self.postwork(self)
