@@ -54,6 +54,13 @@
 2. 支持适用于通用评测题和虚拟桌面环境的评测结果JSON串的快速生成；
 2. 支持HTML标签文本内容的快速生成，绝对好用的HTML生成工具；
 
+**通用评测开发模板 CG-Template** CG-Template是一个基于PyGrading进行快速开发的完整项目模板，提供：
+* 工程化的项目模板，实现标准化开发
+* 评测内核Docker镜像的自动构建和导出
+* 评测内核自动测试
+
+下载地址：[CG-Template](https://gitlab.educg.net/wangmingjian/cg-template)
+
 希望使用本工具能够提高大家的工作效率，祝各位开发顺利！
 
 <h2 id="install" align="center">Install</h2>
