@@ -28,8 +28,9 @@
 <p align="center">
 	<a href="#what-is-it">What is it</a> •
 	<a href="#install">Install</a> •
+	<a href="#quick-start">Quick Start</a> •
 	<a href="#change-log">Change Log</a> •
-	<a href="#getting-start">Getting Start</a> •
+	<a href="#getting-start">Basic Usage</a> •
 	<a href="#api">API</a> •
 	<a href="#tutorials">Tutorials</a> •
 	<a href="#faq">FAQ</a> •
@@ -105,6 +106,12 @@ docker run -it --name pygrading -p 8888:8888 cg/pygrading_env
 > `8888`端口为Jupyter服务所需，如果被占用可以映射为其他端口
 
 PyGrading的运行环境要求 **Python >= 3.7**，不支持Python2。
+
+<h2 id="quick-start" align="center">Quick Start</h2>
+<p align="right"><a href="#pygrading"><sup>▴ Back to top</sup></a></p>
+
+test
+
 
 <h2 id="change-log" align="center">Change Log</h2>
 <p align="right"><a href="#pygrading"><sup>▴ Back to top</sup></a></p>
@@ -293,7 +300,7 @@ gg.version()
 
 </details>
 
-<h2 id="getting-start" align="center">Getting Start</h2>
+<h2 id="basic-usage" align="center">Basic Usaget</h2>
 <p align="right"><a href="#pygrading"><sup>▴ Back to top</sup></a></p>
 
 ### 通用评测内核构建
