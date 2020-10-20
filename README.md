@@ -131,6 +131,7 @@ def postwork(job: gg.Job):
 	job.score(total_score) # 设定结果总分
 	job.verdict("Accept" if total_score == 100 else "Wrong Answer") # 设定评测结论
 
+# 初始化任务并打印结果
 job = gg.job(prework, run, postwork)
 job.start()
 job.print()
