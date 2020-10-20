@@ -102,8 +102,44 @@ PyGrading的运行环境要求 **Python >= 3.7**，不支持Python2。
 <h2 id="quick-start" align="center">Quick Start</h2>
 <p align="right"><a href="#pygrading"><sup>▴ Back to top</sup></a></p>
 
-test
+下面从一段简单的代码开始，感受使用PyGrading创建通用评测内核的方便与快捷：
 
+```python
+import pygrading.general_test as gg
+
+# 待评测程序（判断输入是否为偶数）
+def isEvenNum(num):
+	return num % 2 == 0
+
+# 通用评测预处理阶段
+def prework(job: gg.Job):
+	testcases = gg.create_testcase(100) # 创建一个测试用例对象并添加测试用例
+
+	testcases.append(name="测试用例1", score=50, input_src=1, output_src=False)
+	testcases.append(name="测试用例2", score=50, input_src=2, output_src=True)
+
+	job.set_testcases(testcases) # 将测试用例和评测任务绑定
+
+# 通用评测测试用例执行
+def run(job: gg.Job, testcase: gg.TestCases.SingleTestCase):
+	output = isEvenNum(testcase.input_src) # 执行待评测程序并返回结果
+	return {"score": testcase.score if output == testcase.output_src else 0}
+
+# 通用评测结果处理
+def postwork(job: gg.Job):
+	total_score = job.get_total_score() # 获取总分
+	job.score(total_score) # 设定结果总分
+	job.verdict("Accept" if total_score == 100 else "Wrong Answer") # 设定评测结论
+
+job = gg.job(prework, run, postwork)
+job.start()
+job.print()
+```
+
+输出结果为：
+```python
+{"verdict": "Accept", "score": "100", "rank": {"rank": "-1"}, "HTML": "enable"}
+```
 
 <h2 id="change-log" align="center">Change Log</h2>
 <p align="right"><a href="#pygrading"><sup>▴ Back to top</sup></a></p>
