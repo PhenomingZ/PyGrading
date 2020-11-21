@@ -25,9 +25,6 @@ CourseGrading(希冀)信息类专业教学与科研一体化平台开发用Pytho
 	<a href="#install">Install</a> •
 	<a href="#quick-start">Quick Start</a> •
 	<a href="#change-log">Change Log</a> •
-	<a href="#getting-start">Basic Usage</a> •
-	<a href="#api">API</a> •
-	<a href="#tutorials">Tutorials</a> •
 	<a href="#faq">FAQ</a> •
 	<a href="http://www.educg.net/" target="_blank">CG Site</a>
 </p>
@@ -59,7 +56,7 @@ PyGrading的运行环境要求 **Python >= 3.5**，不支持Python2。
 
 ## Quick Start
 
-下面从一段简单的代码开始，感受使用PyGrading创建通用评测内核的方便与快捷：
+下面从一段简单的代码开始，使用PyGrading创建一个简单的通用评测内核：
 
 ```python
 import pygrading as gg
@@ -76,6 +73,13 @@ job.comment("Hello World")
 job.print()
 ```
 
+这样就可以得到一个评测结果：
+```json
+{"verdict": "Accept", "score": "100", "rank": {"rank": "-1.0"}, "HTML": "enable", "comment": "Hello World"}
+```
+
+详细的使用手册请参考：[]()
+
 ## Change Log
 
 **v1.0.0 正式版 Change Log (2020.11.21)**  
@@ -90,4 +94,5 @@ job.print()
 9. 添加了一键打包评测内核功能，打包好的评测内核可以通内核和扩展上传。
 10.  优化了评测过程函数的参数要求，支持不带参数的简单过程函数。
 
+## FAQ
 
