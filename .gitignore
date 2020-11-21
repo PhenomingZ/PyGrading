@@ -4,5 +4,6 @@ dist
 package
 .DS_Store
 cg-kernel
+docs
 
 __pycache__
