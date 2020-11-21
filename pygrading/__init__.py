@@ -1,12 +1,14 @@
 """
     Name: __init__.py
     Author: Charles Zhang <694556046@qq.com>
-    Propose: __init__ for pygrading.
+    Propose: A Python ToolBox for CourseGrading platform
     Coding: UTF-8
 """
 
-__version__ = "0.4.2"
+from pygrading.job import Job
+from pygrading.utils import exec, loge
+from pygrading.configuration import load_config
+from pygrading.testcase import create_testcase, create_std_testcase, TestCases
 
-
-def version():
-    print(__version__)
+__all__ = ["Job", "load_config", "create_testcase", "create_std_testcase", "TestCases", "exec", "loge"]
+__version__ = "v1.0.1"
