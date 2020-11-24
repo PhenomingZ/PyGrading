@@ -180,12 +180,3 @@ class TestJob(unittest.TestCase):
             """"HTML": "enable", "comment": "test", "detail": "test", "secret": "test"}"""
         )
         print("正确添加所有字段字段")
-
-        job.comment("test\ntest")
-        job.print()
-        self.assertEqual(
-            job.print(return_str=True),
-            """{"verdict": "Accepted", "score": "100", "rank": {"rank": "-1.0"}, """ +
-            """"HTML": "enable", "comment": "test<br>test", "detail": "test", "secret": "test"}"""
-        )
-        print("正确自动转化换行为html格式")
