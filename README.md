@@ -7,16 +7,16 @@ CourseGrading(希冀)信息类专业教学与科研一体化平台开发用Pytho
 
 <p>
 	<a href="http://www.educg.net/">
-		<img src="https://img.shields.io/badge/site-CG-red"
-				 alt="Official Site">
+		<img src="https://img.shields.io/badge/site-CG-red" alt="Official Site">
 	</a>
 	<a href="https://pypi.org/project/pygrading/">
-			<img src="https://img.shields.io/badge/pypi-v1.0.0-orange"
-					 alt="Pypi package">
-		</a>
+		<img src="https://img.shields.io/badge/pypi-v1.0.0-orange" alt="Pypi package">
+	</a>
+	<a href='https://pygrading.readthedocs.io/en/latest/?badge=latest'>
+		<img src='https://readthedocs.org/projects/pygrading/badge/?version=latest' alt='Documentation Status' />
+	</a>
 	<a href="https://github.com/PhenomingZ/PyGrading/blob/master/LICENSE">
-				<img src="https://img.shields.io/github/license/PhenomingZ/PyGrading"
-						 alt="GitHub license">
+		<img src="https://img.shields.io/github/license/PhenomingZ/PyGrading" alt="GitHub license">
 	</a>
 </p>
 
@@ -81,6 +81,9 @@ job.print()
 详细的使用手册请参考：[]()
 
 ## Change Log
+
+**v1.0.1 Change Log (2020.11.24)**  
+1. 去除了渲染结果时默认使用`str2html`的特性，因为其可能会导致JS失效。
 
 **v1.0.0 正式版 Change Log (2020.11.21)**  
 1. 重构了测试版底层架构，简化了导入步骤和部分包的使用方式。

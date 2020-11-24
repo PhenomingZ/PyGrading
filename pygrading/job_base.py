@@ -8,7 +8,6 @@
 import json
 import types
 
-from pygrading.html import str2html
 from pygrading.testcase import TestCases
 from pygrading.exception import FunctionsTypeError, FieldMissingError, DataTypeError
 
@@ -157,17 +156,17 @@ class JobBase(object):
         self.__json["HTML"] = str(self.__HTML)
 
         if self.__comment:
-            self.__json["comment"] = str2html(str(self.__comment))
+            self.__json["comment"] = str(self.__comment)
         elif "comment" in self.__json:
             del self.__json["comment"]
 
         if self.__detail:
-            self.__json["detail"] = str2html(str(self.__detail))
+            self.__json["detail"] = str(self.__detail)
         elif "detail" in self.__json:
             del self.__json["detail"]
 
         if self.__secret:
-            self.__json["secret"] = str2html(str(self.__secret))
+            self.__json["secret"] = str(self.__secret)
         elif "secret" in self.__json:
             del self.__json["secret"]
 
