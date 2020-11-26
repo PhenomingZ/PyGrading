@@ -5,7 +5,6 @@
     Coding: UTF-8
 '''
 
-# 在setup.py的目录下，每次提交记得修改版本号，并删除之前生成的文件
 # python setup.py sdist bdist_wheel
 # python -m twine upload dist/*
 
