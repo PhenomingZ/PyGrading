@@ -7,8 +7,10 @@
 
 from pygrading.job import Job
 from pygrading.utils import exec, loge
+from pygrading.render import render_template
 from pygrading.configuration import load_config
 from pygrading.testcase import create_testcase, create_std_testcase, TestCases
 
-__all__ = ["Job", "load_config", "create_testcase", "create_std_testcase", "TestCases", "exec", "loge"]
-__version__ = "v1.0.1"
+__all__ = ["Job", "load_config", "create_testcase", "create_std_testcase", "TestCases",
+           "exec", "loge", "render_template"]
+__version__ = "v1.1.0"

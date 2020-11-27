@@ -1,3 +1,5 @@
+import pygrading as gg
+
 from pygrading import Job
 
 

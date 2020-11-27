@@ -26,7 +26,13 @@ setuptools.setup(
     url='https://gitlab.educg.net/zhangmingyuan/PyGrading',
     packages=['pygrading'],
     package_data={
-        'pygrading': ['static/.gitignore', 'static/*', 'static/kernel/*'],
+        'pygrading': [
+            'static/.gitignore',
+            'static/*',
+            'static/kernel/*',
+            'static/kernel/templates/*',
+            'static/kernel/templates/html/*',
+        ],
     },
     classifiers=[
         'Programming Language :: Python :: 3',
@@ -34,7 +40,7 @@ setuptools.setup(
     ],
     python_requires='>=3.5',
     install_requires=[
-        'tqdm>=4.52.0',
+        'Jinja2>=2.11.2',
         'fire>=0.3.1'
     ],
 )
