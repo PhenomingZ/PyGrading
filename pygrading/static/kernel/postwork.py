@@ -22,3 +22,7 @@ def postwork(job: Job) -> dict:
     job.verdict("Accepted" if total_score == 100 else "Wrong Answer")
     job.score(total_score)
     job.comment("Mission Complete")
+
+    # 渲染 HTML 模板页面（可选）
+    # 被渲染的页面应位于 kernel/templates/html 目录下
+    job.detail(gg.render_template("index.html"))
