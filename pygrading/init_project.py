@@ -41,7 +41,7 @@ def init(path=os.getcwd(), name="cg-kernel"):
     copy_file("static/kernel/run.py", new_project_kernel_path, "run.py")
     copy_file("static/kernel/postwork.py", new_project_kernel_path, "postwork.py")
     copy_file("static/kernel/templates/__init__.py", new_project_template_path, "__init__.py")
-    copy_file("static/kernel/templates/html/base.html", html_template_path, "base.html")
+    copy_file("static/kernel/templates/html/base.jinja", html_template_path, "base.jinja")
     copy_file("static/kernel/templates/html/index.html", html_template_path, "index.html")
     print("Copy files success")
 
