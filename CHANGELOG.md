@@ -1,5 +1,10 @@
 ## Change Log
 
+**v1.1.5 渲染更新 Change Log (2020.11.28)**  
+1. 添加了Bootstrap4和Jinja2模板引擎的支持。
+2. 支持了使用`gg.render_template()`方法渲染HTML模板！
+3. 添加了默认渲染模板，该模板可使用`python -m pygrading init`创建，位于新建项目中的`templates/html/index.html`
+
 **v1.0.1 Change Log (2020.11.24)**  
 1. 去除了渲染结果时默认使用`str2html`的特性，因为其可能会导致JS失效。
 
