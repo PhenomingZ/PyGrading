@@ -25,4 +25,4 @@ def postwork(job: Job) -> dict:
 
     # 渲染 HTML 模板页面（可选）
     # 被渲染的页面应位于 kernel/templates/html 目录下
-    job.detail(gg.render_template("index.html"))
+    job.detail(gg.render_template("index.html", author="Charles Zhang"))

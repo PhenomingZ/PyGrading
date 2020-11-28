@@ -1,21 +1,17 @@
 {% extends "base.jinja" %}
 
 {% block body %}
-<div class="alert alert-success" role="alert">
-    <h4 class="alert-heading">
-        Well Done!
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </h4>
-    <p>
-        恭喜您完成了一个评测内核，请在此处编写 HTML 页面，本模板默认添加了 Bootstrap4 的支持！<br>
-        如果不需要 Bootstrap4 相关的内容，请删除本模板第一行的 extends 语句。<br>
-    </p>
-    <hr>
-    <p class="mb-0">
-        目前由于 JQuery 版本较低，在作业提交页面无法正常使用 Bootstrap4 的 JS 文件，
-        要查看页面交互效果，请到学生端在线作业页面~ 祝顺利 :-)
-    </p>
+<div class="card text-center shadow">
+    <div class="card-header">
+        PyGrading
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Well Done!</h5>
+        <p class="card-text">Hello, world! This is a new grading kernel with Bootstrap4.</p>
+        <a href="https://gitlab.educg.net/zhangmingyuan/PyGrading" class="btn btn-primary">Try Pygrading</a>
+    </div>
+    <div class="card-footer text-muted">
+        {{ author }}
+    </div>
 </div>
 {% endblock %}
