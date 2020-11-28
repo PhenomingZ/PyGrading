@@ -10,7 +10,7 @@ CourseGrading(希冀)信息类专业教学与科研一体化平台开发用Pytho
 		<img src="https://img.shields.io/badge/site-CG-red" alt="Official Site">
 	</a>
 	<a href="https://pypi.org/project/pygrading/">
-		<img src="https://img.shields.io/badge/pypi-v1.0.1-orange" alt="Pypi package">
+		<img src="https://img.shields.io/badge/pypi-v1.1.2-orange" alt="Pypi package">
 	</a>
 	<a href='https://pygrading.readthedocs.io/en/latest/?badge=latest'>
 		<img src='https://readthedocs.org/projects/pygrading/badge/?version=latest' alt='Documentation Status' />

@@ -18,11 +18,11 @@ class Render(object):
         )
 
     def render(self, template_name, **args):
-        return self.env.get_template(template_name).render(**args)
+        return self.env.get_template(template_name).render(args)
 
 
 def render_template(template_name="index.html", package_name="templates", package_path="html", **args):
 
     render = Render(package_name, package_path)
 
-    return render.render(template_name)
+    return render.render(template_name, **args)
