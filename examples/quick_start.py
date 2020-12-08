@@ -1,6 +1,6 @@
-import pygrading as gg
+from pygrading import Job
 
-job = gg.Job()
+job = Job()
 
 job.verdict("Accept")
 job.score(100)

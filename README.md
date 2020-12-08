@@ -59,10 +59,10 @@ PyGrading的运行环境要求 **Python >= 3.5**，不支持Python2。
 下面从一段简单的代码开始，使用PyGrading创建一个简单的通用评测内核：
 
 ```python
-import pygrading as gg
+from pygrading import Job
 
 # 创建一个任务对象
-job = gg.Job()
+job = Job()
 
 # 设定任务得分、评定结果和评语
 job.score(100)
