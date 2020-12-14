@@ -6,6 +6,7 @@
 """
 
 import os
+import sys
 import time
 import shutil
 import base64
@@ -200,9 +201,9 @@ def loge(message: str, config: dict = {}, key: str = "debug"):
 
     env = os.environ.get("PYGRADING_DEBUG")
     if env and env.lower() == "true":
-        print(message)
+        print(message, file=sys.stderr)
         return
 
     if key in config and config[key]:
-        print(message)
+        print(message, file=sys.stderr)
         return

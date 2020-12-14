@@ -13,4 +13,4 @@ from pygrading.testcase import create_testcase, create_std_testcase, TestCases
 
 __all__ = ["Job", "load_config", "create_testcase", "create_std_testcase", "TestCases",
            "exec", "loge", "render_template"]
-__version__ = "v1.1.6"
+__version__ = "v1.1.7"

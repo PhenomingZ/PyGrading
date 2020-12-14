@@ -1,5 +1,8 @@
 ## Change Log
 
+**v1.1.7 Change Log (2020.12.14)**  
+1. 将`gg.utils.loge()`输出位置从`stdout`定向到了`stderr`。
+
 **v1.1.6 Change Log (2020.12.14)**  
 1. 为`gg.utils.loge()`绑定了环境变量`PYGRADING_DEBUG`，该变量为`True`时`loge`生效。
 
