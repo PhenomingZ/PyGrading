@@ -10,7 +10,7 @@ CourseGrading(希冀)信息类专业教学与科研一体化平台开发用Pytho
 		<img src="https://img.shields.io/badge/site-CG-red" alt="Official Site">
 	</a>
 	<a href="https://pypi.org/project/pygrading/">
-		<img src="https://img.shields.io/badge/pypi-v1.1.5-orange" alt="Pypi package">
+		<img src="https://img.shields.io/badge/pypi-v1.1.6-orange" alt="Pypi package">
 	</a>
 	<a href='https://pygrading.readthedocs.io/en/latest/?badge=latest'>
 		<img src='https://readthedocs.org/projects/pygrading/badge/?version=latest' alt='Documentation Status' />
@@ -81,6 +81,9 @@ job.print()
 详细的使用手册请参考：[PyGrading开发文档](https://pygrading.readthedocs.io/en/latest/?badge=latest)
 
 ## Change Log
+
+**v1.1.6 Change Log (2020.12.14)**  
+1. 为`gg.utils.loge()`绑定了环境变量`PYGRADING_DEBUG`，该变量为`True`时`loge`生效。
 
 **v1.1.5 渲染更新 Change Log (2020.11.28)**  
 1. 添加了Bootstrap4和Jinja2模板引擎的支持。

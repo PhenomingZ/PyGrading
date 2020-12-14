@@ -1,5 +1,8 @@
 ## Change Log
 
+**v1.1.6 Change Log (2020.12.14)**  
+1. 为`gg.utils.loge()`绑定了环境变量`PYGRADING_DEBUG`，该变量为`True`时`loge`生效。
+
 **v1.1.5 渲染更新 Change Log (2020.11.28)**  
 1. 添加了Bootstrap4和Jinja2模板引擎的支持。
 2. 支持了使用`gg.render_template()`方法渲染HTML模板！

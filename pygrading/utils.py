@@ -195,11 +195,14 @@ def get_image_element(path):
     return img(src=src, width="256")
 
 
-def loge(config: dict, message: str, key: str = "debug"):
+def loge(message: str, config: dict = {}, key: str = "debug"):
     """ Print debug log to stdout """
 
-    if key not in config or not config[key]:
+    env = os.environ.get("PYGRADING_DEBUG")
+    if env and env.lower() == "true":
+        print(message)
         return
 
-    else:
+    if key in config and config[key]:
         print(message)
+        return
