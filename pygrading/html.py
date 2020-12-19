@@ -3,19 +3,6 @@
     Author: Charles Zhang <694556046@qq.com>
     Propose: A module to generate html code.
     Coding: UTF-8
-
-    Change Log:
-        **2020.02.04**
-        Support <br>.
-
-        **2020.02.02**
-        Add list functions to Tag.
-
-        **2020.02.01**
-        Add SingleTag class.
-
-        **2020.01.29**
-        Create this file!
 """
 
 
@@ -27,7 +14,7 @@ def str2html(src: str) -> str:
     while str_list[-1] == "\n" or str_list[-1] == "":
         str_list.pop()
 
-    for i in range(len(str_list)):
+    for i in range(len(str_list) - 1):
         str_list[i] += "<br>"
 
     return "".join(str_list)
